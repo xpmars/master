@@ -7,4 +7,4 @@
 	<mappers>
 		<mapper resource="com/travelsky/domain/sqlMappers/user.xml" />
 	</mappers>
-</configuration>	
+</configuration>
