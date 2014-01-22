@@ -17,6 +17,7 @@ local.properties
 .svn
 /target
 /classes
+/test-classes
 
 # External tool builders
 .externalToolBuilders/
