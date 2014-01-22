@@ -70,7 +70,6 @@
 							<ul class="dropdown-menu" role="menu">
 								<li class=""><a href="#" target="_blank">账号设置</a></li>
 								<li class=""><a href="#" target="_blank">充值中心</a></li>
-								<li class=""><a href="#" target="_blank">退出登录</a></li>
 							</ul>
 							<button type="submit" class="btn btn-warning">登出</button>
 						</div>

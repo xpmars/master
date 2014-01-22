@@ -93,7 +93,7 @@
              window.setTimeout(function(){    
                  count--;    
                  if(count > 0) {    
-                     $("#num").attr('innerHTML', count);    
+                     $("#num").html(count);    
                      jump(count);    
                  } else {    
                      location.href="<%=request.getContextPath()%>/index.jsp";    
@@ -124,11 +124,6 @@
 
 <body>
 	<div class="container">
-	
-
-
-
-
 		<div id="successalert" class="alert alert-info fade in" style="display: none">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 			<h4>Oh 注册成功!</h4>
