@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://cxf.apache.org/jaxrs
+    http://cxf.apache.org/schemas/jaxrs.xsd
+    http://cxf.apache.org/core 
+    http://cxf.apache.org/schemas/core.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-jaxrs-binding.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<import resource="classpath*:dao/applicationContext.xml"></import>
+	<bean id="initServiceBean" class="com.travelsky.bean.InitServiceBean"></bean>
+	<bean id="proxyService" class="com.travelsky.ipcollectws.service.ProxyService">
+		<property name="initServiceBean" ref="initServiceBean" />
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<bean id="springContext" class="com.travelsky.context.SpringContext"></bean>
+	<jaxrs:server id="rsService" address="/">
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+		<jaxrs:serviceBeans>
+			<ref bean="proxyService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+</beans>

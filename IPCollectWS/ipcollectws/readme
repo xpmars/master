@@ -1,0 +1,9 @@
+1.启动demo.spring.server.StartApplication
+2.通过httpClient或者浏览器访问：http://localhost:9000/wsDemo/proxyservice/ctrip/5/05a671c66aefea124cc08b76ea6d30bb
+	tomcat: http://localhost:8080/ipcollectws/proxyservice/ctrip/5/05a671c66aefea124cc08b76ea6d30bb
+3.代码号：	
+	0：成功	
+	1：获取IP失败
+	2：权限认证失败
+4:md5码
+05a671c66aefea124cc08b76ea6d30bb = test/test
