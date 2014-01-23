@@ -24,6 +24,9 @@
 
 	$(function() {
 		$("#form").validation();
+		$('input[type="radio"]:checked').parent('label').addClass('active');
+		
+		$("#fooder").checked=true;
 		$("#email").blur(function() {
 			var myreg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;//邮箱的正则表达式
 		       
@@ -167,11 +170,16 @@
 				</div>
 				<br> <label for="role">类型：</label>
 				<div class="btn-group" data-toggle="buttons">
-					<label class="btn btn-default"> <input type="radio" name="user.usertype"
-						id="user.usertype" value="吃货" checked="checked"> 吃货
-					</label> <label class="btn btn-default"> <input type="radio" name="user.usertype"
+					<label class="btn btn-default"> 
+						<input type="radio" name="user.usertype"
+						id="user.usertype" value="吃货" checked> 吃货
+					</label>
+					 <label class="btn btn-default"> 
+					 	<input type="radio" name="user.usertype"
 						id="user.usertype" value="订饭官"> 订饭官
-					</label> <label class="btn btn-default"> <input type="radio" name="user.usertype"
+					</label> 
+					<label class="btn btn-default"> 
+						<input type="radio" name="user.usertype"
 						id="user.usertype" value="商家"> 商家
 					</label>
 				</div>

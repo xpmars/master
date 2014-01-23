@@ -42,6 +42,12 @@
 					</div>
 					<a class="list-group-item active"><span class="badge">14</span>Help</a>
 				</div>
+				<div class="navbar-bottom">
+					<address>
+						<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br /> San Francisco, CA 94107<br />
+						<abbr title="Phone">P:</abbr> (123) 456-7890
+					</address>
+				</div>
 			</div>
 			<div class="col-md-7 column">
 				<div class="row clearfix">
@@ -94,12 +100,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<div class="navbar-right">
-				<address>
-					<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br /> San Francisco, CA 94107<br />
-					<abbr title="Phone">P:</abbr> (123) 456-7890
-				</address>
-				</div>
+
 			</div>
 			<div class="col-md-2 column">
 				<h3>
@@ -136,8 +137,12 @@
 					</div>
 					<!-- /input-group -->
 					<p></p>
-					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> 提交</button>
-					<button type="reset" class="btn btn-warning"><span class="glyphicon glyphicon-repeat"></span> 清空</button>
+					<button type="submit" class="btn btn-success">
+						<span class="glyphicon glyphicon-ok"></span> 提交
+					</button>
+					<button type="reset" class="btn btn-warning">
+						<span class="glyphicon glyphicon-repeat"></span> 清空
+					</button>
 				</form>
 			</div>
 		</div>
