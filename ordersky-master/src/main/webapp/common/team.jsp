@@ -134,8 +134,8 @@
 					</div>
 					<!-- /input-group -->
 					<p></p>
-					<button type="submit" class="btn btn-success">提交</button>
-					<button type="reset" class="btn btn-warning">清空</button>
+					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> 提交</button>
+					<button type="reset" class="btn btn-warning"><span class="glyphicon glyphicon-repeat"></span> 清空</button>
 				</form>
 			</div>
 		</div>

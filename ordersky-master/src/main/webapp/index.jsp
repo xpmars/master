@@ -35,8 +35,8 @@
 					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href=""><span
-					style="font-size: 30px; margin-left: 0px; font-weight: bold;">航信点餐</span></a>
+				<a class="navbar-brand" href=""><span class="glyphicon glyphicon-send"></span><span
+					style="font-size: 30px; margin-left: 0px; font-weight: bold;"> 航信点餐</span></a>
 
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
@@ -82,9 +82,8 @@
 								设置 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li class=""><a href="#" target="_blank">账号设置</a></li>
+								<li class=""><a href="#" target="_blank"><span class="glyphicon glyphicon-user"></span> 账号设置</a></li>
 								<li class=""><a href="#" target="_blank">充值中心</a></li>
-								<li class=""><a href="#" target="_blank">退出登录</a></li>
 							</ul>
 							<button type="submit" class="btn btn-warning">登出</button>
 						</div>
@@ -145,8 +144,7 @@
 					commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
 					sem malesuada magna mollis euismod. Donec sed odio dui.</p>
 				<p>
-					<a class="btn btn-default" href="<%=request.getContextPath()%>/common/team.jsp" type="button">View
-						details &raquo;</a>
+					<a class="btn btn-default" href="<%=request.getContextPath()%>/common/team.jsp" type="button"><span class="glyphicon glyphicon-cutlery"></span> 求点餐 &raquo;</a>
 				</p>
 			</div>
 			<div class="col-md-4">
