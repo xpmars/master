@@ -32,18 +32,16 @@
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href=""><span
 					style="font-size: 30px; margin-left: 0px; font-weight: bold;">航信点餐</span></a>
 
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
-					<li class="dropdown"><a href="javascript:void(0)"
-						class="dropdown-toggle" data-toggle="dropdown">更多<b
-							class="caret"></b></a>
+					<li class="dropdown"><a href="javascript:void(0)" class="dropdown-toggle"
+						data-toggle="dropdown">更多<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li class=""><a href="#" target="_blank">1</a></li>
 							<li class=""><a href="#" target="_blank">2</a></li>
@@ -78,11 +76,9 @@
 
 
 					<form class="navbar-form navbar-right" role="form"
-						action="<%=request.getContextPath()%>/user/user_logout.action"
-						method="post">
+						action="<%=request.getContextPath()%>/user/user_logout.action" method="post">
 						<div class="btn-group">
-							<button class="btn btn-info  dropdown-toggle" type="button"
-								data-toggle="dropdown">
+							<button class="btn btn-info  dropdown-toggle" type="button" data-toggle="dropdown">
 								设置 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
@@ -100,16 +96,13 @@
 
 				<s:else>
 					<form class="navbar-form navbar-right" role="form"
-						action="<%=request.getContextPath()%>/user/user_login.action"
-						method="post">
+						action="<%=request.getContextPath()%>/user/user_login.action" method="post">
 
 						<div class="form-group">
-							<input type="text" name="user.email" placeholder="Email"
-								class="form-control">
+							<input type="text" name="user.email" placeholder="Email" class="form-control">
 						</div>
 						<div class="form-group">
-							<input type="password" name="user.password"
-								placeholder="Password" class="form-control">
+							<input type="password" name="user.password" placeholder="Password" class="form-control">
 						</div>
 						<button type="submit" class="btn btn-success">登陆</button>
 						<a href="<%=request.getContextPath()%>/common/register.jsp" class="btn btn-primary">注册</a>
@@ -125,13 +118,11 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1>Hello, world!</h1>
-			<p>This is a template for a simple marketing or informational
-				website. It includes a large callout called a jumbotron and three
-				supporting pieces of content. Use it as a starting point to create
-				something more unique.</p>
+			<p>This is a template for a simple marketing or informational website. It includes a large
+				callout called a jumbotron and three supporting pieces of content. Use it as a starting point to
+				create something more unique.</p>
 			<p>
-				<a class="btn btn-primary btn-lg" role="button">Learn more
-					&raquo;</a>
+				<a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a>
 			</p>
 		</div>
 	</div>
@@ -141,35 +132,30 @@
 		<div class="row">
 			<div class="col-md-4">
 				<h2>自助点餐</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
+				<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+					commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
+					sem malesuada magna mollis euismod. Donec sed odio dui.</p>
 				<p>
-					<a class="btn btn-default" href="#" role="button">View details
-						&raquo;</a>
+					<a class="btn btn-default" href="#" role="button">View details &raquo;</a>
 				</p>
 			</div>
 			<div class="col-md-4">
 				<h2>组团点餐</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
+				<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+					commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
+					sem malesuada magna mollis euismod. Donec sed odio dui.</p>
 				<p>
-					<a class="btn btn-default" href="<%=request.getContextPath()%>/common/team.jsp" type="button">View details
-						&raquo;</a>
+					<a class="btn btn-default" href="<%=request.getContextPath()%>/common/team.jsp" type="button">View
+						details &raquo;</a>
 				</p>
 			</div>
 			<div class="col-md-4">
 				<h2>优惠活动</h2>
-				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
-					egestas eget quam. Vestibulum id ligula porta felis euismod semper.
-					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-					nibh, ut fermentum massa justo sit amet risus.</p>
+				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+					Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo,
+					tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 				<p>
-					<a class="btn btn-default" href="#" role="button">View details
-						&raquo;</a>
+					<a class="btn btn-default" href="#" role="button">View details &raquo;</a>
 				</p>
 			</div>
 		</div>
