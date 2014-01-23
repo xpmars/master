@@ -22,7 +22,7 @@
 				</button>
 				<a class="navbar-brand"
 					href="<%=request.getContextPath()%>/index.jsp"><span class="glyphicon glyphicon-send"></span><span
-					style="font-size: 30px; margin-left: 0px; font-weight: bold;">航信点餐</span></a>
+					style="font-size: 30px; margin-left: 0px; font-weight: bold;"> 航信点餐</span></a>
 
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
