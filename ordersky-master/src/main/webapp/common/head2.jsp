@@ -64,14 +64,14 @@
 						method="post">
 						<div class="btn-group">
 							<button class="btn btn-info  dropdown-toggle" type="button"
-								data-toggle="dropdown">
+								data-toggle="dropdown"><span class="glyphicon glyphicon-tag"></span>
 								设置 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li class=""><a href="#" target="_blank">账号设置</a></li>
-								<li class=""><a href="#" target="_blank">充值中心</a></li>
+								<li class=""><a href="#" target="_blank"><span class="glyphicon glyphicon-send"></span> 账号设置</a></li>
+								<li class=""><a href="#" target="_blank"> 充值中心</a></li>
 							</ul>
-							<button type="submit" class="btn btn-warning">登出</button>
+							<button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-log-out"></span> 登出</button>
 						</div>
 					</form>
 				</s:if>
