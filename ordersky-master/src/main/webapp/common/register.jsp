@@ -150,7 +150,7 @@
 			<div class="form-group">
 				<h1 class="form-signin-heading">用户注册</h1>
 				<br> <label for="email">邮箱：</label> <input id="email" name="user.email" type="text"
-					class="form-control" placeholder="输入您的邮箱，必填" required autofocus>
+					class="form-control" placeholder="输入您的邮箱，必填" required>
 				<div class="highlight">
 					<span id="emailTip">
 				</div>
