@@ -30,6 +30,13 @@
 	<div class="container">
 		<div class="row clearfix">
 			<div class="col-md-3 column">
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<blockquote>
+						<h3 class="text-danger">h3. Lorem ipsum dolor sit amet.</h3><br>
+					</blockquote>
+					</div>
+				</div>
 				<div class="list-group">
 					<a href="#" class="list-group-item active">Home</a>
 					<div class="list-group-item">List header</div>
@@ -44,8 +51,9 @@
 				</div>
 				<div class="navbar-bottom">
 					<address>
-						<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br /> San Francisco, CA 94107<br />
-						<abbr title="Phone">P:</abbr> (123) 456-7890
+						<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br />
+						San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr> (123)
+						456-7890
 					</address>
 				</div>
 			</div>
@@ -55,7 +63,13 @@
 						<img alt="140x140" src="http://lorempixel.com/140/140/food/" />
 					</div>
 					<div class="col-md-8 column">
-						<h3>h3. Lorem ipsum dolor sit amet.</h3>
+						<h3 class="name" class="text-info">
+							<a class="value" href="#"> 家乐缘 </a>
+						</h3>
+						<div class="class=" text-danger" title="87534766/87534789">
+							<span class="glyphicon glyphicon-earphone"></span> <abbr
+								title="Phone">87534766/&#8203;87534789</abbr>
+						</div>
 					</div>
 				</div>
 				<table class="table">
@@ -107,21 +121,18 @@
 					<span class="label label-primary">我的订单</span>
 				</h3>
 				<br>
-				<ul>
-					<li>Lorem ipsum dolor sit amet</li>
-					<li>Consectetur adipiscing elit</li>
-					<li>Integer molestie lorem at massa</li>
-					<li>Facilisis in pretium nisl aliquet</li>
-					<li>Nulla volutpat aliquam velit</li>
-					<li>Faucibus porta lacus fringilla vel</li>
-					<li>Aenean sit amet erat nunc</li>
-					<li>Eget porttitor lorem</li>
+				<ul class="list-group">
+					<li class="list-group-item"><span class="badge">11</span> 魚香肉丝
+					</li>
+					<li class="list-group-item"><span class="badge">2</span> 三杯鸡</li>
 				</ul>
 				<form class="navbar-form navbar-right" role="form"
-					action="<%=request.getContextPath()%>/user/user_order.action" method="post">
+					action="<%=request.getContextPath()%>/user/user_order.action"
+					method="post">
 					<div class="input-group">
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<button type="button" class="btn btn-default dropdown-toggle"
+								data-toggle="dropdown">
 								跟随 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">

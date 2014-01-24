@@ -26,8 +26,8 @@
 </script>
 
 </head>
-<body>
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<body style="background:  white;">
+	<div class="navbar navbar-inverse navbar-fixed-top" type="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -75,13 +75,13 @@
 
 
 
-					<form class="navbar-form navbar-right" role="form"
+					<form class="navbar-form navbar-right" type="form"
 						action="<%=request.getContextPath()%>/user/user_logout.action" method="post">
 						<div class="btn-group">
 							<button class="btn btn-info  dropdown-toggle" type="button" data-toggle="dropdown">
 								设置 <span class="caret"></span>
 							</button>
-							<ul class="dropdown-menu" role="menu">
+							<ul class="dropdown-menu" type="menu">
 								<li class=""><a href="#" target="_blank"><span class="glyphicon glyphicon-user"></span> 账号设置</a></li>
 								<li class=""><a href="#" target="_blank">充值中心</a></li>
 							</ul>
@@ -94,7 +94,7 @@
 
 
 				<s:else>
-					<form class="navbar-form navbar-right" role="form"
+					<form class="navbar-form navbar-right" type="form"
 						action="<%=request.getContextPath()%>/user/user_login.action" method="post">
 
 						<div class="form-group">
@@ -121,7 +121,7 @@
 				callout called a jumbotron and three supporting pieces of content. Use it as a starting point to
 				create something more unique.</p>
 			<p>
-				<a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a>
+				<a class="btn btn-primary btn-lg" type="button">Learn more &raquo;</a>
 			</p>
 		</div>
 	</div>
@@ -135,7 +135,7 @@
 					commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
 					sem malesuada magna mollis euismod. Donec sed odio dui.</p>
 				<p>
-					<a class="btn btn-default" href="#" role="button">View details &raquo;</a>
+					<a class="btn btn-default" href="<%=request.getContextPath()%>/common/solo.jsp" type="button"><span class="glyphicon glyphicon-cutlery"></span> SOLO &raquo;</a>
 				</p>
 			</div>
 			<div class="col-md-4">
@@ -144,16 +144,30 @@
 					commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
 					sem malesuada magna mollis euismod. Donec sed odio dui.</p>
 				<p>
-					<a class="btn btn-default" href="<%=request.getContextPath()%>/common/team.jsp" type="button"><span class="glyphicon glyphicon-cutlery"></span> 求点餐 &raquo;</a>
+					<a class="btn btn-default"
+						href="<%=request.getContextPath()%>/common/team.jsp" type="button"><span
+						class="glyphicon glyphicon-chevron-right"></span> 求点餐 &raquo;
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul> 
+					</a>
 				</p>
 			</div>
 			<div class="col-md-4">
 				<h2>优惠活动</h2>
-				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-					Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo,
-					tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+				<img class="img-rounded" src="images/youhui.png" height="220" width="220" alt="Generic placeholder image" >
 				<p>
-					<a class="btn btn-default" href="#" role="button">View details &raquo;</a>
+				      特惠内容: 精选周边餐厅超多最受欢迎餐品<br>
+				      优惠限制: 餐厅每日备料有限，售完即止！
+				</p> 
+				<p>
+					<a class="btn btn-default" href="#" type="button"> <span
+						class="glyphicon glyphicon-gift"></span> 优惠活动 &raquo;
+					</a>
 				</p>
 			</div>
 		</div>
@@ -161,7 +175,7 @@
 		<hr>
 
 		<footer>
-		<p>&copy; Travelskygz 2014</p>
+			<p>&copy; Travelskygz 2014</p>
 		</footer>
 	</div>
 	<!-- /container -->

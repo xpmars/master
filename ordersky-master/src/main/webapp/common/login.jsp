@@ -38,7 +38,9 @@ $(function() {
 		<form class="form-signin" role="form"
 			action="<%=request.getContextPath()%>/user/user_login.action"
 			method="post">
-			<h2 class="form-signin-heading">用户登录</h2>
+			<h2 class="form-signin-heading">
+				<blockquote>用户登录</blockquote>
+			</h2>
 			<br>
 
 			<div class="error-note"

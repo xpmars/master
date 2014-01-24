@@ -151,7 +151,7 @@
 		<form id="form" class="form-signin" action="<%=request.getContextPath()%>/user/user_reg.action"
 			method="post">
 			<div class="form-group">
-				<h1 class="form-signin-heading">用户注册</h1>
+				<h2 class="form-signin-heading"><blockquote>用户注册</blockquote></h2>
 				<br> <label for="email">邮箱：</label> <input id="email" name="user.email" type="text"
 					class="form-control" placeholder="输入您的邮箱，必填" required>
 				<div class="highlight">

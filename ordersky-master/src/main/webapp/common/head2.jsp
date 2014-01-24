@@ -10,7 +10,7 @@
 <jsp:include page="head.jsp"></jsp:include>
 <title>Insert title here</title>
 </head>
-<body>
+<body style="background:  white;">
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">

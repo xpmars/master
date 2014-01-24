@@ -24,6 +24,7 @@
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/jquery-ui.js"></script>
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/jquery-jqGrid.src.js"></script>
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/json2.js"></script>
+<script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/sco.countdown.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
 
