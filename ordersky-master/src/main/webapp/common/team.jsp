@@ -21,8 +21,12 @@
 
 <script type="text/javascript">
 	$(function() {
-
+		var week = new Date().getDay();
+		var wid = "w" + week;
+		$('#'+ wid).addClass("active");
+		$('#countdowner').scojs_countdown({until: 1364382956});
 	});
+	
 </script>
 
 </head>
@@ -33,21 +37,22 @@
 				<div class="row clearfix">
 					<div class="col-md-12 column">
 						<blockquote>
-						<h3 class="text-danger">h3. Lorem ipsum dolor sit amet.</h3><br>
+						<h3 class="text-danger">距本次订餐结束：</h3>
+						<p>
+						    <div id="countdowner"></div>
+						
 					</blockquote>
 					</div>
 				</div>
-				<div class="list-group">
-					<a href="#" class="list-group-item active">Home</a>
-					<div class="list-group-item">List header</div>
-					<div class="list-group-item">
-						<h4 class="list-group-item-heading">List group item heading</h4>
-						<p class="list-group-item-text">...</p>
-					</div>
-					<div class="list-group-item">
-						<span class="badge">14</span>Help
-					</div>
-					<a class="list-group-item active"><span class="badge">14</span>Help</a>
+				<div class="list-group" id="rest">
+					<a href="#" class="list-group-item active"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;每周菜单</a>
+					<a href="#" class="list-group-item" id="w1"><span class="badge">Mon</span>家乐缘</a>
+					<a href="#" class="list-group-item" id="w2"><span class="badge">Tues</span>都城</a>
+					<a href="#" class="list-group-item" id="w3"><span class="badge">Wed</span>湘忆木桶饭</a>
+					<a href="#" class="list-group-item" id="w4"><span class="badge">Thur</span>悦香鸡</a>
+					<a href="#" class="list-group-item" id="w5"><span class="badge">Fri</span>家乐缘</a>
+					<a href="#" class="list-group-item" id="w6"><span class="badge">Sat</span>麦当劳</a>
+					<a href="#" class="list-group-item" id="w7"><span class="badge">Sun</span>真功夫</a>
 				</div>
 				<div class="navbar-bottom">
 					<address>
@@ -77,8 +82,8 @@
 						<tr>
 							<th>#</th>
 							<th>Product</th>
-							<th>Payment Taken</th>
-							<th>Status</th>
+							<th>Time Interval</th>
+							<th>Price</th>
 						</tr>
 					</thead>
 					<tbody>
