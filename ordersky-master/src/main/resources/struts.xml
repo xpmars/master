@@ -30,4 +30,9 @@
 			<result name="updateRest">/page/restAdd.jsp</result>
 		</action>
 	</package>
+	<package name="dish" namespace="/dish" extends="json-default">
+		<action name="dish_*" class="dishtAction" method="{1}">
+			
+		</action>
+	</package>
 </struts>    

@@ -30,9 +30,16 @@ public class DishAction extends ActionSupport {
 		dishService.findAll();
 		return dishList;
 	}
+	
+	
+	
 	public String addDish(String dish){
 		return null;
 	}
+	
+	
+	
+	
 	
 	public static Logger getLogger() {
 		return logger;
