@@ -15,7 +15,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href="css/jumbotron.css" rel="stylesheet">
 <jsp:include page="head2.jsp"></jsp:include>
 <title>用户登录</title>
 
@@ -39,7 +38,10 @@
 						<blockquote>
 						<h3 class="text-danger">距本次订餐结束：</h3>
 						<p>
-						    <div id="countdowner"></div>
+						    <div id="countdowner" data-d="días" data-h="horas" data-m="minutos" data-s="segundos"></div>
+<script>
+$('#countdowner').scojs_countdown({until: 1364382956});
+</script>
 						
 					</blockquote>
 					</div>

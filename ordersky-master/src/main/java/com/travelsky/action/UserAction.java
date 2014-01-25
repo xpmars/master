@@ -43,7 +43,7 @@ public class UserAction extends ActionSupport {
 	}
 
 	public String login() {
-System.out.println(user);
+		System.out.println(user);
 		if (user != null) {
 			User user2 = userService.login(user);
 			if (user2 != null) {
