@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.travelsky.domain.Dish">
+
+	<resultMap type="com.travelsky.domain.Dish" id="DishResult">
+		<result property="id" column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+		<result property="Dishname" column="Dishname" />
+		<result property="password" column="password" />
+	</resultMap>
+	<select id="DishLogin" parameterType="Dish" resultMap="DishResult">
+		select *
+		from Dish
+		where
+		Dishname=#{Dishname} and password=#{password}
+	</select>
+
+	<select id="selectAllDish" resultMap="DishResult">
+		select * from Dish
+	</select>
+
+	<select id="findDishById" parameterType="int" resultMap="DishResult">
+		select *
+		from Dish where id=#{id}
+	</select>
+
+	<insert id="insertDish" parameterType="Dish">
+	 <![CDATA[
+		insert into
+		Dish(Dishname,password) values(#{Dishname},#{password})
+		]]>
+	</insert>
+
+	<update id="updateDish" parameterType="Dish">
+		update Dish set
+		Dishname=#{Dishname},password=#{password} where id=#{id}
+	</update>
+
+	<delete id="deleteDish" parameterType="int">
+		delete from Dish where
+		id=#{id}
+	</delete>
+
+</mapper>

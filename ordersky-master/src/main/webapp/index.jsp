@@ -159,7 +159,7 @@
 			</div>
 			<div class="col-md-4">
 				<h2>优惠活动</h2>
-				<img class="img-rounded" src="images/youhui.png" height="220" width="220" alt="Generic placeholder image" >
+				<img class="img-rounded" src="<%=request.getContextPath()%>/images/youhui.png" height="220" width="220" alt="Generic placeholder image" >
 				<p>
 				      特惠内容: 精选周边餐厅超多最受欢迎餐品<br>
 				      优惠限制: 餐厅每日备料有限，售完即止！

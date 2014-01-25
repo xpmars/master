@@ -83,7 +83,7 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Product</th>
+							<th>Dishes</th>
 							<th>Time Interval</th>
 							<th>Price</th>
 						</tr>
