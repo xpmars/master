@@ -5,15 +5,22 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.travelsky.domain.Dish;
 import com.travelsky.service.DishService;
-
+/**
+ * 类说明：用户Action
+ * 
+ * @author 作者: ChengJun
+ * @version 创建时间：2012-3-25 下午03:29:52
+ */
+@Controller
+@Scope("prototype")
 public class DishAction extends ActionSupport {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 497426678593753641L;
 	private static Logger logger = Logger.getLogger(DishAction.class);
 	private Map<String, Object> session;
@@ -26,9 +33,12 @@ public class DishAction extends ActionSupport {
 	public String execute() throws Exception {
 		return null;
 	}
-	public List<Dish> findAll(){
-		dishService.findAll();
-		return dishList;
+	public String findAll(){
+		
+		dishList = dishService.findAll();
+System.out.println("DishLish: "+dishList);
+
+		return SUCCESS;
 	}
 	
 	

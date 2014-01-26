@@ -14,10 +14,10 @@ public class Dish implements Serializable {
 	 */
 	private static final long serialVersionUID = -3266314660117025881L;
 	private Integer id;
-	private String restId;
+	private Integer restId;
 	private String dishName;
 	private String taste;
-	private float prince;
+	private String price;
 	private String discount;
 	private String remark;
 	private String interval;
@@ -27,10 +27,11 @@ public class Dish implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getRestId() {
+	
+	public Integer getRestId() {
 		return restId;
 	}
-	public void setRestId(String restId) {
+	public void setRestId(Integer restId) {
 		this.restId = restId;
 	}
 	public String getDishName() {
@@ -45,11 +46,11 @@ public class Dish implements Serializable {
 	public void setTaste(String taste) {
 		this.taste = taste;
 	}
-	public float getPrince() {
-		return prince;
+	public String getPrice() {
+		return price;
 	}
-	public void setPrince(float prince) {
-		this.prince = prince;
+	public void setPrice(String price) {
+		this.price = price;
 	}
 	public String getDiscount() {
 		return discount;
@@ -75,7 +76,7 @@ public class Dish implements Serializable {
 	@Override
 	public String toString() {
 		return "Dish [id=" + id + ", restId=" + restId + ", dishName=" + dishName + ", taste="
-				+ taste + ", prince=" + prince + ", discount=" + discount + ", remark=" + remark
+				+ taste + ", price=" + price + ", discount=" + discount + ", remark=" + remark
 				+ ", interval=" + interval + "]";
 	}
 

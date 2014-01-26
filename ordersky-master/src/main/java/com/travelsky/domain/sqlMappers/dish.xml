@@ -3,42 +3,19 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.travelsky.domain.Dish">
 
-	<resultMap type="com.travelsky.domain.Dish" id="DishResult">
+	<resultMap type="com.travelsky.domain.Dish" id="dishResult">
 		<result property="id" column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-		<result property="Dishname" column="Dishname" />
-		<result property="password" column="password" />
+		<result property="restId" column="restId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+		<result property="dishName" column="dishName" />
+		<result property="taste" column="taste" />
+		<result property="price" column="price" />
+		<result property="discount" column="discount" />
+		<result property="remark" column="remark" />
+		<result property="interval" column="interval" />
 	</resultMap>
-	<select id="DishLogin" parameterType="Dish" resultMap="DishResult">
-		select *
-		from Dish
-		where
-		Dishname=#{Dishname} and password=#{password}
+
+	<select id="selectAllDish" resultMap="dishResult">
+		select * from dish
 	</select>
-
-	<select id="selectAllDish" resultMap="DishResult">
-		select * from Dish
-	</select>
-
-	<select id="findDishById" parameterType="int" resultMap="DishResult">
-		select *
-		from Dish where id=#{id}
-	</select>
-
-	<insert id="insertDish" parameterType="Dish">
-	 <![CDATA[
-		insert into
-		Dish(Dishname,password) values(#{Dishname},#{password})
-		]]>
-	</insert>
-
-	<update id="updateDish" parameterType="Dish">
-		update Dish set
-		Dishname=#{Dishname},password=#{password} where id=#{id}
-	</update>
-
-	<delete id="deleteDish" parameterType="int">
-		delete from Dish where
-		id=#{id}
-	</delete>
 
 </mapper>

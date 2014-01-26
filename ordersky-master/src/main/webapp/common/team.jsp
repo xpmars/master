@@ -22,10 +22,8 @@
 	$(function() {
 		var week = new Date().getDay();
 		var wid = "w" + week;
-		$('#'+ wid).addClass("active");
-		$('#countdowner').scojs_countdown({until: 1364382956});
+		$('#' + wid).addClass("active");
 	});
-	
 </script>
 
 </head>
@@ -36,25 +34,27 @@
 				<div class="row clearfix">
 					<div class="col-md-12 column">
 						<blockquote>
-						<h3 class="text-danger">距本次订餐结束：</h3>
-						<p>
-						    <div id="countdowner" data-d="días" data-h="horas" data-m="minutos" data-s="segundos"></div>
-<script>
+							<h3 class="text-danger">距本次订餐结束：</h3>
+							<p>
+							<div id="countdowner" data-d="días" data-h="horas"
+								data-m="minutos" data-s="segundos"></div>
+							<%-- <script>
 $('#countdowner').scojs_countdown({until: 1364382956});
-</script>
-						
-					</blockquote>
+</script> --%>
+
+						</blockquote>
 					</div>
 				</div>
 				<div class="list-group" id="rest">
-					<a href="#" class="list-group-item active"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;每周菜单</a>
+					<a href="#" class="list-group-item active"><span
+						class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;每周菜单</a>
 					<a href="#" class="list-group-item" id="w1"><span class="badge">Mon</span>家乐缘</a>
 					<a href="#" class="list-group-item" id="w2"><span class="badge">Tues</span>都城</a>
 					<a href="#" class="list-group-item" id="w3"><span class="badge">Wed</span>湘忆木桶饭</a>
 					<a href="#" class="list-group-item" id="w4"><span class="badge">Thur</span>悦香鸡</a>
 					<a href="#" class="list-group-item" id="w5"><span class="badge">Fri</span>家乐缘</a>
 					<a href="#" class="list-group-item" id="w6"><span class="badge">Sat</span>麦当劳</a>
-					<a href="#" class="list-group-item" id="w7"><span class="badge">Sun</span>真功夫</a>
+					<a href="#" class="list-group-item" id="w0"><span class="badge">Sun</span>真功夫</a>
 				</div>
 				<div class="navbar-bottom">
 					<address>
@@ -65,63 +65,53 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 				</div>
 			</div>
 			<div class="col-md-7 column">
-				<div class="row clearfix">
-					<div class="col-md-4 column">
-						<img alt="140x140" src="http://lorempixel.com/140/140/food/" />
-					</div>
-					<div class="col-md-8 column">
-						<h3 class="name" class="text-info">
-							<a class="value" href="#"> 家乐缘 </a>
-						</h3>
-						<div class="class=" text-danger" title="87534766/87534789">
-							<span class="glyphicon glyphicon-earphone"></span> <abbr
-								title="Phone">87534766/&#8203;87534789</abbr>
+				<div class="panel panel-heading">
+					<div class="row clearfix">
+						<div class="col-md-4 column">
+							<img alt="140x140" src="http://lorempixel.com/140/140/food/" />
+						</div>
+						<div class="col-md-8 column">
+							<h3 class="name" class="text-info">
+								<a class="value" href="#"> 家乐缘 </a>
+							</h3>
+							<div class="text-danger" title="87534766/87534789">
+								<span class="glyphicon glyphicon-earphone"></span> <abbr
+									title="Phone">87534766/&#8203;87534789</abbr>
+							</div>
 						</div>
 					</div>
+					<table class="table table-hover" id="dishTable">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Dishes</th>
+								<th>Time Interval</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<s:iterator value="dishList" id="dish" status="d">
+								<s:if test="%{#d.index%4==0}">
+									<tr class="active">	
+								</s:if>
+								<s:if test="%{#d.index%4==1}">
+									<tr class="warning">	
+								</s:if>
+								<s:if test="%{#d.index%4==2}">
+									<tr class="success">	
+								</s:if>
+								<s:if test="%{#d.index%4==3}">
+									<tr class="danger">	
+								</s:if>
+									<td><s:property value="#d.index+1"></s:property></td>
+									<td><s:property value="#dish.dishName"></s:property></td>
+									<td><s:property value="#dish.interval"></s:property></td>
+									<td><s:property value="#dish.price"></s:property></td>
+								</tr>
+							</s:iterator>
+						</tbody>
+					</table>
 				</div>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Dishes</th>
-							<th>Time Interval</th>
-							<th>Price</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>0</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Default</td>
-						</tr>
-						<tr class="active">
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Approved</td>
-						</tr>
-						<tr class="success">
-							<td>2</td>
-							<td>TB - Monthly</td>
-							<td>02/04/2012</td>
-							<td>Declined</td>
-						</tr>
-						<tr class="warning">
-							<td>3</td>
-							<td>TB - Monthly</td>
-							<td>03/04/2012</td>
-							<td>Pending</td>
-						</tr>
-						<tr class="danger">
-							<td>4</td>
-							<td>TB - Monthly</td>
-							<td>04/04/2012</td>
-							<td>Call in to confirm</td>
-						</tr>
-					</tbody>
-				</table>
-
 			</div>
 			<div class="col-md-2 column">
 				<h3>

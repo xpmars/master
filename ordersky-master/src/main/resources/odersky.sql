@@ -45,14 +45,15 @@ CREATE TABLE `rest` (
 -- ----------------------------
 -- Table structure for menu
 -- ----------------------------
-CREATE TABLE `menu` (
+CREATE TABLE `dish` (
   `id` int(4) NOT NULL,
-  `restid` int(4),
-  `name` varchar(64) collate utf8_bin default NULL,
+  `restId` int(4),
+  `dishName` varchar(64) collate utf8_bin default NULL,
   `taste` varchar(64) collate utf8_bin default NULL,
   `price` varchar(64) collate utf8_bin default NULL,
   `discount` varchar(64) collate utf8_bin default NULL,
   `remark` varchar(64) collate utf8_bin default NULL,
+  `interval` varchar(64) collate utf8_bin default NULL,
   PRIMARY KEY  (`id`),
-  FOREIGN KEY (`restid`)     references  `rest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE         
+  FOREIGN KEY (`restId`)     references  `rest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE         
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

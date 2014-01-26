@@ -3,7 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="user" type="com.travelsky.domain.User"/>
-		<typeAlias alias="user" type="com.travelsky.domain.Dish"/>
+		<typeAlias alias="dish" type="com.travelsky.domain.Dish"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/travelsky/domain/sqlMappers/user.xml" />
