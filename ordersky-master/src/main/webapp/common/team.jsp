@@ -19,10 +19,22 @@
 <title>用户登录</title>
 
 <script type="text/javascript">
+
 	$(function() {
 		var week = new Date().getDay();
 		var wid = "w" + week;
 		$('#' + wid).addClass("active");
+		$("#tbody tr").dblclick(function() {
+			var num = 1;
+/* 			alert("aa");
+			alert($(this).html());
+			alert($(this).attr('id'));
+			alert($(this).parent('tr').attr('id')); */
+			var $htmlLi = $("<li class='list-group-item'><span class='badge'>" + num +"</span>" +  $(this).html() +"</li>");  //创建DOM对象
+	        $('#orderList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
+			
+			
+		});
 	});
 </script>
 
@@ -89,7 +101,7 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 								<th>Price</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="tbody">
 							<s:iterator value="dishList" id="dish" status="d">
 								<s:if test="%{#d.index%4==0}">
 									<tr class="active">	
@@ -103,10 +115,11 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 								<s:if test="%{#d.index%4==3}">
 									<tr class="danger">	
 								</s:if>
-									<td><s:property value="#d.index+1"></s:property></td>
-									<td><s:property value="#dish.dishName"></s:property></td>
-									<td><s:property value="#dish.interval"></s:property></td>
-									<td><s:property value="#dish.price"></s:property></td>
+									<td id="index"><s:property value="#d.index+1"></s:property></td>
+									<td id="id" style="display:none"><s:property value="#d.index+1"></s:property></td>
+									<td id="dishName"><s:property value="#dish.dishName"></s:property></td>
+									<td id="interval"><s:property value="#dish.interval"></s:property></td>
+									<td id="price"><s:property value="#dish.price"></s:property></td>
 								</tr>
 							</s:iterator>
 						</tbody>
@@ -118,7 +131,7 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 					<span class="label label-primary">我的订单</span>
 				</h3>
 				<br>
-				<ul class="list-group">
+				<ul class="list-group" id="orderList">
 					<li class="list-group-item"><span class="badge">11</span> 魚香肉丝
 					</li>
 					<li class="list-group-item"><span class="badge">2</span> 三杯鸡</li>
@@ -148,7 +161,7 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 					<button type="submit" class="btn btn-success">
 						<span class="glyphicon glyphicon-ok"></span> 提交
 					</button>
-					<button type="reset" class="btn btn-warning">
+					<button type="reset" class="btn btn-warning" >
 						<span class="glyphicon glyphicon-repeat"></span> 清空
 					</button>
 				</form>
