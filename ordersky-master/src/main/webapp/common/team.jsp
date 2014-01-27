@@ -21,6 +21,7 @@
 <script type="text/javascript">
 
 	$(function() {
+		var orderArr = new Array();
 		var week = new Date().getDay();
 		var wid = "w" + week;
 		$('#' + wid).addClass("active");
@@ -29,18 +30,25 @@
 						function() {
 							$("#count").show();
 							$("#count").alert();
-							var num = $(this).find('td').eq(5).text();
-							num++;
-							if (num > 1) {
-								$(this).find('td').eq(5).html(num);  
-							} else {
-								var $htmlLi = $("<li class='list-group-item'><span class='badge'>"
-										+ num
-										+ "</span>"
-										+ $(this).find('td').eq(2).text()
-										+ "</li>"); //创建DOM对象
-								$('#orderList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
+							var id = $(this).find('td').eq(1).text();
+							orderArr.push(id);
+							var num = 0;
+							for(var i=0;i<orderArr.length;i++){
+								if(orderArr[i]==id){
+									num++;
+								}
 							}
+							if(num==1){
+								var $htmlLi = $("<li class='list-group-item'><span id="+ id +" class='badge'>"
+										+ num + "</span>" + $(this).find('td').eq(2).text() + "</li>"); //创建DOM对象
+										
+								$('#orderList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
+							}else{
+								$('#'+id).html(num);
+								//更新DOM对象
+							}
+							
+							
 							var countPrice = parseFloat($("#countPrice").html()) + parseFloat($(this).find('td').eq(4).text());
 							$("#countPrice").html(countPrice);
 
@@ -70,8 +78,7 @@
 						<blockquote>
 							<h3 class="text-danger">距本次订餐结束：</h3>
 							<p>
-							<div id="countdowner" data-d="días" data-h="horas"
-								data-m="minutos" data-s="segundos"></div>
+							<div id="countdowner" data-d="días" data-h="horas" data-m="minutos" data-s="segundos"></div>
 							<%-- <script>
 $('#countdowner').scojs_countdown({until: 1364382956});
 </script> --%>
@@ -80,21 +87,19 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 					</div>
 				</div>
 				<div class="list-group" id="rest">
-					<a href="#" class="list-group-item active"><span
-						class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;每周菜单</a>
-					<a href="#" class="list-group-item" id="w1"><span class="badge">Mon</span>家乐缘</a>
-					<a href="#" class="list-group-item" id="w2"><span class="badge">Tues</span>都城</a>
-					<a href="#" class="list-group-item" id="w3"><span class="badge">Wed</span>湘忆木桶饭</a>
-					<a href="#" class="list-group-item" id="w4"><span class="badge">Thur</span>悦香鸡</a>
-					<a href="#" class="list-group-item" id="w5"><span class="badge">Fri</span>家乐缘</a>
-					<a href="#" class="list-group-item" id="w6"><span class="badge">Sat</span>麦当劳</a>
-					<a href="#" class="list-group-item" id="w0"><span class="badge">Sun</span>真功夫</a>
+					<a href="#" class="list-group-item active"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;每周菜单</a>
+					<a href="#" class="list-group-item" id="w1"><span class="badge">Mon</span>家乐缘</a> <a href="#"
+						class="list-group-item" id="w2"><span class="badge">Tues</span>都城</a> <a href="#"
+						class="list-group-item" id="w3"><span class="badge">Wed</span>湘忆木桶饭</a> <a href="#"
+						class="list-group-item" id="w4"><span class="badge">Thur</span>悦香鸡</a> <a href="#"
+						class="list-group-item" id="w5"><span class="badge">Fri</span>家乐缘</a> <a href="#"
+						class="list-group-item" id="w6"><span class="badge">Sat</span>麦当劳</a> <a href="#"
+						class="list-group-item" id="w0"><span class="badge">Sun</span>真功夫</a>
 				</div>
 				<div class="navbar-bottom">
 					<address>
-						<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br />
-						San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr> (123)
-						456-7890
+						<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br /> San Francisco, CA 94107<br />
+						<abbr title="Phone">P:</abbr> (123) 456-7890
 					</address>
 				</div>
 			</div>
@@ -109,8 +114,7 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 								<a class="value" href="#"> 家乐缘 </a>
 							</h3>
 							<div class="text-danger" title="87534766/87534789">
-								<span class="glyphicon glyphicon-earphone"></span> <abbr
-									title="Phone">87534766/&#8203;87534789</abbr>
+								<span class="glyphicon glyphicon-earphone"></span> <abbr title="Phone">87534766/&#8203;87534789</abbr>
 							</div>
 						</div>
 					</div>
@@ -126,23 +130,22 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 						<tbody id="tbody">
 							<s:iterator value="dishList" id="dish" status="d">
 								<s:if test="%{#d.index%4==0}">
-									<tr class="active">	
+									<tr class="active">
 								</s:if>
 								<s:if test="%{#d.index%4==1}">
-									<tr class="warning">	
+									<tr class="warning">
 								</s:if>
 								<s:if test="%{#d.index%4==2}">
-									<tr class="success">	
+									<tr class="success">
 								</s:if>
 								<s:if test="%{#d.index%4==3}">
-									<tr class="danger">	
+									<tr class="danger">
 								</s:if>
-									<td id="index"><s:property value="#d.index+1"></s:property></td>
-									<td id="id" style="display:none"><s:property value="#d.index+1"></s:property></td>
-									<td id="dishName"><s:property value="#dish.dishName"></s:property></td>
-									<td id="interval"><s:property value="#dish.interval"></s:property></td>
-									<td id="price"><s:property value="#dish.price"></s:property></td>
-									<td id="initNum" style="display:none">0</td>
+								<td id="index"><s:property value="#d.index+1"></s:property></td>
+								<td id="id" style="display: none"><s:property value="#d.index+1"></s:property></td>
+								<td id="dishName"><s:property value="#dish.dishName"></s:property></td>
+								<td id="interval"><s:property value="#dish.interval"></s:property></td>
+								<td id="price"><s:property value="#dish.price"></s:property></td>
 								</tr>
 							</s:iterator>
 						</tbody>
@@ -164,12 +167,10 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 					</div>
 				</div>
 				<form class="navbar-form navbar-right" role="form"
-					action="<%=request.getContextPath()%>/user/user_order.action"
-					method="post">
+					action="<%=request.getContextPath()%>/user/user_order.action" method="post">
 					<div class="input-group">
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-default dropdown-toggle"
-								data-toggle="dropdown">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 								跟随 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
@@ -188,8 +189,8 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 					<button type="submit" class="btn btn-success">
 						<span class="glyphicon glyphicon-ok"></span> 提交
 					</button>
-					<a id="clear" type="reset" class="btn btn-warning" onclick="clearli()">
-						<span class="glyphicon glyphicon-repeat"></span> 清空
+					<a id="clear" type="reset" class="btn btn-warning" onclick="clearli()"> <span
+						class="glyphicon glyphicon-repeat"></span> 清空
 					</a>
 				</form>
 			</div>
