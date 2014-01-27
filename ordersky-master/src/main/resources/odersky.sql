@@ -43,11 +43,11 @@ CREATE TABLE `rest` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Table structure for menu
+-- Table structure for dish
 -- ----------------------------
 CREATE TABLE `dish` (
-  `id` int(4) NOT NULL,
-  `restId` int(4),
+  `id` INT(4) NOT NULL,
+  `restId` INT(4) NOT NULL,
   `dishName` varchar(64) collate utf8_bin default NULL,
   `taste` varchar(64) collate utf8_bin default NULL,
   `price` varchar(64) collate utf8_bin default NULL,
@@ -56,4 +56,24 @@ CREATE TABLE `dish` (
   `interval` varchar(64) collate utf8_bin default NULL,
   PRIMARY KEY  (`id`),
   FOREIGN KEY (`restId`)     references  `rest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE         
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+CREATE TABLE `orders` (
+  `id` bigint(22) NOT NULL,
+  `totalPrice` varchar(64) collate utf8_bin default NULL,
+  `remark` varchar(64) collate utf8_bin default NULL,
+  `orderDate` varchar(64) collate utf8_bin default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ----------------------------
+-- Table structure for order-dish
+-- ----------------------------
+CREATE TABLE `ordersdish` (
+  `ordersId` bigint(22) NOT NULL,
+  `dishId` int(4) NOT NULL,
+  PRIMARY KEY  (`ordersId`,`dishId`),
+  FOREIGN KEY (`ordersId`)     references  `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ,     
+  FOREIGN KEY (`dishId`)     references  `dish` (`id`) ON DELETE CASCADE ON UPDATE CASCADE      
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
