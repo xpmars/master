@@ -24,18 +24,40 @@
 		var week = new Date().getDay();
 		var wid = "w" + week;
 		$('#' + wid).addClass("active");
-		$("#tbody tr").dblclick(function() {
-			var num = 1;
-/* 			alert("aa");
-			alert($(this).html());
-			alert($(this).attr('id'));
-			alert($(this).parent('tr').attr('id')); */
-			var $htmlLi = $("<li class='list-group-item'><span class='badge'>" + num +"</span>" +  $(this).html() +"</li>");  //创建DOM对象
-	        $('#orderList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
-			
-			
-		});
+		$("#tbody tr")
+				.dblclick(
+						function() {
+							$("#count").show();
+							$("#count").alert();
+							var num = $(this).find('td').eq(5).text();
+							num++;
+							if (num > 1) {
+								$(this).find('td').eq(5).html(num);  
+							} else {
+								var $htmlLi = $("<li class='list-group-item'><span class='badge'>"
+										+ num
+										+ "</span>"
+										+ $(this).find('td').eq(2).text()
+										+ "</li>"); //创建DOM对象
+								$('#orderList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
+							}
+							var countPrice = parseFloat($("#countPrice").html()) + parseFloat($(this).find('td').eq(4).text());
+							$("#countPrice").html(countPrice);
+
+						});
+		
+		
+		
 	});
+	
+	
+	
+	function clearli(){
+		$('#orderList').empty();
+		$("#countPrice").html(0);
+		$("#count").hide();
+	}
+	
 </script>
 
 </head>
@@ -120,6 +142,7 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 									<td id="dishName"><s:property value="#dish.dishName"></s:property></td>
 									<td id="interval"><s:property value="#dish.interval"></s:property></td>
 									<td id="price"><s:property value="#dish.price"></s:property></td>
+									<td id="initNum" style="display:none">0</td>
 								</tr>
 							</s:iterator>
 						</tbody>
@@ -132,10 +155,14 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 				</h3>
 				<br>
 				<ul class="list-group" id="orderList">
-					<li class="list-group-item"><span class="badge">11</span> 魚香肉丝
-					</li>
-					<li class="list-group-item"><span class="badge">2</span> 三杯鸡</li>
 				</ul>
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<div id="count" class="alert alert-info fade in" style="display: none">
+							共计：<span id="countPrice">0</span>
+						</div>
+					</div>
+				</div>
 				<form class="navbar-form navbar-right" role="form"
 					action="<%=request.getContextPath()%>/user/user_order.action"
 					method="post">
@@ -161,9 +188,9 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 					<button type="submit" class="btn btn-success">
 						<span class="glyphicon glyphicon-ok"></span> 提交
 					</button>
-					<button type="reset" class="btn btn-warning" >
+					<a id="clear" type="reset" class="btn btn-warning" onclick="clearli()">
 						<span class="glyphicon glyphicon-repeat"></span> 清空
-					</button>
+					</a>
 				</form>
 			</div>
 		</div>
