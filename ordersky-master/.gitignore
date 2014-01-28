@@ -1,3 +1,7 @@
 /target
 /.project
 /.gitignore
+/classes
+/test-classes
+/.svn
+/.settings
