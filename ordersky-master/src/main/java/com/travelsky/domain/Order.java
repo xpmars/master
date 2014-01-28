@@ -14,7 +14,7 @@ import java.sql.Date;
  * @Description: TODO
  * @author chengjun(chengjun@travelsky.com)  @2014-1-27
  */
-public class Orders  implements Serializable{
+public class Order  implements Serializable{
 	/**
 	 * 
 	 */
@@ -22,7 +22,8 @@ public class Orders  implements Serializable{
 	private BigInteger id;
 	private User orderUser;
 	private Date orderDate;
-	private String totalPrice;
+	private String remark;
+	private int totalPrice;
 	/**
 	 * @return the orderId
 	 */
@@ -62,14 +63,20 @@ public class Orders  implements Serializable{
 	/**
 	 * @return the totalPrice
 	 */
-	public String getTotalPrice() {
+	public int getTotalPrice() {
 		return totalPrice;
 	}
 	/**
 	 * @param totalPrice the totalPrice to set
 	 */
-	public void setTotalPrice(String totalPrice) {
+	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	
 	

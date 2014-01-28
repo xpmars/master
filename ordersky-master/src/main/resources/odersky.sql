@@ -62,6 +62,7 @@ CREATE TABLE `dish` (
 -- ----------------------------
 CREATE TABLE `orders` (
   `id` bigint(22) NOT NULL,
+  `orderUser` varchar(64) NOT NULL,
   `totalPrice` varchar(64) collate utf8_bin default NULL,
   `remark` varchar(64) collate utf8_bin default NULL,
   `orderDate` varchar(64) collate utf8_bin default NULL,

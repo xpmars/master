@@ -25,8 +25,8 @@ public class DishDaoImpl implements DishDao{
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public Dish findRestById(Integer restId) {
-		return null;
+	public Dish findDishById(int dishId) {
+		return sqlSessionTemplate.selectOne(FIND_DISH_BYID,dishId);
 	}
 
 	public List<Dish> findAll() {

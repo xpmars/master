@@ -17,7 +17,7 @@ public class Dish implements Serializable {
 	private Integer restId;
 	private String dishName;
 	private String taste;
-	private String price;
+	private int price;
 	private String discount;
 	private String remark;
 	private String interval;
@@ -46,10 +46,10 @@ public class Dish implements Serializable {
 	public void setTaste(String taste) {
 		this.taste = taste;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String getDiscount() {

@@ -24,7 +24,7 @@
 
 	<select id="findUserById" parameterType="int" resultMap="userResult">
 		select *
-		from user where id=#{id}
+		from user where id=#{orderId}
 	</select>
 
 	<insert id="insertUser" parameterType="user">

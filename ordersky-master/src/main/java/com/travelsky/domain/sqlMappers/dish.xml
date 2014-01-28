@@ -8,7 +8,7 @@
 		<result property="restId" column="restId" jdbcType="INTEGER" javaType="java.lang.Integer" />
 		<result property="dishName" column="dishName" />
 		<result property="taste" column="taste" />
-		<result property="price" column="price" />
+		<result property="price" column="price" jdbcType="INTEGER" javaType="java.lang.Integer" />
 		<result property="discount" column="discount" />
 		<result property="remark" column="remark" />
 		<result property="interval" column="interval" />
@@ -17,5 +17,8 @@
 	<select id="selectAllDish" resultMap="dishResult">
 		select * from dish
 	</select>
-
+	
+	<select id="findDishById" parameterType="int" resultMap="dishResult">
+		select * from dish where id=#{dishId}
+	</select>
 </mapper>

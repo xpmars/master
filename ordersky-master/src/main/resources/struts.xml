@@ -35,5 +35,10 @@
 			<result name="success" >/common/team.jsp</result>
 			<result name="error" >/index.jsp</result>
 		</action>
+	</package>	
+	<package name="order" namespace="/order" extends="json-default">
+		<action name="order_*" class="orderAction" method="{1}">
+			<result type="json" name="message"></result>
+		</action>
 	</package>
 </struts>    

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.travelsky.domain.Order">
+
+	<resultMap type="com.travelsky.domain.Order" id="orderResult">
+		<result property="id" column="id" jdbcType="BIGINT" javaType="java.math.BigInteger" />
+		<result property="orderUser" column="orderUser" />
+		<result property="orderDate" column="orderDate" jdbcType="DATE" javaType="java.sql.Date"/>
+		<result property="remark" column="remark" />
+		<result property="totalPrice" column="totalPrice" jdbcType="INTEGER" javaType="java.lang.Integer" />
+	</resultMap>
+
+	<select id="selectAllOrder" resultMap="orderResult">
+		select * from order
+	</select>	
+	
+	<select id="findOrderById" parameterType="int" resultMap="orderResult">
+		select *
+		from orders where id=#{id}
+	</select>
+	
+	<insert id="insertOrder">
+		<![CDATA[
+		insert into
+		orders(id,totalPrice,remark,orderDate,orderUser) values(#{id},#{totalPrice},#{remark},#{orderDate},#{orderUser})
+		]]>
+	</insert>
+
+</mapper>

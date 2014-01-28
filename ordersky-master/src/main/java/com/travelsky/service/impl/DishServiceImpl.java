@@ -22,14 +22,16 @@ import com.travelsky.service.DishService;
 public class DishServiceImpl implements DishService {
 	@Autowired
 	private DishDao dishDao;
-	
-	public Dish findRestById(Integer restId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public List<Dish> findAll() {
 		return dishDao.findAll();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.travelsky.service.DishService#findDishById(java.lang.Integer)
+	 */
+	public Dish findDishById(int dishId) {
+		return dishDao.findDishById(dishId);
 	}
 
 }

@@ -4,9 +4,11 @@
 	<typeAliases>
 		<typeAlias alias="user" type="com.travelsky.domain.User"/>
 		<typeAlias alias="dish" type="com.travelsky.domain.Dish"/>
+		<typeAlias alias="order" type="com.travelsky.domain.Order"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/travelsky/domain/sqlMappers/user.xml" />
 		<mapper resource="com/travelsky/domain/sqlMappers/dish.xml" />
+		<mapper resource="com/travelsky/domain/sqlMappers/order.xml" />
 	</mappers>
 </configuration>

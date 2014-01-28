@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.travelsky.domain.Dish;
+import com.travelsky.domain.Order;
 import com.travelsky.service.DishService;
 /**
  * 类说明：用户Action
@@ -40,7 +41,12 @@ System.out.println("DishLish: "+dishList);
 
 		return SUCCESS;
 	}
-	
+	/**
+	 * 
+	 */
+	private Dish findDishById(int dishId) {
+		return dishService.findDishById(dishId);
+	}
 	
 	
 	public String addDish(String dish){
