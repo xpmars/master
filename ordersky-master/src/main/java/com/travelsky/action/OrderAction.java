@@ -69,7 +69,7 @@ public class OrderAction extends ActionSupport {
 	/**
 	 * 
 	 */
-	private Order findOrderById(String orderId) {
+	private Order findOrderById(int orderId) {
 		return orderService.findOrderById(orderId);
 	}
 	/**

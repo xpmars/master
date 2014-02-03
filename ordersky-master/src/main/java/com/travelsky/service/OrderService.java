@@ -15,5 +15,5 @@ import com.travelsky.domain.Order;
  */
 public interface OrderService {
 	public abstract int insertOrder(Order order);
-	public abstract Order findOrderById(String orderId);
+	public abstract Order findOrderById(int orderId);
 }

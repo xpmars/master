@@ -20,7 +20,7 @@
 		from orders where id=#{id}
 	</select>
 	
-	<insert id="insertOrder">
+	<insert id="insertOrder" parameterType="com.travelsky.domain.Order">
 		<![CDATA[
 		insert into
 		orders(id,totalPrice,remark,orderDate,orderUser) values(#{id},#{totalPrice},#{remark},#{orderDate},#{orderUser})

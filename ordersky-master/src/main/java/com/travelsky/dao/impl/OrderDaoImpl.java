@@ -35,7 +35,7 @@ public class OrderDaoImpl implements OrderDao {
 	/* (non-Javadoc)
 	 * @see com.travelsky.dao.OrderDao#findOrderById(java.lang.String)
 	 */
-	public Order findOrderById(String orderId) {
+	public Order findOrderById(int orderId) {
 		return sqlSessionTemplate.selectOne(FIND_ORDER_BYID,orderId);
 	}
 

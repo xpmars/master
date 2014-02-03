@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService{
 	/* (non-Javadoc)
 	 * @see com.travelsky.service.OrderService#findOrderById(java.lang.String)
 	 */
-	public Order findOrderById(String orderId) {
+	public Order findOrderById(int orderId) {
 		return orderDao.findOrderById(orderId);
 	}
 
