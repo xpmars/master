@@ -29,8 +29,7 @@ public class OrderServiceImpl implements OrderService{
 	 * @see com.travelsky.service.OrderService#insertOrder()
 	 */
 	public int insertOrder(Order order) {
-		orderDao.insertOrder(order);
-		return 0;
+		return orderDao.insertOrder(order);
 	}
 
 	/* (non-Javadoc)

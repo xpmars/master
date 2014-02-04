@@ -7,7 +7,7 @@
 package com.travelsky.domain;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.sql.Date;
 
 /**
@@ -19,33 +19,34 @@ public class Order  implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 6985319482140445260L;
-	private BigInteger id;
-	private User orderUser;
+	private BigDecimal id;
+	private String orderUser;
 	private Date orderDate;
 	private String remark;
 	private int totalPrice;
+	private String orderRcvd;
 	/**
 	 * @return the orderId
 	 */
-	public BigInteger getId() {
+	public BigDecimal getId() {
 		return id;
 	}
 	/**
 	 * @param orderId the orderId to set
 	 */
-	public void setId(BigInteger id) {
+	public void setId(BigDecimal id) {
 		this.id = id;
 	}
 	/**
 	 * @return the orderUser
 	 */
-	public User getOrderUser() {
+	public String getOrderUser() {
 		return orderUser;
 	}
 	/**
 	 * @param orderUser the orderUser to set
 	 */
-	public void setOrderUser(User orderUser) {
+	public void setOrderUser(String orderUser) {
 		this.orderUser = orderUser;
 	}
 	/**
@@ -77,6 +78,21 @@ public class Order  implements Serializable{
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public String getOrderRcvd() {
+		return orderRcvd;
+	}
+	public void setOrderRcvd(String orderRcvd) {
+		this.orderRcvd = orderRcvd;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", orderUser=" + orderUser + ", orderDate=" + orderDate
+				+ ", remark=" + remark + ", totalPrice=" + totalPrice + ", orderRcvd=" + orderRcvd
+				+ "]";
 	}
 	
 	

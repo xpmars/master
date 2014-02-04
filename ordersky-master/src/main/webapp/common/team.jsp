@@ -75,8 +75,7 @@ var orderArr = new Array();
 			success : function(data) {
 				if (data.message == 'success') {
 					//返回的数据用data.d获取内容
-					$("#emailTip").html("<font color='green'>该邮箱可用</font>");
-					$("#btn-submit").attr('disabled', false);//设置disabled属性为false，按钮可用
+					alert('success');
 				}
 				if (data.message == "error") {
 					$("#emailTip").html("<font color='red'>用户名重复</font>");

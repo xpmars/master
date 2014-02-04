@@ -4,26 +4,32 @@
 <mapper namespace="com.travelsky.domain.Order">
 
 	<resultMap type="com.travelsky.domain.Order" id="orderResult">
-		<result property="id" column="id" jdbcType="BIGINT" javaType="java.math.BigInteger" />
+		<result property="id" column="id" jdbcType="BIGINT"
+			javaType="java.math.BigDecimal" />
 		<result property="orderUser" column="orderUser" />
-		<result property="orderDate" column="orderDate" jdbcType="DATE" javaType="java.sql.Date"/>
+		<result property="orderDate" column="orderDate" jdbcType="DATE"
+			javaType="java.sql.Date" />
 		<result property="remark" column="remark" />
-		<result property="totalPrice" column="totalPrice" jdbcType="INTEGER" javaType="java.lang.Integer" />
+		<result property="totalPrice" column="totalPrice" jdbcType="INTEGER"
+			javaType="java.lang.Integer" />
+		<result property="orderRcvd" column="orderRcvd" />
 	</resultMap>
 
 	<select id="selectAllOrder" resultMap="orderResult">
 		select * from order
-	</select>	
-	
+	</select>
+
 	<select id="findOrderById" parameterType="int" resultMap="orderResult">
-		select *
+		select
+		*
 		from orders where id=#{id}
 	</select>
-	
-	<insert id="insertOrder" parameterType="com.travelsky.domain.Order">
+
+	<insert id="insertOrder" parameterType="order">
 		<![CDATA[
 		insert into
-		orders(id,totalPrice,remark,orderDate,orderUser) values(#{id},#{totalPrice},#{remark},#{orderDate},#{orderUser})
+		orders(id,totalPrice,remark,orderDate,orderUser,orderRcvd)  
+		values(#{id},#{totalPrice},#{remark},#{orderDate},#{orderUser},#{orderRcvd})
 		]]>
 	</insert>
 

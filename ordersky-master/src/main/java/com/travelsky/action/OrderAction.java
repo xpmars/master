@@ -6,7 +6,7 @@
 */
 package com.travelsky.action;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -50,10 +50,10 @@ public class OrderAction extends ActionSupport {
 		Order order = new Order();
 		Date currentTime = new Date();
 		int random = (int)(Math.random()*10000);
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmss");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
 		String currentTimeStr=sdf.format(currentTime);
 		String orderId = currentTimeStr+random;
-		order.setId(new BigInteger(orderId));
+		order.setId(new BigDecimal(orderId));
 		String[] dishIdArr = orderStr.split(",");
 		for (int i = 0; i < dishIdArr.length; i++) {
 			int dishId = Integer.parseInt(dishIdArr[i]);
@@ -61,9 +61,10 @@ public class OrderAction extends ActionSupport {
 		}
 		order.setTotalPrice(totalPrice);
 		order.setOrderDate(new java.sql.Date(currentTime.getTime()));
+
 		orderService.insertOrder(order);
 		
-		
+		message = "success";
 		return message;
 	}
 	/**

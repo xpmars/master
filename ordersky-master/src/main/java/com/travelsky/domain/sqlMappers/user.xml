@@ -30,7 +30,8 @@
 	<insert id="insertUser" parameterType="user">
 	 <![CDATA[
 		insert into
-		user(username,password,telephone,email,usertype) values(#{username},#{password},#{telephone},#{email},#{usertype})
+		user(username,password,telephone,email,usertype) 
+		values(#{username},#{password},#{telephone},#{email},#{usertype})
 		]]>
 	</insert>
 

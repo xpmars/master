@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.travelsky.dao.OrderDao;
 import com.travelsky.domain.Order;
+import com.travelsky.domain.User;
 
 /**
  * @Description: TODO
@@ -30,6 +31,7 @@ public class OrderDaoImpl implements OrderDao {
 	 * @see com.travelsky.dao.OrderDao#insertOrder(com.travelsky.domain.Order)
 	 */
 	public int insertOrder(Order order) {
+System.out.println("Order："+order.toString());
 		return sqlSessionTemplate.insert(INSERT_ORDER,order);
 	}
 	/* (non-Javadoc)
