@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.travelsky.domain.Order;
+import com.travelsky.domain.Order_Dish;
 import com.travelsky.service.DishService;
 import com.travelsky.service.OrderService;
 
@@ -39,12 +42,14 @@ public class OrderAction extends ActionSupport {
 	@Autowired
 	private DishService dishService;
 	private Order order;
+	private Order_Dish order_dish;
 	private String orderStr;
 	private List<Order> orderList;
 	private String message;     //使用json返回单个值   
 	private List<String> inputList;
 	
 	public String submit() {
+		
 		logger.info("菜单开始提交......");
 		int totalPrice = 0;
 		Order order = new Order();
@@ -57,15 +62,20 @@ public class OrderAction extends ActionSupport {
 		String[] dishIdArr = orderStr.split(",");
 		for (int i = 0; i < dishIdArr.length; i++) {
 			int dishId = Integer.parseInt(dishIdArr[i]);
+			Order_Dish order_dish = new Order_Dish();
+			UUID uuid=UUID.randomUUID();
+		    String uuidStr=uuid.toString();
+		    order_dish.setId(uuidStr);
+			order_dish.setDishId(dishId);
+			order_dish.setOrderId(order.getId());
+			order.getOrderdishList().add(order_dish);
 			totalPrice += dishService.findDishById(dishId).getPrice();
 		}
 		order.setTotalPrice(totalPrice);
 		order.setOrderDate(new java.sql.Date(currentTime.getTime()));
-
 		orderService.insertOrder(order);
-		
 		message = "success";
-		return message;
+		return "message";
 	}
 	/**
 	 * 

@@ -50,7 +50,7 @@ CREATE TABLE `dish` (
   `restId` INT(4) NOT NULL,
   `dishName` varchar(64) collate utf8_bin default NULL,
   `taste` varchar(64) collate utf8_bin default NULL,
-  `price` varchar(64) collate utf8_bin default NULL,
+  `price` INT(4) collate utf8_bin default NULL,
   `discount` varchar(64) collate utf8_bin default NULL,
   `remark` varchar(64) collate utf8_bin default NULL,
   `interval` varchar(64) collate utf8_bin default NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `dish` (
 CREATE TABLE `orders` (
   `id` bigint(22) NOT NULL,
   `orderUser` varchar(64) NOT NULL,
-  `totalPrice` varchar(64) collate utf8_bin default NULL,
+  `totalPrice` NOT NULL collate utf8_bin default NULL,
   `remark` varchar(64) collate utf8_bin default NULL,
   `orderDate` varchar(64) collate utf8_bin default NULL,
   PRIMARY KEY  (`id`)
@@ -72,9 +72,10 @@ CREATE TABLE `orders` (
 -- Table structure for order-dish
 -- ----------------------------
 CREATE TABLE `ordersdish` (
+  `id` varchar(64) NOT NULL,
   `ordersId` bigint(22) NOT NULL,
   `dishId` int(4) NOT NULL,
-  PRIMARY KEY  (`ordersId`,`dishId`),
+  PRIMARY KEY  (`id`),
   FOREIGN KEY (`ordersId`)     references  `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ,     
   FOREIGN KEY (`dishId`)     references  `dish` (`id`) ON DELETE CASCADE ON UPDATE CASCADE      
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

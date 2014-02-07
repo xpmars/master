@@ -9,6 +9,8 @@ package com.travelsky.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Description: TODO
@@ -25,6 +27,7 @@ public class Order  implements Serializable{
 	private String remark;
 	private int totalPrice;
 	private String orderRcvd;
+	private List<Order_Dish> orderdishList = new ArrayList<Order_Dish>();
 	/**
 	 * @return the orderId
 	 */
@@ -85,6 +88,19 @@ public class Order  implements Serializable{
 	public void setOrderRcvd(String orderRcvd) {
 		this.orderRcvd = orderRcvd;
 	}
+	
+	/**
+	 * @return the orderdishList
+	 */
+	public List<Order_Dish> getOrderdishList() {
+		return orderdishList;
+	}
+	/**
+	 * @param orderdishList the orderdishList to set
+	 */
+	public void setOrderdishList(List<Order_Dish> orderdishList) {
+		this.orderdishList = orderdishList;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -92,8 +108,10 @@ public class Order  implements Serializable{
 	public String toString() {
 		return "Order [id=" + id + ", orderUser=" + orderUser + ", orderDate=" + orderDate
 				+ ", remark=" + remark + ", totalPrice=" + totalPrice + ", orderRcvd=" + orderRcvd
-				+ "]";
+				+ ", orderdishList=" + orderdishList + "]";
 	}
+	
+	
 	
 	
 }

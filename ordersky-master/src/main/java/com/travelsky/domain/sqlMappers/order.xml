@@ -26,11 +26,21 @@
 	</select>
 
 	<insert id="insertOrder" parameterType="order">
-		<![CDATA[
+
 		insert into
-		orders(id,totalPrice,remark,orderDate,orderUser,orderRcvd)  
+		orders(id,totalPrice,remark,orderDate,orderUser,orderRcvd)
 		values(#{id},#{totalPrice},#{remark},#{orderDate},#{orderUser},#{orderRcvd})
-		]]>
+
 	</insert>
 
+	<select id="insertOrderDish" parameterType="java.util.List">
+
+		insert into
+		ordersdish(id,ordersId,dishId)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id,jdbcType=VARCHAR},#{item.orderId,jdbcType=BIGINT},#{item.dishId,jdbcType=INTEGER})
+		</foreach>
+	</select>
 </mapper>
