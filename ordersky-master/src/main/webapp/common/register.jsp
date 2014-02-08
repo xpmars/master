@@ -129,7 +129,7 @@
 	<div class="container">
 		<div id="successalert" class="alert alert-info fade in" style="display: none">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<h4>Oh 注册成功!</h4>
+			<h3>Oh 注册成功!</h3>
 			<p>欢迎加入，3秒后进入点餐之旅......还剩<span id="num">3</span>秒  </p>
 			<p>
 				<a type="button" class="btn btn-info" href="<%=request.getContextPath()%>/index.jsp">好饿...</a>
@@ -138,7 +138,7 @@
 		</div>
 		<div id="erroralert" class="alert alert-danger fade in" style="display: none">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<h4>OMG,注册失败!</h4>
+			<h3>OMG,注册失败!</h3>
 			<p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat
 				porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
 				fermentum.</p>

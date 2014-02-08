@@ -73,8 +73,12 @@ public class OrderAction extends ActionSupport {
 		}
 		order.setTotalPrice(totalPrice);
 		order.setOrderDate(new java.sql.Date(currentTime.getTime()));
-		orderService.insertOrder(order);
-		message = "success";
+		int resultNum = orderService.insertOrder(order);
+		if(dishIdArr.length  + 1 == resultNum){
+			message = "success";
+		}else
+			message = "error";
+		
 		return "message";
 	}
 	/**

@@ -75,12 +75,11 @@ var orderArr = new Array();
 			success : function(data) {
 				if (data.message == 'success') {
 					//返回的数据用data.d获取内容
-					alert('success');
+					alert("success");
+					location.href="<%=request.getContextPath()%>/common/order_success.jsp";
 				}
 				if (data.message == "error") {
-					$("#emailTip").html("<font color='red'>用户名重复</font>");
-					$("#btn-submit").removeAttr("disabled");
-					//$("#btn-submit").attr('disabled',true);//设置disabled属性为false，按钮可用
+					location.href="<%=request.getContextPath()%>/common/error.jsp";
 				}
 
 			},
