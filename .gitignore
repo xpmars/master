@@ -14,7 +14,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
-.svn
+/.svn
 /target
 /classes
 /test-classes
