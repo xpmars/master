@@ -35,8 +35,7 @@ $(function() {
 
 	<div class="container">
 
-		<form class="form-signin" role="form"
-			action="<%=request.getContextPath()%>/user/user_login.action"
+		<form class="form-signin" action="<%=request.getContextPath()%>/user/user_login.action"
 			method="post">
 			<h2 class="form-signin-heading">
 				<blockquote>用户登录</blockquote>

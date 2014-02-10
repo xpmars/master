@@ -21,6 +21,9 @@ CREATE TABLE `user` (
   `telephone` varchar(64) collate utf8_bin default NULL,
   `email` varchar(64) collate utf8_bin default NULL,
   `usertype` varchar(64) collate utf8_bin default NULL,
+  `name` varchar(64) collate utf8_bin default NULL,
+  `error` varchar(64) collate utf8_bin default NULL,
+  `henchmanId` int(4),
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 

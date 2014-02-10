@@ -21,7 +21,7 @@
 <script type="text/javascript">
 var orderArr = new Array();
 	$(function() {
-		
+		$("#subBtn").attr('disabled',true);//设置disabled属性为false，按钮可用
 		var week = new Date().getDay();
 		var wid = "w" + week;
 		$('#' + wid).addClass("active");
@@ -48,19 +48,19 @@ var orderArr = new Array();
 							}
 							var countPrice = parseFloat($("#countPrice").html()) + parseFloat($(this).find('td').eq(4).text());
 							$("#countPrice").html(countPrice);
-
+							$("#subBtn").attr('disabled',false);//设置disabled属性为false，按钮可用
 						});
 		
 	});
 	
 	function clearli(){
+		$("#subBtn").attr('disabled',true);//设置disabled属性为false，按钮可用
 		orderArr.splice(0,orderArr.length);  
 		$('#orderList').empty();
 		$("#countPrice").html(0);
 		$("#count").hide();
 	}
 	function submitOrder(){
-		alert(orderArr.toString());
 		var orderStr = orderArr.toString();
      	$.ajax({  
             //要用post方式      
@@ -75,7 +75,7 @@ var orderArr = new Array();
 			success : function(data) {
 				if (data.message == 'success') {
 					//返回的数据用data.d获取内容
-					alert("success");
+					//alert("success");
 					location.href="<%=request.getContextPath()%>/common/order_success.jsp";
 				}
 				if (data.message == "error") {
@@ -213,7 +213,7 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 					</div>
 					<!-- /input-group -->
 					<p></p>
-					<a type="submit" class="btn btn-success"
+					<a type="submit" class="btn btn-success" id="subBtn"
 						onclick="submitOrder()"><span class="glyphicon glyphicon-ok"></span> 
 						 提交
 					</a>
