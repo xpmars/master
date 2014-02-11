@@ -32,11 +32,11 @@ $(function() {
 </head>
 <body>
 
-
+			
 	<div class="container">
-
 		<form class="form-signin" action="<%=request.getContextPath()%>/user/user_login.action"
 			method="post">
+			
 			<h2 class="form-signin-heading">
 				<blockquote>用户登录</blockquote>
 			</h2>

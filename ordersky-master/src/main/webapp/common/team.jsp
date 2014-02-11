@@ -52,7 +52,9 @@ var orderArr = new Array();
 						});
 		
 	});
-	
+	function loadBenchman(){
+		
+	}
 	function clearli(){
 		$("#subBtn").attr('disabled',true);//设置disabled属性为false，按钮可用
 		orderArr.splice(0,orderArr.length);  
@@ -88,6 +90,35 @@ var orderArr = new Array();
 			}
 		});
 	}
+	
+	function loadBenchman(){
+		$.ajax({  
+            //要用post方式      
+            type: "post",     
+            //方法所在页面和方法名      
+            url: "<%=request.getContextPath()%>/user/user_getBenchmanList.action",
+			data : {
+				'orderStr' : orderStr
+			},
+			dataType : "json",
+
+			success : function(data) {
+				if (data.message == 'success') {
+					//返回的数据用data.d获取内容
+					//alert("success");
+					location.href="<%=request.getContextPath()%>/common/order_success.jsp";
+				}
+				if (data.message == "error") {
+					location.href="<%=request.getContextPath()%>/common/error.jsp";
+				}
+
+			},
+			error : function(err) {
+				alert("系统异常");
+			}
+		});
+	}
+	
 </script>
 
 </head>
@@ -197,15 +228,15 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 					<div class="input-group">
 						<div class="input-group-btn">
 							<button type="button" class="btn btn-default dropdown-toggle"
-								data-toggle="dropdown">
+								data-toggle="dropdown" onclick="loadBenchman()">
 								跟随 <span class="caret"></span>
 							</button>
-							<ul class="dropdown-menu">
+							<ul id="henchmanList" class="dropdown-menu">
 								<li><a href="#">Action</a></li>
 								<li><a href="#">Another action</a></li>
 								<li><a href="#">Something else here</a></li>
 								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
+								<li><a href="#">自定义追随者</a></li>
 							</ul>
 						</div>
 						<!-- /btn-group -->

@@ -135,7 +135,11 @@
 					commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
 					sem malesuada magna mollis euismod. Donec sed odio dui.</p>
 				<p>
-					<a class="btn btn-default" href="<%=request.getContextPath()%>/common/solo.jsp" type="button"><span class="glyphicon glyphicon-cutlery"></span> SOLO &raquo;</a>
+				
+
+
+
+				<a class="btn btn-default" href="<%=request.getContextPath()%>/common/solo.jsp" type="button"><span class="glyphicon glyphicon-cutlery"></span> SOLO &raquo;</a>
 				</p>
 			</div>
 			<div class="col-md-4">

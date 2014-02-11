@@ -16,8 +16,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/validate/jquery.validate.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/validate/jquery.metadata.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/validate/message_cn.js"></script>
-<script type="text/javascript" charset="UTF-8"
-	src="<%=request.getContextPath()%>/js/bootstrap3-validation.js"></script>
+<script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/bootstrap3-validation.js"></script>
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/alert.js"></script>
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/modal.js"></script>
 <script type="text/javascript">
@@ -113,20 +112,21 @@
 			$("#successalert").alert();
 			jump(3);  
 			
+		} else if(msg == "mailError"){
+			$("#erroralert").find("p").first().html("邮箱不能为空");
+			$("#erroralert").show();
+			$("#erroralert").alert();
 		} else if(msg == "telError"){
-			alert(msg);
 			$("#erroralert").find("p").first().html("电话不能为空");
 			$("#erroralert").show();
 			$("#erroralert").alert();
 		} else if(msg == "pswError"){
-			alert(msg);
 			$("#erroralert").find("p").first().html("密码输入有误");
 			$("#erroralert").show();
 			$("#erroralert").alert();
 		} else if (msg == "error") {
 			$("#erroralert").show();
 			$("#erroralert").alert();
-
 		}
 
 	});

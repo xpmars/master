@@ -80,11 +80,11 @@ public class UserAction extends ActionSupport {
 	public String reg() {
 System.out.println(user);
 		if (user != null) {
-//			if(user.getEmail() == null || "".equals(user.getEmail())){
-//				message = "mailError";
-//				logger.info("注册失败，邮箱为空");
-//				return "reg_error";
-//			}
+			if(user.getEmail() == null || "".equals(user.getEmail())){
+				message = "mailError";
+				logger.info("注册失败，邮箱为空");
+				return "reg_error";
+			}
 			
 			if(user.getTelephone() == null || "".equals(user.getTelephone())){
 				message = "telError";
