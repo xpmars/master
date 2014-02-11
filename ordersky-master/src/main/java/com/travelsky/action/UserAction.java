@@ -80,8 +80,26 @@ public class UserAction extends ActionSupport {
 	public String reg() {
 System.out.println(user);
 		if (user != null) {
+//			if(user.getEmail() == null || "".equals(user.getEmail())){
+//				message = "mailError";
+//				logger.info("注册失败，邮箱为空");
+//				return "reg_error";
+//			}
+			
+			if(user.getTelephone() == null || "".equals(user.getTelephone())){
+				message = "telError";
+				logger.info("注册失败，手机号为空");
+				return "reg_error";
+			}
+			
+			if(user.getPassword() == null || user.getPassword2() == null || "".equals(user.getPassword())){
+				message = "pswError";
+				logger.info("注册失败，密码为空");
+				return "reg_error";
+			}
+			
 			if(! user.getPassword().equals(user.getPassword2()) ){
-				message = "error";
+				message = "pswError";
 				logger.info("注册失败，输入两密码不一致");
 				return "reg_error";
 			}
@@ -95,6 +113,9 @@ System.out.println(user);
 				logger.info("注册成功");
 				message = "success";
 				return "reg_success";
+			}else{
+				message = "error";
+				return "reg_error";
 			}
 		}
 		logger.error("注册失败，其他原因");
@@ -103,19 +124,17 @@ System.out.println(user);
 	}
 
 	public String findRep() {
-		message = "error";
+		message = "emailError";
 		if (user != null) {
 			User user2 = userService.findRepeat(user);
 System.out.println(user);
 			if (user2 == null) {
-				logger.info("用户名可用");
-System.out.println("用户名可用");
-				message = "success";
+				logger.info("该邮箱可用");
+				message = "emailSuccess";
 				return "message";
 			}
 		}
-		logger.error("用户名重复");
-System.out.println("用户名不可用!!!");
+		logger.error("邮箱名重复,不可用");
 		return "message";
 	}
 

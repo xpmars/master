@@ -26,5 +26,7 @@ public interface UserService {
 	public abstract User login(User user);
 	
 	public abstract User findRepeat(User user);
+	
+	public abstract List<User> findUserByType(String userType);
 
 }

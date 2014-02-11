@@ -27,6 +27,11 @@
 		from user where id=#{orderId}
 	</select>
 
+	<select id="findUserByType" parameterType="String" resultMap="userResult">
+		select *
+		from user where usertype=#{userType}
+	</select>
+
 	<insert id="insertUser" parameterType="user">
 	 <![CDATA[
 		insert into
@@ -37,7 +42,8 @@
 
 	<update id="updateUser" parameterType="user">
 		update user set
-		username=#{username},password=#{password},telephone=#{telephone},email=#{email},usertype=#{usertype} where id=#{id}
+		username=#{username},password=#{password},telephone=#{telephone},email=#{email},usertype=#{usertype}
+		where id=#{id}
 	</update>
 
 	<delete id="deleteUser" parameterType="int">

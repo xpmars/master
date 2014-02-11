@@ -31,7 +31,7 @@
 			var myreg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;//邮箱的正则表达式
 		       
 			var inputValue = $("#email").val();
-			if(!inputValue)//只处验证和上面一样  
+			if(!inputValue && inputValue == "" && inputValue == null)//只处验证和上面一样  
 	        {  
 	            $("#emailTip").html("<font color='red'>邮箱不能为空</font>");  
 	            $("#btn-submit").attr('disabled',true);//设置disabled属性为false，按钮可用
@@ -54,7 +54,7 @@
 											dataType : "json",
 
 											success : function(data) {
-												if (data.message == 'success') {
+												if (data.message == 'emailSuccess') {
 													//返回的数据用data.d获取内容
 													$("#emailTip")
 															.html(
@@ -62,7 +62,7 @@
 													$("#btn-submit").attr(
 															'disabled', false);//设置disabled属性为false，按钮可用
 												}
-												if (data.message == "error") {
+												if (data.message == "emailError") {
 													$("#emailTip")
 															.html(
 																	"<font color='red'>用户名重复</font>");
@@ -113,6 +113,16 @@
 			$("#successalert").alert();
 			jump(3);  
 			
+		} else if(msg == "telError"){
+			alert(msg);
+			$("#erroralert").find("p").first().html("电话不能为空");
+			$("#erroralert").show();
+			$("#erroralert").alert();
+		} else if(msg == "pswError"){
+			alert(msg);
+			$("#erroralert").find("p").first().html("密码输入有误");
+			$("#erroralert").show();
+			$("#erroralert").alert();
 		} else if (msg == "error") {
 			$("#erroralert").show();
 			$("#erroralert").alert();
@@ -139,9 +149,11 @@
 		<div id="erroralert" class="alert alert-danger fade in" style="display: none">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 			<h2>OMG,注册失败!</h2>
-			<p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat
+			
+			<h3><p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat
 				porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
 				fermentum.</p>
+			</h3>
 			<p>
 				<button type="button" class="btn btn-danger">Take this action</button>
 				<button type="button" class="btn btn-default">Or do this</button>
@@ -153,7 +165,7 @@
 			<div class="form-group">
 				<h2 class="form-signin-heading"><blockquote>用户注册</blockquote></h2>
 				<br> <label for="email">邮箱：</label> <input id="email" name="user.email" type="text"
-					class="form-control" placeholder="输入您的邮箱，必填" required>
+					class="form-control" placeholder="输入您的邮箱，必填"  onkeydown='if(event.keyCode==13) return false;' required>
 				<div class="highlight">
 					<span id="emailTip">
 				</div>

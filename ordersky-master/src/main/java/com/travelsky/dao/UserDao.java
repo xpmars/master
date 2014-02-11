@@ -25,5 +25,6 @@ public interface UserDao {
 	public abstract User userLogin(User user);
 	
 	public abstract User findRepeat(User user);
-
+	
+	public abstract List<User> findUserByType(String type);
 }

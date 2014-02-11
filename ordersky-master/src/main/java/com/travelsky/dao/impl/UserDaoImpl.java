@@ -21,12 +21,12 @@ public class UserDaoImpl implements UserDao {
 	private final String UPDATE_USER = "updateUser";
 	private final String DELETE_USER = "deleteUser";
 	private final String FIND_USER_BYID = "findUserById";
+	private final String FIND_USER_BYTYPE = "findUserByType";
 	private final String SELECT_ALL_USER = "selectAllUser";
 	private final String USER_LOGIN = "userLogin";
 	private final String FIND_REPEAT = "findRepeat";
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -78,5 +78,12 @@ public class UserDaoImpl implements UserDao {
 
 	public User findRepeat(User user) {
 		return sqlSessionTemplate.selectOne(FIND_REPEAT, user);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.travelsky.dao.UserDao#findUserByType(java.lang.String)
+	 */
+	public List<User> findUserByType(String type) {
+		return sqlSessionTemplate.selectList(FIND_USER_BYTYPE,type);
 	}
 }

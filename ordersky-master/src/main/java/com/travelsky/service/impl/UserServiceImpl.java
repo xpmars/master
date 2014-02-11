@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.travelsky.context.CacheLoder;
 import com.travelsky.dao.UserDao;
 import com.travelsky.domain.User;
 import com.travelsky.service.UserService;
@@ -31,6 +32,10 @@ public class UserServiceImpl implements UserService {
 	// 添加用户
 	public void addUser(User user) {
 		userDao.insertUser(user);
+		if("订饭官".equals(user.getUsertype())){
+			CacheLoder.cacheUserList = findUserByType("订饭官");
+		}
+			
 	}
 
 	// 更新用户
@@ -56,5 +61,9 @@ public class UserServiceImpl implements UserService {
 
 	public User findRepeat(User user) {
 		return userDao.findRepeat(user);
+	}
+
+	public List<User> findUserByType(String userType) {
+		return userDao.findUserByType(userType);
 	}
 }
