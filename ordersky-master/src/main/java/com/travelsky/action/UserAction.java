@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.travelsky.context.CacheLoder;
 import com.travelsky.domain.User;
 import com.travelsky.service.UserService;
 
@@ -146,6 +147,12 @@ System.out.println(user);
 	public String update() {
 		userService.updateUser(user);
 		return SUCCESS;
+	}
+	public String getBenchmanList(){
+		logger.info("获取缓存中的订饭官列表...");
+		userList = CacheLoder.cacheUserList;
+		System.out.println("UserList: "+userList);
+		return "userList";
 	}
 
 	public User getUser() {
