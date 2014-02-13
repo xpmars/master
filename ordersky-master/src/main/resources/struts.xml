@@ -16,8 +16,8 @@
 			<result name="reg_success">/common/register.jsp</result>
 			<result name="reg_error">/common/register.jsp</result>
 			<result type="json" name="message"></result>
+			<result name="userList" type="json"></result>
 			<result name="userLogin">/index.jsp</result>
-			<result name="userList">/page/userList.jsp</result>
 			<result name="addUser">/page/userAdd.jsp</result>
 			<result name="updateUser">/page/userUpdate.jsp</result>
 		</action>

@@ -131,6 +131,9 @@
 		<div class="row">
 			<div class="col-md-4">
 				<h2>自助点餐</h2>
+				<img class="img-rounded" src="<%=request.getContextPath()%>/images/self.jpg" height="220"
+					width="220" alt="Generic placeholder image">
+				
 				<p>自助点餐，浏览菜单，或者给菜品和餐厅打分<br>
 					commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
 					sem malesuada magna mollis euismod. Donec sed odio dui.</p>
@@ -151,13 +154,6 @@
 					<a class="btn btn-default"
 						href="<%=request.getContextPath()%>/dish/dish_findAll.action" type="button"><span
 						class="glyphicon glyphicon-chevron-right"></span> 求点餐 &raquo;
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-						</ul> 
 					</a>
 				</p>
 			</div>
