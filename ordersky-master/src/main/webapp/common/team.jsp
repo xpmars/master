@@ -101,7 +101,7 @@ var orderArr = new Array();
 						 $('#henchmanList').append("<li><a href='javascript:loadBenchman()'>自定义追随者</a></li><li class='divider'></li>");
 						  $.each(data.userList,function(i,value){
 							 
-							   var $htmlLi = $("<li><a href='javascript:loadBenchman()'>"+value.username+"</a></li>"); //创建DOM对象		
+							   var $htmlLi = $("<li><a id='111' href='javascript:loadBenchman(this.id)'>"+value.username+"</a></li>"); //创建DOM对象		
 								$('#henchmanList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
 							   
 						})
@@ -113,9 +113,15 @@ var orderArr = new Array();
 				});
 	}
 	
-	function loadBenchman(){
-		alert(123123);
-	}
+	/* function loadBenchman(id){
+		alert(id.toString());
+	} */
+
+//事件绑定 
+	$(document).on("click", "li a", function() {
+        var username = $(this).text();
+        $('#henchamanInput').val(username);
+    });
 	
 </script>
 
@@ -229,7 +235,7 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 							</ul>
 						</div>
 						<!-- /btn-group -->
-						<input type="text" class="form-control">
+						<input id="henchamanInput" type="text" class="form-control">
 					</div>
 					<!-- /input-group -->
 					<p></p>
