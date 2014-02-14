@@ -19,7 +19,9 @@
 <title>用户登录</title>
 
 <script type="text/javascript">
-var orderArr = new Array();
+var orderArr = new Array();//定义订单数组
+var benchMan = null;//定义订单跟随者
+var orderUser = '<s:property value="%{#session.email!=null}" />';//定义订单使用者
 	$(function() {
 		$("#subBtn").attr('disabled',true);//设置disabled属性为false，按钮可用
 		var week = new Date().getDay();
@@ -67,14 +69,15 @@ var orderArr = new Array();
             //方法所在页面和方法名      
             url: "<%=request.getContextPath()%>/order/order_submit.action",
 			data : {
-				'orderStr' : orderStr
+				'orderStr' : orderStr,
+				'benchMan' : benchMan
+				
 			},
 			dataType : "json",
 
 			success : function(data) {
 				if (data.message == 'success') {
 					//返回的数据用data.d获取内容
-					//alert("success");
 					location.href="<%=request.getContextPath()%>/common/order_success.jsp";
 				}
 				if (data.message == "error") {
@@ -98,10 +101,10 @@ var orderArr = new Array();
 
 					success : function(data) {
 						 $('#henchmanList').empty();
-						 $('#henchmanList').append("<li><a href='javascript:loadBenchman()'>自定义追随者</a></li><li class='divider'></li>");
+						 $('#henchmanList').append("<li><a href='#'>自定义追随者</a></li><li class='divider'></li>");
 						  $.each(data.userList,function(i,value){
 							 
-							   var $htmlLi = $("<li><a id='111' href='javascript:loadBenchman(this.id)'>"+value.username+"</a></li>"); //创建DOM对象		
+							   var $htmlLi = $("<li><a id="+value.id+" href='#'>"+value.username+"</a></li>"); //创建DOM对象		
 								$('#henchmanList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
 							   
 						})
@@ -119,6 +122,7 @@ var orderArr = new Array();
 
 //事件绑定 
 	$(document).on("click", "li a", function() {
+		benchMan = $(this).attr("id");
         var username = $(this).text();
         $('#henchamanInput').val(username);
     });

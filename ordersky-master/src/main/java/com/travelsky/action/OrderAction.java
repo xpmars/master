@@ -42,6 +42,8 @@ public class OrderAction extends ActionSupport {
 	@Autowired
 	private DishService dishService;
 	private Order order;
+	private String benchMan;
+	private String orderUser;
 	private Order_Dish order_dish;
 	private String orderStr;
 	private List<Order> orderList;
@@ -71,8 +73,12 @@ public class OrderAction extends ActionSupport {
 			order.getOrderdishList().add(order_dish);
 			totalPrice += dishService.findDishById(dishId).getPrice();
 		}
+		
+		order.setOrderRcvd(benchMan);
+		order.setOrderUser(orderUser);
 		order.setTotalPrice(totalPrice);
 		order.setOrderDate(new java.sql.Date(currentTime.getTime()));
+System.out.println(order);
 		int resultNum = orderService.insertOrder(order);
 		if(dishIdArr.length  + 1 == resultNum){
 			message = "success";
@@ -161,6 +167,36 @@ public class OrderAction extends ActionSupport {
 	}
 	public void setOrderStr(String orderStr) {
 		this.orderStr = orderStr;
+	}
+	public Order_Dish getOrder_dish() {
+		return order_dish;
+	}
+	public void setOrder_dish(Order_Dish order_dish) {
+		this.order_dish = order_dish;
+	}
+	/**
+	 * @return the orderRcvd
+	 */
+	public String getBenchMan() {
+		return benchMan;
+	}
+	/**
+	 * @param orderRcvd the orderRcvd to set
+	 */
+	public void setBenchMan(String benchMan) {
+		this.benchMan = benchMan;
+	}
+	/**
+	 * @return the orderUser
+	 */
+	public String getOrderUser() {
+		return orderUser;
+	}
+	/**
+	 * @param orderUser the orderUser to set
+	 */
+	public void setOrderUser(String orderUser) {
+		this.orderUser = orderUser;
 	}
 	
 }
