@@ -21,10 +21,10 @@
 <script type="text/javascript">
 var orderArr = new Array();//定义订单数组
 var benchMan = null;//定义订单跟随者
-var orderUser = '<s:property value="%{#session.email!=null}" />';//定义订单使用者
+var orderUser = '<s:property value="%{#session.email}" />';//定义订单使用者
 	$(function() {
 		$("#subBtn").attr('disabled',true);//设置disabled属性为false，按钮可用
-		var week = new Date().getDay();
+		var week = new Date().getDay();orderUser
 		var wid = "w" + week;
 		$('#' + wid).addClass("active");
 		$("#tbody tr")
@@ -70,7 +70,8 @@ var orderUser = '<s:property value="%{#session.email!=null}" />';//定义订单�
             url: "<%=request.getContextPath()%>/order/order_submit.action",
 			data : {
 				'orderStr' : orderStr,
-				'benchMan' : benchMan
+				'orderUser' : orderUser,
+				'benchMan' : benchMan,
 				
 			},
 			dataType : "json",
