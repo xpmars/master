@@ -20,11 +20,45 @@
 
 <script type="text/javascript">
 var orderArr = new Array();//定义订单数组
-var benchMan = null;//定义订单跟随者
+var henchMan = null;//定义订单跟随者
 var orderUser = '<s:property value="%{#session.email}" />';//定义订单使用者
+var henchManEmail = '<s:property value="%{#session.henchman}" />';//定义订单跟随者
 	$(function() {
+		$.ajax({  //加载henchman列表
+            //要用post方式      
+            type: "post",     
+            //方法所在页面和方法名      
+            url: "<%=request.getContextPath()%>/user/user_getBenchmanList.action",
+					dataType : "json",
+
+					success : function(data) {
+						$('#henchmanList').empty();
+						$('#henchmanList')
+								.append(
+										"<li><a href='#'>自定义追随者</a></li><li class='divider'></li>");
+						$
+								.each(
+										data.userList,
+										function(i, value) {
+
+											var $htmlLi = $("<li><a id="+value.email+" href='#'>"
+													+ value.username
+													+ "</a></li>"); //创建DOM对象		
+											$('#henchmanList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
+
+										})
+
+					},
+					error : function(err) {
+						alert("系统异常");
+					}
+				});
+		
+		
+		
+		
 		$("#subBtn").attr('disabled',true);//设置disabled属性为false，按钮可用
-		var week = new Date().getDay();orderUser
+		var week = new Date().getDay();
 		var wid = "w" + week;
 		$('#' + wid).addClass("active");
 		$("#tbody tr")
@@ -71,66 +105,31 @@ var orderUser = '<s:property value="%{#session.email}" />';//定义订单使用�
 			data : {
 				'orderStr' : orderStr,
 				'orderUser' : orderUser,
-				'benchMan' : benchMan,
+				'henchMan' : henchMan,
 				
 			},
 			dataType : "json",
 
-			success : function(data) {
-				if (data.message == 'success') {
-					var orderId = '<s:property value="%{#order.id}" />';//
-					alert(orderId);
-				//	String orderNo=request.getParameter("a");
-					//返回的数据用data.d获取内容
-					location.href="<%=request.getContextPath()%>/common/team_success.jsp?orderNo=";
-				}
-				if (data.message == "error") {
-					location.href="<%=request.getContextPath()%>/common/error.jsp";
-				}
-
-			},
-			error : function(err) {
-				alert("系统异常");
-			}
+			//返回json
+		    success:function(data){	
+		   	var d = eval("("+data+")");//将数据转换成json类型，可以把data用alert()输出出来看看到底是什么样的结构
+				//返回的数据用data.d获取内容
+				location.href="<%=request.getContextPath()%>/common/team_success.jsp?rvcvd="+d.email;      
+		     },
+		     error:function(){
+		    	 location.href="<%=request.getContextPath()%>/common/error.jsp";
+		     },
 		});
 	}
 	
-	function loadBenchmanList(){
-		$.ajax({  
-            //要用post方式      
-            type: "post",     
-            //方法所在页面和方法名      
-            url: "<%=request.getContextPath()%>/user/user_getBenchmanList.action",
-					dataType : "json",
-
-					success : function(data) {
-						 $('#henchmanList').empty();
-						 $('#henchmanList').append("<li><a href='#'>自定义追随者</a></li><li class='divider'></li>");
-						  $.each(data.userList,function(i,value){
-							 
-							   var $htmlLi = $("<li><a id="+value.id+" href='#'>"+value.username+"</a></li>"); //创建DOM对象		
-								$('#henchmanList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
-							   
-						})
-
-					},
-					error : function(err) {
-						alert("系统异常");
-					}
-				});
-	}
 	
-	/* function loadBenchman(id){
-		alert(id.toString());
-	} */
 
-//事件绑定 
+	//事件绑定 
 	$(document).on("click", "li a", function() {
-		benchMan = $(this).attr("id");
-        var username = $(this).text();
-        $('#henchamanInput').val(username);
-    });
-	
+		henchMan = $(this).attr("id");
+		var username = $(this).text();
+		$('#henchamanInput').val(username);
+	});
 </script>
 
 </head>
@@ -143,28 +142,33 @@ var orderUser = '<s:property value="%{#session.email}" />';//定义订单使用�
 						<blockquote>
 							<h3 class="text-danger">距本次订餐结束：</h3>
 							<p>
-							<div id="countdowner" data-d="días" data-h="horas" data-m="minutos" data-s="segundos"></div>
+							<div id="countdowner" data-d="días" data-h="horas"
+								data-m="minutos" data-s="segundos"></div>
 							<script>
-$('#countdowner').scojs_countdown({until: 1364382956});
-</script>
+								$('#countdowner').scojs_countdown({
+									until : 1364382956
+								});
+							</script>
 
 						</blockquote>
 					</div>
 				</div>
 				<div class="list-group" id="rest">
-					<a href="#" class="list-group-item active"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;每周菜单</a>
-					<a href="#" class="list-group-item" id="w1"><span class="badge">Mon</span>家乐缘</a> <a href="#"
-						class="list-group-item" id="w2"><span class="badge">Tues</span>都城</a> <a href="#"
-						class="list-group-item" id="w3"><span class="badge">Wed</span>湘忆木桶饭</a> <a href="#"
-						class="list-group-item" id="w4"><span class="badge">Thur</span>悦香鸡</a> <a href="#"
-						class="list-group-item" id="w5"><span class="badge">Fri</span>家乐缘</a> <a href="#"
-						class="list-group-item" id="w6"><span class="badge">Sat</span>麦当劳</a> <a href="#"
-						class="list-group-item" id="w0"><span class="badge">Sun</span>真功夫</a>
+					<a href="#" class="list-group-item active"><span
+						class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;每周菜单</a>
+					<a href="#" class="list-group-item" id="w1"><span class="badge">Mon</span>家乐缘</a>
+					<a href="#" class="list-group-item" id="w2"><span class="badge">Tues</span>都城</a>
+					<a href="#" class="list-group-item" id="w3"><span class="badge">Wed</span>湘忆木桶饭</a>
+					<a href="#" class="list-group-item" id="w4"><span class="badge">Thur</span>悦香鸡</a>
+					<a href="#" class="list-group-item" id="w5"><span class="badge">Fri</span>家乐缘</a>
+					<a href="#" class="list-group-item" id="w6"><span class="badge">Sat</span>麦当劳</a>
+					<a href="#" class="list-group-item" id="w0"><span class="badge">Sun</span>真功夫</a>
 				</div>
 				<div class="navbar-bottom">
 					<address>
-						<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br /> San Francisco, CA 94107<br />
-						<abbr title="Phone">P:</abbr> (123) 456-7890
+						<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br />
+						San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr> (123)
+						456-7890
 					</address>
 				</div>
 			</div>
@@ -179,7 +183,8 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 								<a class="value" href="#"> 家乐缘 </a>
 							</h3>
 							<div class="text-danger" title="87534766/87534789">
-								<span class="glyphicon glyphicon-earphone"></span> <abbr title="Phone">87534766/&#8203;87534789</abbr>
+								<span class="glyphicon glyphicon-earphone"></span> <abbr
+									title="Phone">87534766/&#8203;87534789</abbr>
 							</div>
 						</div>
 					</div>
@@ -207,7 +212,8 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 									<tr class="danger">
 								</s:if>
 								<td id="index"><s:property value="#d.index+1"></s:property></td>
-								<td id="id" style="display: none"><s:property value="#dish.id"></s:property></td>
+								<td id="id" style="display: none"><s:property
+										value="#dish.id"></s:property></td>
 								<td id="dishName"><s:property value="#dish.dishName"></s:property></td>
 								<td id="interval"><s:property value="#dish.interval"></s:property></td>
 								<td id="price"><s:property value="#dish.price"></s:property></td>
@@ -225,7 +231,8 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 				</ul>
 				<div class="row clearfix">
 					<div class="col-md-12 column">
-						<div id="count" class="alert alert-info fade in" style="display: none">
+						<div id="count" class="alert alert-info fade in"
+							style="display: none">
 							共计：<span id="countPrice">0</span>
 						</div>
 					</div>
@@ -233,23 +240,26 @@ $('#countdowner').scojs_countdown({until: 1364382956});
 				<form class="navbar-form navbar-right" role="form">
 					<div class="input-group">
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-								onclick="loadBenchmanList()">
+							<button type="button" class="btn btn-default dropdown-toggle"
+								data-toggle="dropdown" onclick="loadBenchmanList()">
 								跟随 <span class="caret"></span>
 							</button>
 
 							<ul id="henchmanList" class="dropdown-menu">
-								
+
 							</ul>
 						</div>
 						<!-- /btn-group -->
 						<input id="henchamanInput" type="text" class="form-control">
+						
 					</div>
 					<!-- /input-group -->
 					<p></p>
-					<a type="submit" class="btn btn-success" id="subBtn" onclick="submitOrder()"><span
-						class="glyphicon glyphicon-ok"></span> 提交 </a> <a id="clear" type="reset" class="btn btn-warning"
-						onclick="clearli()"> <span class="glyphicon glyphicon-repeat"></span> 清空
+					<a type="submit" class="btn btn-success" id="subBtn"
+						onclick="submitOrder()"><span class="glyphicon glyphicon-ok"></span>
+						提交 </a> <a id="clear" type="reset" class="btn btn-warning"
+						onclick="clearli()"> <span class="glyphicon glyphicon-repeat"></span>
+						清空
 					</a>
 				</form>
 			</div>

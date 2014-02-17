@@ -24,11 +24,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
-	@Autowired
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
-	}
-
 	// 添加用户
 	public void addUser(User user) {
 		userDao.insertUser(user);
@@ -48,7 +43,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User findUserById(Integer userId) {
-		return userDao.findUserByid(userId);
+		return userDao.findUserById(userId);
 	}
 
 	public List<User> findAllUser() {

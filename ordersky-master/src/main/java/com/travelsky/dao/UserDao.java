@@ -18,7 +18,7 @@ public interface UserDao {
 
 	public abstract void deleteUser(Integer userId);
 
-	public abstract User findUserByid(Integer userId);
+	public abstract User findUserById(Integer userId);
 
 	public abstract List<User> findAll();
 
@@ -27,4 +27,6 @@ public interface UserDao {
 	public abstract User findRepeat(User user);
 	
 	public abstract List<User> findUserByType(String type);
+
+	public abstract User findUserByEmail(String email);
 }

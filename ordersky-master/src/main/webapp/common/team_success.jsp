@@ -16,10 +16,10 @@
 		<div id="successalert" class="alert alert-info fade in">
 			<button type="button" class="close" data-dismiss="alert"
 				aria-hidden="true">&times;</button>
-			<h3>Oh 订单成功提交至 XXXXX!</h3>
+			<h3>Oh 订单成功提交至<%=request.getParameter("rvcvd")%> ...</h3>
 			<p>
 				<a type="button" class="btn btn-info"
-					href="<%=request.getContextPath()%>/index.jsp">好饿...</a>
+					href="<%=request.getContextPath()%>/index.jsp">还要点餐...？</a>
 			</p>
 
 		</div>

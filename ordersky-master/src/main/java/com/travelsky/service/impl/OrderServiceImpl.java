@@ -6,13 +6,15 @@
 */
 package com.travelsky.service.impl;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.Ordered;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.travelsky.dao.OrderDao;
+import com.travelsky.dao.UserDao;
 import com.travelsky.domain.Order;
+import com.travelsky.domain.User;
 import com.travelsky.service.OrderService;
 
 /**
@@ -24,11 +26,32 @@ import com.travelsky.service.OrderService;
 public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private OrderDao orderDao;
+	@Autowired
+	private UserDao userDao;
 
+	private static Logger logger = Logger.getLogger(OrderServiceImpl.class);
 	/* (non-Javadoc)
 	 * @see com.travelsky.service.OrderService#insertOrder()
 	 */
 	public int insertOrder(Order order) {
+		//插入菜单时，将订餐者的默认跟随者填入
+
+		logger.info("开始向数据库中插入订单...");
+		logger.info("取得订餐者信息...");
+		User user = userDao.findUserByEmail(order.getOrderUser());
+		logger.info("判断订餐着的henchman...");
+		if(user.getHenchman() == null){// 默认追随者为空，那么为其加上
+			String henchmanEmail = order.getOrderRcvd();
+			User henchman = userDao.findUserByEmail(henchmanEmail);
+			if(henchman!=null){
+				user.setHenchman(henchmanEmail);
+			}else{
+				logger.error("数据库中henchman信息为空，未能成功加上henchman信息...");
+			}
+			logger.info("更新订餐着的henchman信息...");
+			userDao.updateUser(user);
+		}
+		
 		return orderDao.insertOrder(order);
 	}
 

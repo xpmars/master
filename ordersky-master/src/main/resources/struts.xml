@@ -32,13 +32,16 @@
 	</package>
 	<package name="dish" namespace="/dish" extends="struts-default">
 		<action name="dish_*" class="dishAction" method="{1}">
-			<result name="success" >/common/team.jsp</result>
-			<result name="error" >/index.jsp</result>
+			<result name="success">/common/team.jsp</result>
+			<result name="error">/index.jsp</result>
 		</action>
-	</package>	
+	</package>
 	<package name="order" namespace="/order" extends="json-default">
 		<action name="order_*" class="orderAction" method="{1}">
-			<result type="json" name="message"></result>
+			<result type="json">
+				<param name="root">message</param>
+			</result>
+
 		</action>
 	</package>
 </struts>    

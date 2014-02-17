@@ -21,6 +21,7 @@ public class UserDaoImpl implements UserDao {
 	private final String UPDATE_USER = "updateUser";
 	private final String DELETE_USER = "deleteUser";
 	private final String FIND_USER_BYID = "findUserById";
+	private final String FIND_USER_BYEMAIL = "findUserByEmail";
 	private final String FIND_USER_BYTYPE = "findUserByType";
 	private final String SELECT_ALL_USER = "selectAllUser";
 	private final String USER_LOGIN = "userLogin";
@@ -59,7 +60,7 @@ public class UserDaoImpl implements UserDao {
 	 * 
 	 * @see com.pdsu.edu.dao.impl.UserDao#findUserByid(java.lang.Integer)
 	 */
-	public User findUserByid(Integer userId) {
+	public User findUserById(Integer userId) {
 		return sqlSessionTemplate.selectOne(FIND_USER_BYID, userId);
 	}
 
@@ -85,5 +86,12 @@ public class UserDaoImpl implements UserDao {
 	 */
 	public List<User> findUserByType(String type) {
 		return sqlSessionTemplate.selectList(FIND_USER_BYTYPE,type);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.travelsky.dao.UserDao#findUserByiEmail(java.lang.String)
+	 */
+	public User findUserByEmail(String email) {
+		return sqlSessionTemplate.selectOne(FIND_USER_BYEMAIL, email);
 	}
 }

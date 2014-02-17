@@ -44,12 +44,14 @@ public class UserAction extends ActionSupport {
 		if (user != null) {
 			User user2 = userService.login(user);
 			if (user2 != null) {
+				
 				setSession(ServletActionContext.getContext().getSession());
 				getSession().put("id", user2.getId());
 				getSession().put("email", user2.getEmail());
 				getSession().put("username", user2.getUsername());
 				getSession().put("name", user2.getName());
 				getSession().put("type", user2.getUsertype());
+				getSession().put("henchman", user2.getHenchman());
 				logger.info("登陆成功，返回session");
 				return SUCCESS;
 			}

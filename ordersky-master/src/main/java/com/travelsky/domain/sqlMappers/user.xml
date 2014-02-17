@@ -8,6 +8,7 @@
 		<result property="username" column="username" />
 		<result property="password" column="password" />
 		<result property="email" column="email" />
+		<result property="henchman" column="henchman"/>
 		<result property="telephone" column="telephone" />
 		<result property="usertype" column="usertype" />
 	</resultMap>
@@ -26,6 +27,11 @@
 		select *
 		from user where id=#{orderId}
 	</select>
+	
+	<select id="findUserByEmail" parameterType="String" resultMap="userResult">
+		select *
+		from user where email=#{email}
+	</select>
 
 	<select id="findUserByType" parameterType="String" resultMap="userResult">
 		select *
@@ -35,14 +41,14 @@
 	<insert id="insertUser" parameterType="user">
 	 <![CDATA[
 		insert into
-		user(username,password,telephone,email,usertype) 
-		values(#{username},#{password},#{telephone},#{email},#{usertype})
+		user(username,password,telephone,email,usertype,henchman) 
+		values(#{username},#{password},#{telephone},#{email},#{usertype},henchman=#{henchman})
 		]]>
 	</insert>
 
 	<update id="updateUser" parameterType="user">
 		update user set
-		username=#{username},password=#{password},telephone=#{telephone},email=#{email},usertype=#{usertype}
+		username=#{username},password=#{password},telephone=#{telephone},email=#{email},usertype=#{usertype},henchman=#{henchman} 
 		where id=#{id}
 	</update>
 

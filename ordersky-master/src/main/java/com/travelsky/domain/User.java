@@ -19,6 +19,7 @@ public class User implements Serializable {
 	private String usertype;
 	private String email;
 	private String error;
+	private String henchman;
 
 	public Integer getId() {
 		return id;
@@ -93,6 +94,14 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
+	public String getHenchman() {
+		return henchman;
+	}
+
+	public void setHenchman(String henchman) {
+		this.henchman = henchman;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -100,7 +109,8 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", name=" + name + ", password="
 				+ password + ", password2=" + password2 + ", telephone=" + telephone
-				+ ", usertype=" + usertype + ", email=" + email + ", error=" + error + "]";
+				+ ", usertype=" + usertype + ", email=" + email + ", error=" + error
+				+ ", henchman=" + henchman + "]";
 	}
 	
 	
