@@ -94,8 +94,10 @@ System.out.println(order);
 		message = json.toString();// 给result赋值，传递给页面
 		
 		if (dishIdArr.length + 1 == resultNum) {
+			logger.info("订单提交成功");
 			return SUCCESS;
 		} else
+			logger.info("订单提交成功");
 			return ERROR;
 
 		
