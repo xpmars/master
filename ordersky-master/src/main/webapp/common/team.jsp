@@ -20,9 +20,9 @@
 
 <script type="text/javascript">
 var orderArr = new Array();//定义订单数组
-var henchMan = null;//定义订单跟随者
+var henchMan = null;//定义订单跟随者(Email)
 var orderUser = '<s:property value="%{#session.email}" />';//定义订单使用者
-var henchManEmail = '<s:property value="%{#session.henchman}" />';//定义订单跟随者
+var henchManEmail = null;//定义订单跟随者Email
 	$(function() {
 		$.ajax({  //加载henchman列表
             //要用post方式      
@@ -32,21 +32,25 @@ var henchManEmail = '<s:property value="%{#session.henchman}" />';//定义订单
 					dataType : "json",
 
 					success : function(data) {
+
+						henchManEmail = '<s:property value="%{#session.henchman}" />';//定义订单跟随者
+						
 						$('#henchmanList').empty();
-						$('#henchmanList')
-								.append(
-										"<li><a href='#'>自定义追随者</a></li><li class='divider'></li>");
-						$
-								.each(
-										data.userList,
-										function(i, value) {
-
-											var $htmlLi = $("<li><a id="+value.email+" href='#'>"
-													+ value.username
-													+ "</a></li>"); //创建DOM对象		
-											$('#henchmanList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
-
-										})
+						$('#henchmanList').append("<li><a href='#'>自定义追随者</a></li><li class='divider'></li>");
+						$.each(
+							data.userList,
+							function(i, value) {
+								
+								var $htmlLi = $("<li><a id="+value.email+" href='#'>"
+										+ value.username
+										+ "</a></li>"); //创建DOM对象		
+								$('#henchmanList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
+								
+								if(henchManEmail == value.email){
+									$('#henchamanInput').val(value.username);
+									henchMan = henchManEmail;
+								}
+							})
 
 					},
 					error : function(err) {
