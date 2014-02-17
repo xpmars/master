@@ -78,8 +78,11 @@ var orderUser = '<s:property value="%{#session.email}" />';//定义订单使用�
 
 			success : function(data) {
 				if (data.message == 'success') {
+					var orderId = '<s:property value="%{#order.id}" />';//
+					alert(orderId);
+				//	String orderNo=request.getParameter("a");
 					//返回的数据用data.d获取内容
-					location.href="<%=request.getContextPath()%>/common/team_success.jsp";
+					location.href="<%=request.getContextPath()%>/common/team_success.jsp?orderNo=";
 				}
 				if (data.message == "error") {
 					location.href="<%=request.getContextPath()%>/common/error.jsp";
