@@ -79,7 +79,7 @@ var orderUser = '<s:property value="%{#session.email}" />';//定义订单使用�
 			success : function(data) {
 				if (data.message == 'success') {
 					//返回的数据用data.d获取内容
-					location.href="<%=request.getContextPath()%>/common/order_success.jsp";
+					location.href="<%=request.getContextPath()%>/common/team_success.jsp";
 				}
 				if (data.message == "error") {
 					location.href="<%=request.getContextPath()%>/common/error.jsp";
