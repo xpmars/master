@@ -152,11 +152,11 @@ var henchManEmail = null;//定义订单跟随者Email
 <script>
 	var now = new Date();
 	var hour = 10;
-	var minute = 0;
+	var minute = 30;
 	var date = now.getDate();
 	if (now.getHours() > 10 && now.getHours() <= 16) {
 		var hour = 16;
-		var minute = 0;
+		var minute = 30;
 	}else if(now.getHours() > 16){
 		var date = date + 1;
 	}
