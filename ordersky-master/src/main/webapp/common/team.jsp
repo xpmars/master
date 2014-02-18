@@ -144,16 +144,14 @@ var henchManEmail = null;//定义订单跟随者Email
 				<div class="row clearfix">
 					<div class="col-md-12 column">
 						<blockquote>
-							<h3 class="text-danger">距本次订餐结束：</h3>
-							<p>
-							<div id="countdowner" data-d="días" data-h="horas"
-								data-m="minutos" data-s="segundos"></div>
+							<h3 class="text-danger">距本次订餐结束：
+							<div id="countdowner"></div>
 							<script>
-								$('#countdowner').scojs_countdown({
-									until : 1364382956
-								});
+								$('#countdowner').scojs_countdown({until: 1364382956});
 							</script>
-
+							</h3>
+							
+							
 						</blockquote>
 					</div>
 				</div>

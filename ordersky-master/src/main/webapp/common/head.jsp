@@ -18,8 +18,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap-theme.min.css">
 <!-- Custom styles for this template -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/signin.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/sco.message.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/scojs.css">
 <link href="<%=request.getContextPath()%>/css/navbar-fixed-top.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/carousel.css" rel="stylesheet">
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/jquery.js"></script>
@@ -27,7 +25,6 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/json2.js"></script>
-<script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/sco.countdown.js"></script>
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/holder.js"></script>
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/highlight.min.js"></script>
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/collapse.js"></script>
