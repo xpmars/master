@@ -18,10 +18,15 @@
 	</blockquote>
 	<script>
 	
+		var now = new Date();
 		
-		
+	//	alert(now.getDate());
+	
+	
+	
+	
 		var clock = document.getElementById("countdown"), targetDate = new Date(
-				2014, 01, 19, 10); // 2014年2月19号上午10点  （00为1月）
+				now.getFullYear(), now.getMonth(), now.getDate()+1, 10); // 2014年2月19号上午10点  （00为1月）
 
 		clock.innerHTML = countdown(targetDate).toString();
 		setInterval(function(){  
