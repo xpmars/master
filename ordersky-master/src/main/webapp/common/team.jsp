@@ -143,11 +143,11 @@ var henchManEmail = null;//定义订单跟随者Email
 			<div class="col-md-3 column">
 				<div class="row clearfix">
 					<div class="col-md-12 column">
-						<blockquote>
+						<div class="bs-callout bs-callout-danger">
 
-								距本次点餐结束还有：
+							<h3>距本次点餐结束：</h3>
 							<p>
-							<h3 id="countdown"></h3>
+							<h4 id="countdown"></h4>
 
 <script>
 	var now = new Date();
@@ -168,7 +168,7 @@ var henchManEmail = null;//定义订单跟随者Email
 		clock.innerHTML = countdown(targetDate).toString();
 	}, 1000); //设置更新间隔
 </script>
-						</blockquote>
+			</div>
 					</div>
 				</div>
 				<div class="list-group" id="rest">

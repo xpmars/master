@@ -163,12 +163,12 @@
 		<form id="form" class="form-signin" action="<%=request.getContextPath()%>/user/user_reg.action"
 			method="post">
 			<div class="form-group">
-				<h2 class="form-signin-heading"><blockquote>用户注册</blockquote></h2>
+				<h2 class="form-signin-heading">
+					<div class="bs-callout bs-callout-info">用户注册</div>
+				</h2>
 				<br> <label for="email">邮箱：</label> <input id="email" name="user.email" type="text"
 					class="form-control" placeholder="输入您的邮箱，必填"  onkeydown='if(event.keyCode==13) return false;' required>
-				<div class="highlight">
-					<span id="emailTip">
-				</div>
+					<span id="emailTip" class=""></span>
 				<br> <label for="username">用户名：</label> <input id="username" name="user.username"
 					type="text" class="form-control" placeholder="请输入用户名"><br> <label for="telephone">手机：</label>
 				<input id="telephone" name="user.telephone" type="text" class="form-control"

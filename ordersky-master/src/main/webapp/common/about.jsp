@@ -11,10 +11,27 @@
 <body>
 	
 	<p>
-	<blockquote>
-		关于我们
-		<p>
-	</blockquote>
+	<div class="bs-callout bs-callout-danger h4">
+		关于我们</div>
 	
+	
+<div class="bs-callout bs-callout-danger h4">
+
+    <h4>
+
+        必须添加类型声明
+
+    </h4>
+    <p>
+
+        只有正确设置了
+
+        <code></code>
+
+        的input控件才能被赋予正确的样式。
+
+    </p>
+
+</div>
 </body>
 </html>

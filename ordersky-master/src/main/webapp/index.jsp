@@ -130,27 +130,33 @@
 		<!-- Example row of columns -->
 		<div class="row">
 			<div class="col-md-4">
-				<h2>自助点餐</h2>
+			
+			
+				<h2>自助点餐</h2>		
 				<img class="img-rounded" src="<%=request.getContextPath()%>/images/self.jpg" height="220"
 					width="220" alt="Generic placeholder image">
+				<div class="bs-callout bs-callout-info">
+					<p>自助点餐，浏览菜单，或者给菜品和餐厅打分<br>
+						commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
+						sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+					<p>
+				</div>
 				
-				<p>自助点餐，浏览菜单，或者给菜品和餐厅打分<br>
-					commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
-					sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-				<p>
-				
-
-
-
 				<a class="btn btn-default" href="<%=request.getContextPath()%>/common/solo.jsp" type="button"><span class="glyphicon glyphicon-cutlery"></span> SOLO &raquo;</a>
 				</p>
+				
+		
+				
+				
 			</div>
 			<div class="col-md-4">
 				<h2>组团点餐</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
-					commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
-					sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-				<p>
+				<div class="bs-callout bs-callout-danger">
+					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+						commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
+						sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+					<p>
+				</div>
 					<a class="btn btn-default"
 						href="<%=request.getContextPath()%>/dish/dish_findAll.action" type="button"><span
 						class="glyphicon glyphicon-chevron-right"></span> 求点餐 &raquo;
@@ -160,10 +166,12 @@
 			<div class="col-md-4">
 				<h2>优惠活动</h2>
 				<img class="img-rounded" src="<%=request.getContextPath()%>/images/youhui.png" height="220" width="220" alt="Generic placeholder image" >
-				<p>
-				      特惠内容: 精选周边餐厅超多最受欢迎餐品<br>
-				      优惠限制: 餐厅每日备料有限，售完即止！
-				</p> 
+				<div class="bs-callout bs-callout-warning">
+					<p>
+					      特惠内容: 精选周边餐厅超多最受欢迎餐品<br>
+					      优惠限制: 餐厅每日备料有限，售完即止！
+					</p> 
+				</div>
 				<p>
 					<a class="btn btn-default" href="#" type="button"> <span
 						class="glyphicon glyphicon-gift"></span> 优惠活动 &raquo;

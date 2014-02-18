@@ -8,6 +8,6 @@
 <title>给我们建议</title>
 </head>
 <body>
-给我们建议
+<div class="bs-callout bs-callout-warning h4">给我们建议</div>
 </body>
 </html>

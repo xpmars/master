@@ -38,7 +38,7 @@ $(function() {
 			method="post">
 			
 			<h2 class="form-signin-heading">
-				<blockquote>用户登录</blockquote>
+				<div class="bs-callout bs-callout-danger">用户登录</div>
 			</h2>
 			<br>
 
