@@ -144,33 +144,44 @@ var henchManEmail = null;//定义订单跟随者Email
 				<div class="row clearfix">
 					<div class="col-md-12 column">
 						<blockquote>
-							<h3 class="text-danger">距本次订餐结束：
-							<div id="countdowner"></div>
-							<script>
-								$('#countdowner').scojs_countdown({until: 1364382956});
-							</script>
-							</h3>
-							
-							
+
+								距本次点餐结束还有：
+							<p>
+							<h4 id="countdown"></h4>
+
+<script>
+	var now = new Date();
+	var hour = 10;
+	var minute = 0;
+	if (now.getHours() > 10 && now.getHours() <= 16) {
+		var hour = 16;
+		var minute = 0;
+	}
+	var clock = document.getElementById("countdown"), 
+	targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, hour,minute); // 2014年2月19号上午10点  （00为1月）
+
+	clock.innerHTML = countdown(targetDate).toString();
+	setInterval(function() {
+		clock.innerHTML = countdown(targetDate).toString();
+	}, 1000); //设置更新间隔
+</script>
 						</blockquote>
 					</div>
 				</div>
 				<div class="list-group" id="rest">
-					<a href="#" class="list-group-item active"><span
-						class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;每周菜单</a>
-					<a href="#" class="list-group-item" id="w1"><span class="badge">Mon</span>家乐缘</a>
-					<a href="#" class="list-group-item" id="w2"><span class="badge">Tues</span>都城</a>
-					<a href="#" class="list-group-item" id="w3"><span class="badge">Wed</span>湘忆木桶饭</a>
-					<a href="#" class="list-group-item" id="w4"><span class="badge">Thur</span>悦香鸡</a>
-					<a href="#" class="list-group-item" id="w5"><span class="badge">Fri</span>家乐缘</a>
-					<a href="#" class="list-group-item" id="w6"><span class="badge">Sat</span>麦当劳</a>
-					<a href="#" class="list-group-item" id="w0"><span class="badge">Sun</span>真功夫</a>
+					<a href="#" class="list-group-item active"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;每周菜单</a>
+					<a href="#" class="list-group-item" id="w1"><span class="badge">Mon</span>家乐缘</a> <a href="#"
+						class="list-group-item" id="w2"><span class="badge">Tues</span>都城</a> <a href="#"
+						class="list-group-item" id="w3"><span class="badge">Wed</span>湘忆木桶饭</a> <a href="#"
+						class="list-group-item" id="w4"><span class="badge">Thur</span>悦香鸡</a> <a href="#"
+						class="list-group-item" id="w5"><span class="badge">Fri</span>家乐缘</a> <a href="#"
+						class="list-group-item" id="w6"><span class="badge">Sat</span>麦当劳</a> <a href="#"
+						class="list-group-item" id="w0"><span class="badge">Sun</span>真功夫</a>
 				</div>
 				<div class="navbar-bottom">
 					<address>
-						<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br />
-						San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr> (123)
-						456-7890
+						<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br /> San Francisco, CA 94107<br />
+						<abbr title="Phone">P:</abbr> (123) 456-7890
 					</address>
 				</div>
 			</div>
@@ -185,8 +196,7 @@ var henchManEmail = null;//定义订单跟随者Email
 								<a class="value" href="#"> 家乐缘 </a>
 							</h3>
 							<div class="text-danger" title="87534766/87534789">
-								<span class="glyphicon glyphicon-earphone"></span> <abbr
-									title="Phone">87534766/&#8203;87534789</abbr>
+								<span class="glyphicon glyphicon-earphone"></span> <abbr title="Phone">87534766/&#8203;87534789</abbr>
 							</div>
 						</div>
 					</div>
@@ -214,8 +224,7 @@ var henchManEmail = null;//定义订单跟随者Email
 									<tr class="danger">
 								</s:if>
 								<td id="index"><s:property value="#d.index+1"></s:property></td>
-								<td id="id" style="display: none"><s:property
-										value="#dish.id"></s:property></td>
+								<td id="id" style="display: none"><s:property value="#dish.id"></s:property></td>
 								<td id="dishName"><s:property value="#dish.dishName"></s:property></td>
 								<td id="interval"><s:property value="#dish.interval"></s:property></td>
 								<td id="price"><s:property value="#dish.price"></s:property></td>
@@ -233,8 +242,7 @@ var henchManEmail = null;//定义订单跟随者Email
 				</ul>
 				<div class="row clearfix">
 					<div class="col-md-12 column">
-						<div id="count" class="alert alert-info fade in"
-							style="display: none">
+						<div id="count" class="alert alert-info fade in" style="display: none">
 							共计：<span id="countPrice">0</span>
 						</div>
 					</div>
@@ -242,8 +250,8 @@ var henchManEmail = null;//定义订单跟随者Email
 				<form class="navbar-form navbar-right" role="form">
 					<div class="input-group">
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-default dropdown-toggle"
-								data-toggle="dropdown" onclick="loadBenchmanList()">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+								onclick="loadBenchmanList()">
 								跟随 <span class="caret"></span>
 							</button>
 
@@ -253,15 +261,13 @@ var henchManEmail = null;//定义订单跟随者Email
 						</div>
 						<!-- /btn-group -->
 						<input id="henchamanInput" type="text" class="form-control">
-						
+
 					</div>
 					<!-- /input-group -->
 					<p></p>
-					<a type="submit" class="btn btn-success" id="subBtn"
-						onclick="submitOrder()"><span class="glyphicon glyphicon-ok"></span>
-						提交 </a> <a id="clear" type="reset" class="btn btn-warning"
-						onclick="clearli()"> <span class="glyphicon glyphicon-repeat"></span>
-						清空
+					<a type="submit" class="btn btn-success" id="subBtn" onclick="submitOrder()"><span
+						class="glyphicon glyphicon-ok"></span> 提交 </a> <a id="clear" type="reset" class="btn btn-warning"
+						onclick="clearli()"> <span class="glyphicon glyphicon-repeat"></span> 清空
 					</a>
 				</form>
 			</div>

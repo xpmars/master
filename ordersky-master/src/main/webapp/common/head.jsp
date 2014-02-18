@@ -29,6 +29,7 @@
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/highlight.min.js"></script>
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/collapse.js"></script>
 <script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/transition.js"></script>
+<script type="text/javascript" charset="UTF-8" src="<%=request.getContextPath()%>/js/countdown.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#pageloading").hide();
