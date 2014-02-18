@@ -9,28 +9,12 @@
 
 </head>
 <body>
-	关于我们
+	
 	<p>
 	<blockquote>
-		距本次点餐结束还有：
+		关于我们
 		<p>
-		<h4 id="countdown"></h4>
 	</blockquote>
-	<script>
-		var now = new Date();
-		var hour = 10;
-		var minute = 0;
-		if (now.getHours() > 10 && now.getHours() <= 16) {
-			var hour = 16;
-			var minute = 0;
-		}
-		var clock = document.getElementById("countdown"), targetDate = new Date(
-				now.getFullYear(), now.getMonth(), now.getDate() + 1, hour,minute); // 2014年2月19号上午10点  （00为1月）
-
-		clock.innerHTML = countdown(targetDate).toString();
-		setInterval(function() {
-			clock.innerHTML = countdown(targetDate).toString();
-		}, 1000); //设置更新间隔
-	</script>
+	
 </body>
 </html>

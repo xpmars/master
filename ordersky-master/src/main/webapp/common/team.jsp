@@ -153,12 +153,15 @@ var henchManEmail = null;//定义订单跟随者Email
 	var now = new Date();
 	var hour = 10;
 	var minute = 0;
+	var date = now.getDate();
 	if (now.getHours() > 10 && now.getHours() <= 16) {
 		var hour = 16;
 		var minute = 0;
+	}else if(now.getHours() > 16){
+		var date = date + 1;
 	}
 	var clock = document.getElementById("countdown"), 
-	targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, hour,minute); // 2014年2月19号上午10点  （00为1月）
+	targetDate = new Date(now.getFullYear(), now.getMonth(), date, hour,minute); // 2014年2月19号上午10点  （00为1月）
 
 	clock.innerHTML = countdown(targetDate).toString();
 	setInterval(function() {
