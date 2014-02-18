@@ -147,7 +147,7 @@ var henchManEmail = null;//定义订单跟随者Email
 
 								距本次点餐结束还有：
 							<p>
-							<h4 id="countdown"></h4>
+							<h3 id="countdown"></h3>
 
 <script>
 	var now = new Date();
