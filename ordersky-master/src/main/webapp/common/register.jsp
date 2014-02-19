@@ -177,9 +177,7 @@
 					check-type="required" minlength="6" placeholder="请输入密码，必填"> <input id="password2"
 					name="user.password2" type="password" class="form-control" check-type="required" minlength="6"
 					placeholder="请再次输入，必填">
-				<div class="highlight">
 					<span id="passwordTip">
-				</div>
 				<br> <label for="role">类型：</label>
 				<div class="btn-group" data-toggle="buttons">
 					<label class="btn btn-default"> 
