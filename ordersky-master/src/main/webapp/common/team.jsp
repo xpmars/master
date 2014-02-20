@@ -145,24 +145,46 @@ var henchManEmail = null;//定义订单跟随者Email
 					<div class="col-md-12 column">
 						<div class="bs-callout bs-callout-danger">
 
-							<h3>距本次点餐结束：</h3>
+							<h3 id="countTip">距本次点餐结束：</h3>
 							<p>
 							<h4 id="countdown"></h4>
 
 <script>
 	var now = new Date();
-	var hour = 10;
-	var minute = 30;
+	var hour1 = 10;//第一次点餐结束时间为10:30
+	var minute1 = 30;
+	var hour2 = 16;//第二次点餐结束时间为16:30
+	var minute2 = 30;
 	var date = now.getDate();
+	var hour = null;
+	var minute = null;
+	var time1 = new Date(now.getFullYear(), now.getMonth(), date,hour1,minute1,0);
+	var time2 = new Date(now.getFullYear(), now.getMonth(), date,hour2,minute2,0);
+	
+	
+	if(now <= time1){
+		$('#countTip').empty();
+		$('#countTip').html("距离上午点餐结束：");
+		hour = hour1;
+		minute = minute1;
+	}else if(now > time1 && now <= time2){
+		$('#countTip').empty();
+		$('#countTip').html("距离下午点餐结束：");
+		hour = hour2;
+		minute = minute2;
+	}else if(now > time2){
+		$('#countTip').empty();
+		$('#countTip').html("今天组队点餐已经结束...");
+	}
 	if (now.getHours() > 10 && now.getHours() <= 16) {
 		var hour = 16;
 		var minute = 30;
 	}else if(now.getHours() > 16){
 		var date = date + 1;
 	}
+	
 	var clock = document.getElementById("countdown"), 
-	targetDate = new Date(now.getFullYear(), now.getMonth(), date, hour,minute); // 2014年2月19号上午10点  （00为1月）
-
+	targetDate = new Date(now.getFullYear(), now.getMonth(), date, hour,minute,0); // 2014年2月19号上午10点  （00为1月）
 	clock.innerHTML = countdown(targetDate).toString();
 	setInterval(function() {
 		clock.innerHTML = countdown(targetDate).toString();
