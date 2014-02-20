@@ -28,7 +28,7 @@ public class EmailUtil {
 	public static void doSendEmail(String mailTo , String text) throws Exception{
         String title = "您的订单";
 //      String mailTo =scheduleParamSysDao.getParaValuebyName("SSMEMAIL"); //目的邮箱配置
-        String isproxy="1";
+        String isproxy="1";//1，有代理
         String proxyhost ="10.123.74.137";//公司代理服务器
         String proxyport ="1080";
         String smtphost ="smtp.tom.com";

@@ -160,7 +160,7 @@ var henchManEmail = null;//定义订单跟随者Email
 	var minute = null;
 	var time1 = new Date(now.getFullYear(), now.getMonth(), date,hour1,minute1,0);
 	var time2 = new Date(now.getFullYear(), now.getMonth(), date,hour2,minute2,0);
-	
+	$('#countdown').show();
 	
 	if(now <= time1){
 		$('#countTip').empty();
@@ -180,7 +180,7 @@ var henchManEmail = null;//定义订单跟随者Email
 		var hour = 16;
 		var minute = 30;
 	}else if(now.getHours() > 16){
-		var date = date + 1;
+		$('#countdown').hidden();
 	}
 	
 	var clock = document.getElementById("countdown"), 

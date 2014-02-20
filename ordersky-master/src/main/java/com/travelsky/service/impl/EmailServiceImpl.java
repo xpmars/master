@@ -39,7 +39,7 @@ public class EmailServiceImpl implements EmailService {
 		
 		
 		try {
-			logger.info("开始向 : " + order.getOrderRcvd() + ", 发送邮件...");
+			logger.info("开始向 : " + order.getOrderUser() + ", 发送邮件...");
 			EmailUtil.doSendEmail(orderUser, text.toString());
 		} catch (Exception e) {
 			logger.error("邮件发送失败...");

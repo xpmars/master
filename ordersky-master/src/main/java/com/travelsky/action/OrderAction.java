@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.travelsky.context.CacheLoder;
 import com.travelsky.domain.Order;
 import com.travelsky.domain.Order_Dish;
 import com.travelsky.service.DishService;
@@ -99,7 +100,7 @@ System.out.println(order);
 		if (dishIdArr.length + 1 == resultNum) {
 			
 			logger.info("订单提交成功");
-			
+			CacheLoder.cacheOrderList.add(order);//将订单添加到缓存列表
 			emailService.sentToOne(orderUser,henchMan,order);
 			
 			return SUCCESS;
