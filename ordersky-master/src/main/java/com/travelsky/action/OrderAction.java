@@ -25,6 +25,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.travelsky.domain.Order;
 import com.travelsky.domain.Order_Dish;
 import com.travelsky.service.DishService;
+import com.travelsky.service.EmailService;
 import com.travelsky.service.OrderService;
 
 /**
@@ -44,6 +45,8 @@ public class OrderAction extends ActionSupport {
 	private OrderService orderService;
 	@Autowired
 	private DishService dishService;
+	@Autowired
+	private EmailService emailService;
 	private Order order;
 	private String henchMan;
 	private String orderUser;
@@ -84,18 +87,21 @@ public class OrderAction extends ActionSupport {
 System.out.println(order);
 		int resultNum = orderService.insertOrder(order);
 
-
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		JSONObject json = JSONObject.fromObject(map);// 将map对象转换成json类型数据
 		
 		json.put("email", order.getOrderRcvd());
-
+		
 		message = json.toString();// 给result赋值，传递给页面
 		
 		if (dishIdArr.length + 1 == resultNum) {
 			
 			logger.info("订单提交成功");
+			
+			emailService.sentToOne(orderUser,henchMan,order);
+			
 			return SUCCESS;
 		} else
 			logger.info("订单提交失败，可能为系统错误");

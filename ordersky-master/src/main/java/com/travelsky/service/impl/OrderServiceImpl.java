@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
 		logger.info("取得订餐者信息...");
 		User user = userDao.findUserByEmail(order.getOrderUser());
 		logger.info("判断订餐着的henchman...");
-
+		
 		String henchmanEmail = order.getOrderRcvd();
 		if(henchmanEmail!=null || "".equals(henchmanEmail))
 			henchman = userDao.findUserByEmail(henchmanEmail);
@@ -54,7 +54,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		logger.info("更新订餐着的henchman信息...");
 		userDao.updateUser(user);
-
+		
 		return orderDao.insertOrder(order);
 	}
 

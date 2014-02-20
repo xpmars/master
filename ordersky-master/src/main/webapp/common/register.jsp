@@ -168,7 +168,7 @@
 				</h2>
 				<br> <label for="email">邮箱：</label> <input id="email" name="user.email" type="text"
 					class="form-control" placeholder="输入您的邮箱，必填"  onkeydown='if(event.keyCode==13) return false;' required>
-					<span id="emailTip" class=""></span>
+				<div>	<span id="emailTip" class=""></span></div>
 				<br> <label for="username">用户名：</label> <input id="username" name="user.username"
 					type="text" class="form-control" placeholder="请输入用户名"><br> <label for="telephone">手机：</label>
 				<input id="telephone" name="user.telephone" type="text" class="form-control"
@@ -177,7 +177,9 @@
 					check-type="required" minlength="6" placeholder="请输入密码，必填"> <input id="password2"
 					name="user.password2" type="password" class="form-control" check-type="required" minlength="6"
 					placeholder="请再次输入，必填">
+				<div>
 					<span id="passwordTip">
+				</div>
 				<br> <label for="role">类型：</label>
 				<div class="btn-group" data-toggle="buttons">
 					<label class="btn btn-default"> 
