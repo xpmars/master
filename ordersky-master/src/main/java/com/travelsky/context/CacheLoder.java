@@ -32,6 +32,5 @@ public class CacheLoder {
 		System.out.println("Load Cache......");
 		cacheUserList = userService.findUserByType("订饭官");
 		System.out.println("加载触发器线程......");
-//		TriggerUtil.TriggerSubmit();
 	}
 }
