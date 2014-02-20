@@ -17,7 +17,6 @@ import org.springframework.scheduling.config.TriggerTask;
 public class TriggerUtil extends HttpServlet {
 
 	public void init() throws ServletException {
-		// Put your code here
 		TriggerSubmit();
 	}
 
@@ -26,7 +25,7 @@ public class TriggerUtil extends HttpServlet {
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				System.out.println("**********************************");
+				System.out.println("*************触发***************");
 			}
 
 		};
@@ -35,25 +34,14 @@ public class TriggerUtil extends HttpServlet {
 		int month=calendar.get(Calendar.MONTH);//获取月份 
 		int day=calendar.get(Calendar.DATE);//获取日
 		
-		int hour = 23;
-		int minute = 48;
+		int hour = 00;
+		int minute = 39;
 		int second = 00;
 		/*** 定制每日10：30：00执行方法 ***/
 		System.out.println(year+":"+month+":" + day+":" + hour+":" + minute + ":"+ second);
-		calendar.set(year, month, day, hour, 47, second);
+		calendar.set(year, month, day, hour, minute, second);
 		Date date = calendar.getTime();
 		timer.schedule(task, date);
-//		while(true){
-//			Date currentTime2 = new Date();
-//			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-//			String currentTimeStr = sdf.format(currentTime);
-//			System.out.println(currentTimeStr);
-//			try {
-//				Thread.sleep(5000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
+
 	}
 }
