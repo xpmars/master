@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 指定默认编码集 ，作用于HttpServletRequest的setCharacterEncoding（）和freemarker，vilocity的输出 -->
+	<constant name="struts.configuration.xmlreload" value="true" />
+	<!-- 当struts配置文件修改时是否自动加载 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 开发模式下打印详细的错误信息 -->
+	<constant name="struts.ui.theme" value="xhtml" />
+
+	<package name="user" namespace="/user" extends="json-default">
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="error" type="redirect">/common/login.jsp</result>
+			<result name="success">/index.jsp</result>
+			<result name="reg_success">/common/register.jsp</result>
+			<result name="reg_error">/common/register.jsp</result>
+			<result type="json" name="message"></result>
+			<result name="userList" type="json"></result>
+			<result name="userLogin">/index.jsp</result>
+			<result name="addUser">/page/userAdd.jsp</result>
+			<result name="updateUser">/page/userUpdate.jsp</result>
+		</action>
+	</package>
+	<package name="rest" namespace="/restaurant" extends="struts-default">
+		<action name="rest_*" class="restAction" method="{1}">
+			<result name="success" type="redirectAction">rest_queryAllRest.action</result>
+			<result name="restList">/page/restList.jsp</result>
+			<result name="addRest">/page/restAdd.jsp</result>
+			<result name="updateRest">/page/restAdd.jsp</result>
+		</action>
+	</package>
+	<package name="dish" namespace="/dish" extends="struts-default">
+		<action name="dish_*" class="dishAction" method="{1}">
+			<result name="success">/common/team.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+	</package>
+	<package name="order" namespace="/order" extends="json-default">
+		<action name="order_*" class="orderAction" method="{1}">
+			<result type="json">
+				<param name="root">message</param>
+			</result>
+
+		</action>
+	</package>
+</struts>    
