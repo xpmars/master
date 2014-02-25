@@ -11,8 +11,6 @@
 		<result property="henchman" column="henchman"/>
 		<result property="telephone" column="telephone" />
 		<result property="usertype" column="usertype" />
-		<result property="triggert1" column="triggert1" />
-		<result property="triggert2" column="triggert2" />
 		
 	</resultMap>
 	<select id="userLogin" parameterType="user" resultMap="userResult">

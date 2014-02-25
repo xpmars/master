@@ -20,9 +20,9 @@
 
 <script type="text/javascript">
 var orderArr = new Array();//定义订单数组
-var henchMan = null;//定义订单跟随者(Email)
+var henchman = null;//定义订单跟随者(Email)
 var orderUser = '<s:property value="%{#session.email}" />';//定义订单使用者
-var henchManEmail = null;//定义订单跟随者Email
+var henchmanEmail = null;//定义订单跟随者Email
 	$(function() {
 		$.ajax({  //加载henchman列表
             //要用post方式      
@@ -33,7 +33,7 @@ var henchManEmail = null;//定义订单跟随者Email
 
 					success : function(data) {
 
-						henchManEmail = '<s:property value="%{#session.henchman}" />';//定义订单跟随者
+						henchmanEmail = '<s:property value="%{#session.henchman}" />';//定义订单跟随者
 						
 						$('#henchmanList').empty();
 						$('#henchmanList').append("<li><a href='#'>自定义追随者</a></li><li class='divider'></li>");
@@ -46,9 +46,9 @@ var henchManEmail = null;//定义订单跟随者Email
 										+ "</a></li>"); //创建DOM对象		
 								$('#henchmanList').append($htmlLi); //将$htmlLi追加到$ul元素的li列表
 								
-								if(henchManEmail == value.email){
+								if(henchmanEmail == value.email){
 									$('#henchamanInput').val(value.username);
-									henchMan = henchManEmail;
+									henchman = henchmanEmail;
 								}
 							})
 
@@ -109,7 +109,7 @@ var henchManEmail = null;//定义订单跟随者Email
 			data : {
 				'orderStr' : orderStr,
 				'orderUser' : orderUser,
-				'henchMan' : henchMan,
+				'henchman' : henchman,
 				
 			},
 			dataType : "json",
@@ -130,7 +130,7 @@ var henchManEmail = null;//定义订单跟随者Email
 
 	//事件绑定 
 	$(document).on("click", "li a", function() {
-		henchMan = $(this).attr("id");
+		henchman = $(this).attr("id");
 		var username = $(this).text();
 		$('#henchamanInput').val(username);
 	});

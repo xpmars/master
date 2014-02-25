@@ -5,10 +5,12 @@
 		<typeAlias alias="user" type="com.travelsky.domain.User"/>
 		<typeAlias alias="dish" type="com.travelsky.domain.Dish"/>
 		<typeAlias alias="order" type="com.travelsky.domain.Order"/>
+		<typeAlias alias="trigger" type="com.travelsky.domain.Trigger"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/travelsky/domain/sqlMappers/user.xml" />
 		<mapper resource="com/travelsky/domain/sqlMappers/dish.xml" />
 		<mapper resource="com/travelsky/domain/sqlMappers/order.xml" />
+		<mapper resource="com/travelsky/domain/sqlMappers/trigger.xml" />
 	</mappers>
 </configuration>

@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travelsky.action.UserAction;
 import com.travelsky.domain.Order;
+import com.travelsky.domain.Trigger;
 import com.travelsky.domain.User;
 import com.travelsky.service.UserService;
 import com.travelsky.util.TriggerUtil;
@@ -29,6 +30,7 @@ public class CacheLoder {
 	private static Logger logger = Logger.getLogger(CacheLoder.class);
 	public  static List<User> cacheUserList = Collections.synchronizedList(new ArrayList<User>());
 	public  static List<Order> cacheOrderList = Collections.synchronizedList(new ArrayList<Order>());
+	public  static List<Trigger> cacheTriggerList = Collections.synchronizedList(new ArrayList<Trigger>());
 	@Autowired
 	private UserService userService;
 	public void init() {

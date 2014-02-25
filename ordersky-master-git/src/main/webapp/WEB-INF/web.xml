@@ -22,12 +22,7 @@
     <param-name>log4jRefreshInterval</param-name>
     <param-value>3000</param-value>
   </context-param>
-  <!-- 启动触发器进程，优先级为10，最低-->
-  <servlet>
-    <servlet-name>trigger</servlet-name>
-    <servlet-class>com.travelsky.util.TriggerUtil</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
+
   <listener>
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>

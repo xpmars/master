@@ -28,6 +28,7 @@ import com.travelsky.domain.Order_Dish;
 import com.travelsky.service.DishService;
 import com.travelsky.service.EmailService;
 import com.travelsky.service.OrderService;
+import com.travelsky.service.impl.TriggerServiceImpl;
 
 /**
  * @Description: TODO
@@ -48,8 +49,10 @@ public class OrderAction extends ActionSupport {
 	private DishService dishService;
 	@Autowired
 	private EmailService emailService;
+	@Autowired
+	private TriggerServiceImpl triggerServiceImpl;
 	private Order order;
-	private String henchMan;
+	private String henchman;
 	private String orderUser;
 	private Order_Dish order_dish;
 	private String orderStr;
@@ -81,34 +84,35 @@ public class OrderAction extends ActionSupport {
 			totalPrice += dishService.findDishById(dishId).getPrice();
 		}
 
-		order.setOrderRcvd(henchMan);
+		order.setOrderRcvd(henchman);
 		order.setOrderUser(orderUser);
 		order.setTotalPrice(totalPrice);
 		order.setOrderDate(new java.sql.Date(currentTime.getTime()));
-System.out.println(order);
+		System.out.println(order);
 		int resultNum = orderService.insertOrder(order);
 
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		JSONObject json = JSONObject.fromObject(map);// 将map对象转换成json类型数据
-		
+
 		json.put("email", order.getOrderRcvd());
-		
+
 		message = json.toString();// 给result赋值，传递给页面
-		
+
 		if (dishIdArr.length + 1 == resultNum) {
-			
+
 			logger.info("订单提交成功");
-			CacheLoder.cacheOrderList.add(order);//将订单添加到缓存列表
-			emailService.sentToOne(orderUser,henchMan,order);
-			
+			CacheLoder.cacheOrderList.add(order);// 将订单添加到缓存列表
+			logger.info("发送订单邮件给用户...");
+			emailService.sentToOne(orderUser, henchman, order);
+			logger.info("进入触发器流程...");
+			triggerServiceImpl.triggerSubmit(orderUser, henchman, order);
+
 			return SUCCESS;
 		} else
 			logger.info("订单提交失败，可能为系统错误");
-			return ERROR;
+		return ERROR;
 
-		
 	}
 
 	/**
@@ -224,16 +228,16 @@ System.out.println(order);
 	/**
 	 * @return the orderRcvd
 	 */
-	public String getHenchMan() {
-		return henchMan;
+	public String getHenchman() {
+		return henchman;
 	}
 
 	/**
 	 * @param orderRcvd
 	 *            the orderRcvd to set
 	 */
-	public void setHenchMan(String henchMan) {
-		this.henchMan = henchMan;
+	public void setHenchman(String henchman) {
+		this.henchman = henchman;
 	}
 
 	/**

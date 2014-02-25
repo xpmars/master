@@ -24,8 +24,6 @@ CREATE TABLE `user` (
   `name` varchar(64) collate utf8_bin default NULL,
   `error` varchar(64) collate utf8_bin default NULL,
   `henchman` varchar(64) collate utf8_bin default NULL,
-  `triggert1` int(4) default NULL,
-  `triggert2` int(4) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -83,4 +81,15 @@ CREATE TABLE `ordersdish` (
   PRIMARY KEY  (`id`),
   FOREIGN KEY (`ordersId`)     references  `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ,     
   FOREIGN KEY (`dishId`)     references  `dish` (`id`) ON DELETE CASCADE ON UPDATE CASCADE      
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ----------------------------
+-- Table structure for trigger
+-- ----------------------------
+CREATE TABLE `triggers` (
+  `id` int(4) NOT NULL auto_increment,
+  `hour` int(4) ,
+  `minute` int(4) ,
+  `second` int(4) ,
+  `henchman` varchar(64) collate utf8_bin default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
