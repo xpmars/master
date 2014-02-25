@@ -94,6 +94,7 @@ System.out.println("最近订餐时间："+min);
 		activedTrigger.setHour(min/10000);
 		activedTrigger.setMinute(min%10000/100);
 		activedTrigger.setSecond(min%100);
+		activedTrigger.setHenchman(henchman);
 		//将该触发器加入到缓存列表中
 		CacheLoder.cacheTriggerList.add(triggerTemp);
 		

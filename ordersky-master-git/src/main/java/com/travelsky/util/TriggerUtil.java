@@ -1,6 +1,8 @@
 package com.travelsky.util;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -14,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.springframework.scheduling.config.TriggerTask;
 
 import com.travelsky.context.CacheLoder;
+import com.travelsky.domain.Order;
 import com.travelsky.domain.User;
 import com.travelsky.domain.Trigger;
 
@@ -37,7 +40,7 @@ public class TriggerUtil {
 	private int hour;
 	private int minute;
 	private int second;
-	private Trigger trigger;
+	private String henchman;
 
 	public void Trigger() {
 		Timer timer = new Timer();
@@ -50,8 +53,39 @@ public class TriggerUtil {
 				logger.info(year + "年" + month + "月" + day + "日" + hour + ":" + minute + ":"
 						+ second + " *************触发器触发***************");
 				List<Trigger> triggerList = CacheLoder.cacheTriggerList;
-				for (Trigger t : triggerList) {
-					System.out.println(t);
+				List<Order> orderList = CacheLoder.cacheOrderList;
+				//查找缓存中henchman相关的订单
+				for(Order order : orderList){
+					if(order.getOrderRcvd().equals(henchman)){
+						
+						
+						System.out.println(order);
+						
+						
+						
+						logger.info("将删除内存中 "+henchman+" 对应的订单缓存...");
+						
+						
+						
+						
+						CacheLoder.cacheOrderList.remove(order);
+					}
+					
+				}
+				
+				//发送邮件
+				try {
+					EmailUtil.doSendEmail(henchman, "123");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				
+				for (Trigger trigger : triggerList) {
+					if(trigger.getHenchman().equals(henchman)){
+						logger.info("将删除内存中 "+henchman+" 对应的缓存触发器");
+						CacheLoder.cacheTriggerList.remove(trigger);
+					}
 				}
 				
 				
@@ -115,12 +149,12 @@ public class TriggerUtil {
 		this.second = second;
 	}
 
-	public Trigger getTrigger() {
-		return trigger;
+	public String getHenchman() {
+		return henchman;
 	}
 
-	public void setTrigger(Trigger trigger) {
-		this.trigger = trigger;
+	public void setHenchman(String henchman) {
+		this.henchman = henchman;
 	}
 
 }

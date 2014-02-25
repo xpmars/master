@@ -47,7 +47,22 @@ public class EmailServiceImpl implements EmailService {
 		}
 	}
 	
-
+	public void sentToHenchman(String orderUser, String henchMan, Order order) {
+			
+			StringBuffer text = new StringBuffer("          饿了吧?不要着急,您的订单号为：");
+			
+			text.append(order.getId() +",已经提交至： " + henchMan +" 的点餐官！\n" +
+					"          共计：" + order.getTotalPrice() +"元.");
+			
+			
+			try {
+				logger.info("开始向 : " + order.getOrderUser() + ", 发送邮件...");
+				EmailUtil.doSendEmail(orderUser, text.toString());
+			} catch (Exception e) {
+				logger.error("邮件发送失败...");
+				e.printStackTrace();
+			}
+	}
 	/* (non-Javadoc)
 	 * @see com.travelsky.service.EmailService#sentToAll(java.util.List, java.lang.String)
 	 */

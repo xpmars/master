@@ -68,7 +68,7 @@ public class EmailUtil {
             message.setSubject(title);
             message.setText(text);
             message.setSentDate(new Date());
-            System.out.println("邮件发送中.....");
+            System.out.println("向："+mailTo+" 邮件发送中.....");
             Transport.send(message);
             System.out.println("邮件发送成功！");
         }catch (Exception e){
