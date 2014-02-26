@@ -71,14 +71,16 @@ public class EmailServiceImpl implements EmailService {
 		text.append("=========================================================" + "\n");
 		for (Order order : orderList) {
 			text.append("    "+order.getOrderUser() +"\n");
-			int countPriceForOne = 0;
+			
 			List<Order_Dish> Order_Dish_List = order.getOrderdishList();
 			for (Order_Dish order_Dish : Order_Dish_List) {
+				int countPriceForOne = 0;
 				Dish dish = dishDao.findDishById(order_Dish.getDishId());
 				text.append("    "+dish.getId() + "    " + dish.getDishName() + "    " + dish.getPrice() + "\n");
 				countPriceForOne += dish.getPrice();
+				countPrice += countPriceForOne;
 			}
-			countPrice += countPriceForOne;
+			
 			text.append("    合计："+countPrice +"\n");
 			text.append("--------------------------------------------------------" + "\n");
 		}
