@@ -16,7 +16,8 @@
 		<div id="erroralert" class="alert alert-danger fade in">
 			<button type="button" class="close" data-dismiss="alert"
 				aria-hidden="true">&times;</button>
-			<h3>Oh 点餐失败，不妨试试其他方式!</h3>
+			<h3>Oh 点餐失败!</h3>
+			<%=request.getParameter("result")%> ...
 			<p>
 				<a type="button" class="btn btn-danger"
 					href="<%=request.getContextPath()%>/index.jsp">好饿...</a>

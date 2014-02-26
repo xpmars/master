@@ -6,6 +6,7 @@
 */
 package com.travelsky.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -62,13 +63,14 @@ public class EmailServiceImpl implements EmailService {
 	}
 	
 	public void sentToHenchman(String henchMan) {
-		StringBuffer text = new StringBuffer("*********************订单表********************* ");
+		StringBuffer text = new StringBuffer("*********************订单表********************* " +"\n");
 		List<Order> orderList = CacheLoder.cacheOrderList;
 		int countPrice = 0;
 		
-		text.append("餐厅名："+ " 还没起名字！ ");
+		text.append("餐厅名："+ " 还没起名字！ " +"\n");
+		text.append("=========================================================" + "\n");
 		for (Order order : orderList) {
-			text.append("    "+order.getOrderUser());
+			text.append("    "+order.getOrderUser() +"\n");
 			int countPriceForOne = 0;
 			List<Order_Dish> Order_Dish_List = order.getOrderdishList();
 			for (Order_Dish order_Dish : Order_Dish_List) {
@@ -84,13 +86,28 @@ public class EmailServiceImpl implements EmailService {
 		text.append("总计：" + countPrice + "元。" + " \n");
 		text.append("赶紧拨打电话，"+"  553475952  "+"帮助小伙伴订餐吧~");
 		
-			try {
-				logger.info("开始向 : " + henchMan + ", 发送邮件...");
-				EmailUtil.doSendEmail(henchMan, text.toString());
-			} catch (Exception e) {
-				logger.error("邮件发送失败...");
-				e.printStackTrace();
+		try {
+			logger.info("开始向 : " + henchMan + ", 发送邮件...");
+			EmailUtil.doSendEmail(henchMan, text.toString());
+		} catch (Exception e) {
+			logger.error("邮件发送失败...");
+			e.printStackTrace();
+		} 
+		//删除缓存中的订单列表
+		List<Order> needRemoveOrderList = new ArrayList<Order>();
+		// 查找缓存中henchman相关的订单
+		if (orderList != null && orderList.size() != 0) {
+			for (Order order : orderList) {
+				if (order.getOrderRcvd().equals(henchMan)) {
+					needRemoveOrderList.add(order);
+
+				}
 			}
+		}
+		System.out.println("缓存中有订单缓存列表：" + CacheLoder.cacheOrderList);
+		logger.info("将删除内存中 " + henchMan + " 对应的订单缓存...");
+		CacheLoder.cacheOrderList.removeAll(needRemoveOrderList);
+		System.out.println("删除后，缓存中还有订单缓存列表：" + CacheLoder.cacheOrderList);
 	}
 
 	/* (non-Javadoc)

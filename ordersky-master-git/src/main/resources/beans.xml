@@ -13,11 +13,9 @@
 
 	<!-- 采用注释的方式配置bean -->
 	<context:annotation-config />
-	<!-- 配置要扫描的包 -->
+	<!-- 配置要扫描的包 -   exclude-filter排除过滤   -->
 	<context:component-scan base-package="com.travelsky">
 		<context:exclude-filter type="regex" expression=".context.*" />
-		<context:exclude-filter type="regex" expression=".test.*" />
-		<context:exclude-filter type="regex" expression=".util.*" />
 	</context:component-scan>
 	<!--proxy-target-class="true"强制使用cglib代理 如果为false则spring会自动选择 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />

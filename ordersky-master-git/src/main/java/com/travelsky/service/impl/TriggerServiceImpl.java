@@ -31,6 +31,8 @@ public class TriggerServiceImpl implements TriggerService {
 	private static Logger logger = Logger.getLogger(TriggerServiceImpl.class);
 	@Autowired
 	private TriggerDao triggerDao;
+	@Autowired
+	private TriggerUtil activedTrigger;
 
 	/*
 	 * (non-Javadoc)
@@ -105,7 +107,6 @@ public class TriggerServiceImpl implements TriggerService {
 		System.out.println("最近订餐时间：" + min);
 
 		// 激活触发器，并设定触发时间
-		TriggerUtil activedTrigger = new TriggerUtil();
 
 		activedTrigger.setHour(min / 10000);
 		activedTrigger.setMinute(min % 10000 / 100);

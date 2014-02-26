@@ -61,7 +61,19 @@ public class OrderAction extends ActionSupport {
 	private List<String> inputList;
 
 	public String submit() {
-
+		Map<String, Object> map = new HashMap<String, Object>();
+		JSONObject json = JSONObject.fromObject(map);// 将map对象转换成json类型数据
+		//判断订餐者 是否为空，禁止未登录点餐
+		System.out.println(orderUser);
+		if(orderUser == null || ("").equals(orderUser)){
+			json.put("result", "订单提交失败，请先登录...");
+logger.error("订单提交失败，用户未登录！");
+			message = json.toString();// 给result赋值，传递给页面
+			return ERROR;
+		}
+		
+		
+		
 		logger.info("菜单开始提交......");
 		int totalPrice = 0;
 		Order order = new Order();
@@ -91,9 +103,6 @@ public class OrderAction extends ActionSupport {
 		System.out.println(order);
 		int resultNum = orderService.insertOrder(order);
 
-		Map<String, Object> map = new HashMap<String, Object>();
-
-		JSONObject json = JSONObject.fromObject(map);// 将map对象转换成json类型数据
 
 		json.put("email", order.getOrderRcvd());
 		
@@ -106,15 +115,15 @@ public class OrderAction extends ActionSupport {
 			try {
 				triggerServiceImpl.triggerSubmit(orderUser, henchman, order);
 			} catch (Exception e) {
-				e.printStackTrace();
+				
 				logger.error("点餐失败，对应点餐官未设置组团订餐计划！");
-				json.put("result", "点餐失败，对应点餐官未设置组团订餐计划！");
+				json.put("result", "点餐失败，对应点餐官  " + henchman + "未设置组团订餐计划！");
 				message = json.toString();// 给result赋值，传递给页面
 				return ERROR;
 			}
 			logger.info("订单提交成功");
+			json.put("result", "点餐成功");
 			message = json.toString();// 给result赋值，传递给页面
-			json.put("result", "点餐成功！");
 			return SUCCESS;
 		} else {
 			logger.info("订单提交失败，可能为系统错误");

@@ -17,8 +17,10 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.config.TriggerTask;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import com.travelsky.context.CacheLoder;
 import com.travelsky.domain.Order;
@@ -30,6 +32,7 @@ import com.travelsky.service.EmailService;
  * @Description: TODO 触发器工具
  * @author chengjun(chengjun@travelsky.com) @2014-2-20
  */
+@Service
 public class TriggerUtil {
 	/**
 	 * 
@@ -61,28 +64,10 @@ public class TriggerUtil {
 				logger.info(year + "年" + month + "月" + day + "日" + hour + ":" + minute + ":"
 						+ second + " *************触发器触发***************");
 				List<Trigger> triggerList = CacheLoder.cacheTriggerList;
-				List<Order> orderList = CacheLoder.cacheOrderList;
-				List<Order> needRemoveOrderList = new ArrayList<Order>();
 				List<Trigger> needRemoveTriggerList = new ArrayList<Trigger>();
-				// 查找缓存中henchman相关的订单
-				if (orderList != null && orderList.size() != 0) {
-					for (Order order : orderList) {
-						if (order.getOrderRcvd().equals(henchman)) {
-
-							System.out.println(order);
-
-							needRemoveOrderList.add(order);
-
-						}
-					}
-				}
-				System.out.println("缓存中有订单缓存列表：" + CacheLoder.cacheOrderList);
-				logger.info("将删除内存中 " + henchman + " 对应的订单缓存...");
-				CacheLoder.cacheOrderList.removeAll(needRemoveOrderList);
-				System.out.println("删除后，缓存中还有订单缓存列表：" + CacheLoder.cacheOrderList);
+				
 				// 发送邮件
-				// EmailUtil.doSendEmail(henchman, "123");
-				emailService.sentToHenchman(henchman);
+emailService.sentToHenchman(henchman);
 
 				if (triggerList != null && triggerList.size() != 0) {
 					for (Trigger trigger : triggerList) {
