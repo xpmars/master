@@ -21,6 +21,25 @@ public class User implements Serializable {
 	private String error;
 	private String henchman;
 
+	public int getTriggert1() {
+		return triggert1;
+	}
+
+	public void setTriggert1(int triggert1) {
+		this.triggert1 = triggert1;
+	}
+
+	public int getTriggert2() {
+		return triggert2;
+	}
+
+	public void setTriggert2(int triggert2) {
+		this.triggert2 = triggert2;
+	}
+
+	private int triggert1;
+	private int triggert2;
+
 	public Integer getId() {
 		return id;
 	}
@@ -110,8 +129,11 @@ public class User implements Serializable {
 		return "User [id=" + id + ", username=" + username + ", name=" + name + ", password="
 				+ password + ", password2=" + password2 + ", telephone=" + telephone
 				+ ", usertype=" + usertype + ", email=" + email + ", error=" + error
-				+ ", henchman=" + henchman + "]";
+				+ ", henchman=" + henchman + ", triggert1=" + triggert1 + ", triggert2="
+				+ triggert2 + "]";
 	}
+
+
 	
 	
 }

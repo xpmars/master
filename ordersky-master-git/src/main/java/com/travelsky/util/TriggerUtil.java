@@ -2,6 +2,7 @@ package com.travelsky.util;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,18 +35,18 @@ public class TriggerUtil extends HttpServlet {
 	
 	public void init() throws ServletException {
 		logger.info("加载触发器线程......");
-		List<User> henchmanList = CacheLoder.cacheUserList;
-		TriggerSubmit();
+		
+		Trigger();
 	}
 
-	public void TriggerSubmit() {
+	public void Trigger() {
 		Calendar calendar = Calendar.getInstance();
 		int year = calendar.get(Calendar.YEAR);//获取年份
 		int month=calendar.get(Calendar.MONTH);//获取月份 
-		int day=calendar.get(Calendar.DATE);//获取日
+		int day = calendar.get(Calendar.DAY_OF_MONTH);//获取每天
 		
-		int hour = 9;
-		int minute = 43;
+		int hour = 15;
+		int minute = 02;
 		int second = 00;
 		
 		Timer timer = new Timer();
@@ -56,10 +57,15 @@ public class TriggerUtil extends HttpServlet {
 				int hour = calendar.get(Calendar.HOUR);//
 				int minute=calendar.get(Calendar.MINUTE);//
 				int second=calendar.get(Calendar.SECOND);//
-				int millsSecond=calendar.get(Calendar.MILLISECOND);//
+				System.out.println(hour +":"+ minute +":"+ second);
+				logger.info(hour+":"+minute+":"+second+"*************触发器触发***************");
+				List<User> henchmanList = CacheLoder.cacheUserList;
+				for(User henchman : henchmanList){
+					System.out.println(henchman);
+					
+				}
 				
-				System.out.println(hour +":"+ minute +":"+ second + ":" +millsSecond);
-				System.out.println("*************触发***************");
+				
 			}
 
 		};
@@ -71,7 +77,6 @@ public class TriggerUtil extends HttpServlet {
 		timer.schedule(task, date);
 
 	}	
-	
 	
 	
 	/**
