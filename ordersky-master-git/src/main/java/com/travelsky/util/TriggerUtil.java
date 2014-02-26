@@ -30,7 +30,6 @@ import com.travelsky.service.EmailService;
  * @Description: TODO 触发器工具
  * @author chengjun(chengjun@travelsky.com) @2014-2-20
  */
-@Controller
 public class TriggerUtil {
 	/**
 	 * 

@@ -16,6 +16,8 @@
 	<!-- 配置要扫描的包 -->
 	<context:component-scan base-package="com.travelsky">
 		<context:exclude-filter type="regex" expression=".context.*" />
+		<context:exclude-filter type="regex" expression=".test.*" />
+		<context:exclude-filter type="regex" expression=".util.*" />
 	</context:component-scan>
 	<!--proxy-target-class="true"强制使用cglib代理 如果为false则spring会自动选择 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
@@ -64,6 +66,4 @@
 	<!--注意：lazy-init="false" init-method="init" -->
 	<bean id="cacheLoder" lazy-init="false" class="com.travelsky.context.CacheLoder"
 		init-method="init" />
-	<!-- 将工具类注入-->	
-	<bean id="TriggerUtil" class="com.travelsky.util.TriggerUtil" lazy-init="false"></bean>
 </beans>
