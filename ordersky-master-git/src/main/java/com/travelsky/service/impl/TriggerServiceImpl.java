@@ -93,6 +93,7 @@ public class TriggerServiceImpl implements TriggerService {
 				triggerTime2 = trigger.getHour() * 10000 + trigger.getMinute() * 100
 						+ trigger.getSecond();
 				if (triggerTime2 > triggerTime && min > triggerTime2) {
+					
 					min = triggerTime2;
 					triggerTemp = trigger;
 				}
@@ -104,8 +105,14 @@ public class TriggerServiceImpl implements TriggerService {
 			
 		}
 
-		System.out.println("最近订餐时间：" + min);
+System.out.println("最近订餐时间：" + min);
 
+		if(min==240000){
+			throw new Exception("点餐失败，请明天点餐。");
+		}
+
+
+		
 		// 激活触发器，并设定触发时间
 
 		activedTrigger.setHour(min / 10000);

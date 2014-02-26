@@ -66,10 +66,11 @@ public class OrderAction extends ActionSupport {
 		//判断订餐者 是否为空，禁止未登录点餐
 		System.out.println(orderUser);
 		if(orderUser == null || ("").equals(orderUser)){
-			json.put("result", "订单提交失败，请先登录...");
+			json.put("code", "1");
+			json.put("result", "订单提交失败，请您先登录...");
 logger.error("订单提交失败，用户未登录！");
 			message = json.toString();// 给result赋值，传递给页面
-			return ERROR;
+			return SUCCESS;
 		}
 		
 		
@@ -79,7 +80,7 @@ logger.error("订单提交失败，用户未登录！");
 		Order order = new Order();
 		Date currentTime = new Date();
 		int random = (int) (Math.random() * 10000);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");//订单时间的格式化
 		String currentTimeStr = sdf.format(currentTime);
 		String orderId = currentTimeStr + random;
 		order.setId(new BigDecimal(orderId));
@@ -112,14 +113,16 @@ logger.error("订单提交失败，用户未登录！");
 			logger.info("发送订单邮件给用户...");
 			emailService.sentToOne(orderUser, henchman, order);
 			logger.info("进入触发器流程...");
+			//进入触发器处理流程
 			try {
 				triggerServiceImpl.triggerSubmit(orderUser, henchman, order);
 			} catch (Exception e) {
 				
-				logger.error("点餐失败，对应点餐官未设置组团订餐计划！");
-				json.put("result", "点餐失败，对应点餐官  " + henchman + "未设置组团订餐计划！");
+				logger.error("点餐失败，对应点餐官未设置该时段的组团订餐计划！");
+				json.put("code", "1");
+				json.put("result", "点餐失败，对应点餐官  " + henchman + "未设置该时段的组团订餐计划！");
 				message = json.toString();// 给result赋值，传递给页面
-				return ERROR;
+				return SUCCESS;
 			}
 			logger.info("订单提交成功");
 			json.put("result", "点餐成功");
@@ -127,6 +130,7 @@ logger.error("订单提交失败，用户未登录！");
 			return SUCCESS;
 		} else {
 			logger.info("订单提交失败，可能为系统错误");
+			json.put("code", "1");
 			json.put("result", "订单提交失败，可能为系统错误");
 			message = json.toString();// 给result赋值，传递给页面
 			return ERROR;

@@ -120,12 +120,16 @@ var henchmanEmail = null;//定义订单跟随者Email
 
 			//返回json
 		    success:function(data){	
-		   	var d = eval("("+data+")");//将数据转换成json类型，可以把data用alert()输出出来看看到底是什么样的结构
+		   		var d = eval("("+data+")");//将数据转换成json类型，可以把data用alert()输出出来看看到底是什么样的结构
 				//返回的数据用data.d获取内容
-				location.href="<%=request.getContextPath()%>/common/team_success.jsp?rvcvd="+d.email+"&result="+d.result;      
+				if(d.code == "1"){
+					location.href="<%=request.getContextPath()%>/common/error.jsp?result="+d.result;
+				}else{
+					location.href="<%=request.getContextPath()%>/common/team_success.jsp?rvcvd="+d.email+"&result="+d.result; 
+				}
 		     },
 		     error:function(){
-		    	 location.href="<%=request.getContextPath()%>/common/error.jsp?result="+d.result;
+		    	location.href="<%=request.getContextPath()%>/common/error.jsp";
 		     },
 		});
 	}
