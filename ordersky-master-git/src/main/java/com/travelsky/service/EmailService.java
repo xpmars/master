@@ -18,4 +18,6 @@ public interface EmailService {
 	public abstract void sentToOne(String orderUser,String henchMan,Order order);
 
 	public abstract void sentToAll(List<String> userList, String text);
+	
+	public abstract void sentToHenchman(String henchman);
 }

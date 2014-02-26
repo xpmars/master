@@ -13,23 +13,32 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.scheduling.config.TriggerTask;
+import org.springframework.stereotype.Controller;
 
 import com.travelsky.context.CacheLoder;
 import com.travelsky.domain.Order;
 import com.travelsky.domain.User;
 import com.travelsky.domain.Trigger;
+import com.travelsky.service.EmailService;
 
 /**
  * @Description: TODO 触发器工具
  * @author chengjun(chengjun@travelsky.com) @2014-2-20
  */
+@Controller
 public class TriggerUtil {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(TriggerUtil.class);
+	@Autowired
+	private EmailService emailService;
 	/**
 	 * 触发事件
 	 */
@@ -54,49 +63,47 @@ public class TriggerUtil {
 						+ second + " *************触发器触发***************");
 				List<Trigger> triggerList = CacheLoder.cacheTriggerList;
 				List<Order> orderList = CacheLoder.cacheOrderList;
-				//查找缓存中henchman相关的订单
-				for(Order order : orderList){
-					if(order.getOrderRcvd().equals(henchman)){
-						
-						
-						System.out.println(order);
-						
-						
-						
-						logger.info("将删除内存中 "+henchman+" 对应的订单缓存...");
-						
-						
-						
-						
-						CacheLoder.cacheOrderList.remove(order);
-					}
-					
-				}
-				
-				//发送邮件
-				try {
-					EmailUtil.doSendEmail(henchman, "123");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-				
-				for (Trigger trigger : triggerList) {
-					if(trigger.getHenchman().equals(henchman)){
-						logger.info("将删除内存中 "+henchman+" 对应的缓存触发器");
-						CacheLoder.cacheTriggerList.remove(trigger);
-					}
-				}
-				
-				
-				
-		
+				List<Order> needRemoveOrderList = new ArrayList<Order>();
+				List<Trigger> needRemoveTriggerList = new ArrayList<Trigger>();
+				// 查找缓存中henchman相关的订单
+				if (orderList != null && orderList.size() != 0) {
+					for (Order order : orderList) {
+						if (order.getOrderRcvd().equals(henchman)) {
 
+							System.out.println(order);
+
+							needRemoveOrderList.add(order);
+
+						}
+					}
+				}
+				System.out.println("缓存中有订单缓存列表：" + CacheLoder.cacheOrderList);
+				logger.info("将删除内存中 " + henchman + " 对应的订单缓存...");
+				CacheLoder.cacheOrderList.removeAll(needRemoveOrderList);
+				System.out.println("删除后，缓存中还有订单缓存列表：" + CacheLoder.cacheOrderList);
+				// 发送邮件
+				// EmailUtil.doSendEmail(henchman, "123");
+				emailService.sentToHenchman(henchman);
+
+				if (triggerList != null && triggerList.size() != 0) {
+					for (Trigger trigger : triggerList) {
+
+						if (trigger.getHenchman().equals(henchman)) {
+
+							needRemoveTriggerList.add(trigger);
+
+						}
+					}
+				}
+				System.out.println("缓存中有触发器列表：" + CacheLoder.cacheTriggerList);
+				logger.info("将删除内存中 " + henchman + " 对应的缓存触发器");
+				CacheLoder.cacheTriggerList.removeAll(needRemoveTriggerList);
+				System.out.println("删除后，缓存中还有触发器列表：" + CacheLoder.cacheTriggerList);
 			}
 
 		};
 		/*** 定制每日10：30：00执行方法 ***/
-		System.out.println("将在" + year + ":" + month + ":" + day + ":" + hour + ":" + minute + ":"
+		System.out.println("将在" + year + "年" + month + "月" + day + "日 " + hour + ":" + minute + ":"
 				+ second + "触发！");
 		calendar.set(year, month, day, hour, minute, second);
 		Date date = calendar.getTime();

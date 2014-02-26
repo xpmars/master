@@ -96,23 +96,32 @@ public class OrderAction extends ActionSupport {
 		JSONObject json = JSONObject.fromObject(map);// 将map对象转换成json类型数据
 
 		json.put("email", order.getOrderRcvd());
-
-		message = json.toString();// 给result赋值，传递给页面
-
+		
 		if (dishIdArr.length + 1 == resultNum) {
 
-			logger.info("订单提交成功");
 			CacheLoder.cacheOrderList.add(order);// 将订单添加到缓存列表
 			logger.info("发送订单邮件给用户...");
 			emailService.sentToOne(orderUser, henchman, order);
 			logger.info("进入触发器流程...");
-			triggerServiceImpl.triggerSubmit(orderUser, henchman, order);
-
+			try {
+				triggerServiceImpl.triggerSubmit(orderUser, henchman, order);
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error("点餐失败，对应点餐官未设置组团订餐计划！");
+				json.put("result", "点餐失败，对应点餐官未设置组团订餐计划！");
+				message = json.toString();// 给result赋值，传递给页面
+				return ERROR;
+			}
+			logger.info("订单提交成功");
+			message = json.toString();// 给result赋值，传递给页面
+			json.put("result", "点餐成功！");
 			return SUCCESS;
-		} else
+		} else {
 			logger.info("订单提交失败，可能为系统错误");
-		return ERROR;
-
+			json.put("result", "订单提交失败，可能为系统错误");
+			message = json.toString();// 给result赋值，传递给页面
+			return ERROR;
+		}
 	}
 
 	/**

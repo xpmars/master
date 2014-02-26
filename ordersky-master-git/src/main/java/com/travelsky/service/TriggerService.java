@@ -16,5 +16,5 @@ public interface TriggerService {
 	public abstract void clearTrigger();
 	public abstract void addTrigger();
 	public abstract boolean hasTrigger();
-	public abstract void triggerSubmit(String orderUser, String henchMan, Order order);
+	public abstract void triggerSubmit(String orderUser, String henchMan, Order order) throws Exception;
 }

@@ -94,13 +94,17 @@ var henchmanEmail = null;//定义订单跟随者Email
 	});
 	function clearli(){
 		$("#subBtn").attr('disabled',true);//设置disabled属性为false，按钮可用
+		
 		orderArr.splice(0,orderArr.length);  
 		$('#orderList').empty();
 		$("#countPrice").html(0);
 		$("#count").hide();
 	}
 	function submitOrder(){
+		$(".alert").alert();
 		var orderStr = orderArr.toString();
+		$("#subBtn").attr('disabled',true);//设置disabled属性为false，按钮可用
+		
      	$.ajax({  
             //要用post方式      
             type: "post",     
@@ -291,10 +295,14 @@ var henchmanEmail = null;//定义订单跟随者Email
 					<!-- /input-group -->
 					<p></p>
 					<a type="submit" class="btn btn-success" id="subBtn" onclick="submitOrder()"><span
-						class="glyphicon glyphicon-ok"></span> 提交 </a> <a id="clear" type="reset" class="btn btn-warning"
+						class="glyphicon glyphicon-ok"></span> 提交 </a> 
+						
+					<a id="clear" type="reset" class="btn btn-warning"
 						onclick="clearli()"> <span class="glyphicon glyphicon-repeat"></span> 清空
 					</a>
+
 				</form>
+				
 			</div>
 		</div>
 	</div>

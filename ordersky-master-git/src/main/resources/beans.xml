@@ -64,4 +64,6 @@
 	<!--注意：lazy-init="false" init-method="init" -->
 	<bean id="cacheLoder" lazy-init="false" class="com.travelsky.context.CacheLoder"
 		init-method="init" />
+	<!-- 将工具类注入-->	
+	<bean id="TriggerUtil" class="com.travelsky.util.TriggerUtil" lazy-init="false"></bean>
 </beans>
