@@ -25,6 +25,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.travelsky.context.CacheLoder;
 import com.travelsky.domain.Order;
 import com.travelsky.domain.Order_Dish;
+import com.travelsky.exception.TriggerException;
 import com.travelsky.service.DishService;
 import com.travelsky.service.EmailService;
 import com.travelsky.service.OrderService;
@@ -63,8 +64,7 @@ public class OrderAction extends ActionSupport {
 	public String submit() {
 		Map<String, Object> map = new HashMap<String, Object>();
 		JSONObject json = JSONObject.fromObject(map);// 将map对象转换成json类型数据
-		//判断订餐者 是否为空，禁止未登录点餐
-		System.out.println(orderUser);
+		//校验-判断订餐者 是否为空，禁止未登录点餐
 		if(orderUser == null || ("").equals(orderUser)){
 			json.put("code", "1");
 			json.put("result", "订单提交失败，请您先登录...");
@@ -72,10 +72,18 @@ logger.error("订单提交失败，用户未登录！");
 			message = json.toString();// 给result赋值，传递给页面
 			return SUCCESS;
 		}
+		//校验-判断跟随者 是否为空，禁止独自点餐
+		if(henchman == null || ("").equals(henchman)){
+			json.put("code", "1");
+			json.put("result", "订单提交失败，请您选择一个点餐官...");
+logger.error("订单提交失败，用户未选择点餐官！");
+			message = json.toString();// 给result赋值，传递给页面
+			return SUCCESS;
+		}
+				
 		
-		
-		
-		logger.info("菜单开始提交......");
+		//准备提交菜单的数据
+logger.info("菜单开始提交......");		
 		int totalPrice = 0;
 		Order order = new Order();
 		Date currentTime = new Date();
@@ -96,35 +104,37 @@ logger.error("订单提交失败，用户未登录！");
 			order.getOrderdishList().add(order_dish);
 			totalPrice += dishService.findDishById(dishId).getPrice();
 		}
-
 		order.setOrderRcvd(henchman);
 		order.setOrderUser(orderUser);
 		order.setTotalPrice(totalPrice);
 		order.setOrderDate(new java.sql.Date(currentTime.getTime()));
 		System.out.println(order);
-		int resultNum = orderService.insertOrder(order);
-
-
-		json.put("email", order.getOrderRcvd());
 		
+		
+		
+		//转入service部分
+		int resultNum = 0;
+		try {
+			resultNum = orderService.insertOrder(order);
+		} catch (TriggerException te){
+			logger.error("点餐失败，对应点餐官未设置该时段的组团订餐计划！");
+			json.put("code", "1");
+			json.put("result", "点餐失败，对应点餐官  " + henchman + "未设置该时段的组团订餐计划！");
+			message = json.toString();// 给result赋值，传递给页面
+			return SUCCESS;
+		} catch (Exception e) {
+			logger.error("点餐异常！");
+			json.put("code", "1");
+			json.put("result", "点餐异常");
+			message = json.toString();// 给result赋值，传递给页面
+			return SUCCESS;
+		}
+		
+		//返回值的设置部分
+		json.put("email", order.getOrderRcvd());
 		if (dishIdArr.length + 1 == resultNum) {
-
-			CacheLoder.cacheOrderList.add(order);// 将订单添加到缓存列表
-			logger.info("发送订单邮件给用户...");
-			emailService.sentToOne(orderUser, henchman, order);
-			logger.info("进入触发器流程...");
-			//进入触发器处理流程
-			try {
-				triggerServiceImpl.triggerSubmit(orderUser, henchman, order);
-			} catch (Exception e) {
-				
-				logger.error("点餐失败，对应点餐官未设置该时段的组团订餐计划！");
-				json.put("code", "1");
-				json.put("result", "点餐失败，对应点餐官  " + henchman + "未设置该时段的组团订餐计划！");
-				message = json.toString();// 给result赋值，传递给页面
-				return SUCCESS;
-			}
 			logger.info("订单提交成功");
+			json.put("code", "0");
 			json.put("result", "点餐成功");
 			message = json.toString();// 给result赋值，传递给页面
 			return SUCCESS;

@@ -11,10 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.travelsky.context.CacheLoder;
 import com.travelsky.dao.OrderDao;
 import com.travelsky.dao.UserDao;
 import com.travelsky.domain.Order;
 import com.travelsky.domain.User;
+import com.travelsky.exception.TriggerException;
+import com.travelsky.service.EmailService;
 import com.travelsky.service.OrderService;
 
 /**
@@ -28,6 +31,10 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDao orderDao;
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private EmailService emailService;
+	@Autowired
+	private TriggerServiceImpl triggerServiceImpl;
 
 	private static Logger logger = Logger.getLogger(OrderServiceImpl.class);
 
@@ -36,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
 	 * 
 	 * @see com.travelsky.service.OrderService#insertOrder()
 	 */
-	public int insertOrder(Order order) {
+	public int insertOrder(Order order) throws Exception {
 		// 插入菜单时，将订餐者的默认跟随者填入
 		User henchman = null;
 		logger.info("开始向数据库中插入订单...");
@@ -45,7 +52,7 @@ public class OrderServiceImpl implements OrderService {
 		logger.info("判断订餐着的henchman...");
 		
 		String henchmanEmail = order.getOrderRcvd();
-		if(henchmanEmail!=null || "".equals(henchmanEmail))
+		if(henchmanEmail!=null || !("".equals(henchmanEmail)))
 			henchman = userDao.findUserByEmail(henchmanEmail);
 		if (henchman != null) {
 			user.setHenchman(henchmanEmail);
@@ -54,7 +61,16 @@ public class OrderServiceImpl implements OrderService {
 		}
 		logger.info("更新订餐着的henchman信息...");
 		userDao.updateUser(user);
+//////////////////邮件处理 触发器处理////////////////////////////////////		
 		
+		CacheLoder.cacheOrderList.add(order);// 将订单添加到缓存列表
+		logger.info("发送订单邮件给用户...");
+		emailService.sentToOne(order.getOrderUser(), order.getOrderRcvd(), order);
+		logger.info("进入触发器流程...");
+		/////////进入触发器处理流程
+		
+		triggerServiceImpl.triggerSubmit(order.getOrderUser(), order.getOrderRcvd(), order);
+	
 		return orderDao.insertOrder(order);
 	}
 

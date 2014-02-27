@@ -14,6 +14,6 @@ import com.travelsky.domain.Order;
  * @author chengjun(chengjun@travelsky.com)  @2014-1-28
  */
 public interface OrderService {
-	public abstract int insertOrder(Order order);
+	public abstract int insertOrder(Order order) throws Exception;
 	public abstract Order findOrderById(int orderId);
 }
