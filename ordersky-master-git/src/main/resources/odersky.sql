@@ -56,10 +56,11 @@ CREATE TABLE `dish` (
   `price` INT(4) collate utf8_bin default NULL,
   `discount` varchar(64) collate utf8_bin default NULL,
   `remark` varchar(64) collate utf8_bin default NULL,
-  `interval` varchar(64) collate utf8_bin default NULL,
+  `intervaltime` varchar(64) collate utf8_bin default NULL,
   PRIMARY KEY  (`id`),
   FOREIGN KEY (`restId`)     references  `rest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE         
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+INSERT INTO dish (id,restId,dishName,taste,price,discount,remark,intervaltime) VALUES ( 1000901,  1000,  '鱼香茄子饭',  '偏辣',  0, '', '',  '1-15')
 -- ----------------------------
 -- Table structure for orders
 -- ----------------------------

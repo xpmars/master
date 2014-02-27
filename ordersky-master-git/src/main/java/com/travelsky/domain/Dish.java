@@ -20,7 +20,7 @@ public class Dish implements Serializable {
 	private int price;
 	private String discount;
 	private String remark;
-	private String interval;
+	private String intervaltime;
 	public Integer getId() {
 		return id;
 	}
@@ -64,11 +64,11 @@ public class Dish implements Serializable {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public String getInterval() {
-		return interval;
+	public String getIntervaltime() {
+		return intervaltime;
 	}
-	public void setInterval(String interval) {
-		this.interval = interval;
+	public void setIntervaltime(String intervaltime) {
+		this.intervaltime = intervaltime;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -77,7 +77,7 @@ public class Dish implements Serializable {
 	public String toString() {
 		return "Dish [id=" + id + ", restId=" + restId + ", dishName=" + dishName + ", taste="
 				+ taste + ", price=" + price + ", discount=" + discount + ", remark=" + remark
-				+ ", interval=" + interval + "]";
+				+ ", intervaltime=" + intervaltime + "]";
 	}
 
 

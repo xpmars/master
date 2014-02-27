@@ -58,9 +58,6 @@ var henchmanEmail = null;//定义订单跟随者Email
 					}
 				});
 		
-		
-		
-		
 		$("#subBtn").attr('disabled',true);//设置disabled属性为false，按钮可用
 		var week = new Date().getDay();
 		var wid = "w" + week;
@@ -114,7 +111,6 @@ var henchmanEmail = null;//定义订单跟随者Email
 				'orderStr' : orderStr,
 				'orderUser' : orderUser,
 				'henchman' : henchman,
-				
 			},
 			dataType : "json",
 
@@ -259,7 +255,7 @@ var henchmanEmail = null;//定义订单跟随者Email
 								<td id="index"><s:property value="#d.index+1"></s:property></td>
 								<td id="id" style="display: none"><s:property value="#dish.id"></s:property></td>
 								<td id="dishName"><s:property value="#dish.dishName"></s:property></td>
-								<td id="interval"><s:property value="#dish.interval"></s:property></td>
+								<td id="interval"><s:property value="#dish.intervaltime"></s:property></td>
 								<td id="price"><s:property value="#dish.price"></s:property></td>
 							</s:iterator>
 						</tbody>

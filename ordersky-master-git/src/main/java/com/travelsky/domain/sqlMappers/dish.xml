@@ -11,7 +11,7 @@
 		<result property="price" column="price" jdbcType="INTEGER" javaType="java.lang.Integer" />
 		<result property="discount" column="discount" />
 		<result property="remark" column="remark" />
-		<result property="interval" column="interval" />
+		<result property="intervaltime" column="intervaltime" />
 	</resultMap>
 
 	<select id="selectAllDish" resultMap="dishResult">

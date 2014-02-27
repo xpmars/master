@@ -8,19 +8,15 @@ package com.travelsky.context;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Timer;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.travelsky.action.UserAction;
 import com.travelsky.domain.Order;
 import com.travelsky.domain.Trigger;
 import com.travelsky.domain.User;
 import com.travelsky.service.UserService;
-import com.travelsky.util.TriggerUtil;
 
 /**
  * @Description: TODO
@@ -36,6 +32,5 @@ public class CacheLoder {
 	public void init() {
 		logger.info("Load Cache......");
 		cacheUserList = userService.findUserByType("订饭官");
-		
 	}
 }

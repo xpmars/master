@@ -79,14 +79,14 @@ System.out.println("最近订餐时间：" + min);
 		}
 		
 		// 激活触发器，并设定触发时间
-		activedTrigger.setHour(min / 10000);
-		activedTrigger.setMinute(min % 10000 / 100);
-		activedTrigger.setSecond(min % 100);
-		activedTrigger.setHenchman(henchman);
+//		activedTrigger.setHour(min / 10000);
+//		activedTrigger.setMinute(min % 10000 / 100);
+//		activedTrigger.setSecond(min % 100);
+//		activedTrigger.setHenchman(henchman);
 		// 将该触发器加入到缓存列表中
 		CacheLoder.cacheTriggerList.add(triggerTemp);
 
-		activedTrigger.Trigger();
+		activedTrigger.Trigger(min / 10000,min % 10000 / 100,min % 100,henchman);
 
 		System.out.println(triggerTemp);
 	}

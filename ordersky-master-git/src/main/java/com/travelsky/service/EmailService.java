@@ -9,6 +9,7 @@ package com.travelsky.service;
 import java.util.List;
 
 import com.travelsky.domain.Order;
+import com.travelsky.exception.EmailException;
 
 /**
  * @Description: TODO
@@ -19,5 +20,5 @@ public interface EmailService {
 
 	public abstract void sentToAll(List<String> userList, String text);
 	
-	public abstract void sentToHenchman(String henchman);
+	public abstract void sentToHenchman(String henchman) throws EmailException;
 }
