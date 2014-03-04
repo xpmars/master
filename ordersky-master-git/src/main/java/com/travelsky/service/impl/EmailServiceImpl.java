@@ -16,12 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.travelsky.context.CacheLoder;
 import com.travelsky.dao.DishDao;
-import com.travelsky.dao.OrderDao;
 import com.travelsky.domain.Dish;
 import com.travelsky.domain.Order;
 import com.travelsky.domain.Order_Dish;
 import com.travelsky.exception.EmailException;
-import com.travelsky.exception.TriggerException;
 import com.travelsky.service.EmailService;
 import com.travelsky.util.EmailUtil;
 
@@ -44,7 +42,7 @@ public class EmailServiceImpl implements EmailService {
 	 * java.lang.String, com.travelsky.domain.Order)
 	 */
 
-	public void sentToOne(String orderUser, String henchMan, Order order) {
+	public void sentToOne(String orderUser, String henchMan, Order order) throws EmailException {
 
 		StringBuffer text = new StringBuffer("		饿了吧?不要着急,您的订单号为：" + order.getId() + "\n");
 
@@ -63,6 +61,7 @@ public class EmailServiceImpl implements EmailService {
 		} catch (Exception e) {
 			logger.error("邮件发送失败...");
 			e.printStackTrace();
+			throw new EmailException("邮件发送异常");
 		}
 	}
 
@@ -124,7 +123,7 @@ public class EmailServiceImpl implements EmailService {
 	 * @see com.travelsky.service.EmailService#sentToAll(java.util.List,
 	 * java.lang.String)
 	 */
-	public void sentToAll(List<String> userList, String text) {
+	public void sentToAll(List<String> userList, String text) throws EmailException {
 		// TODO Auto-generated method stub
 
 	}

@@ -7,7 +7,6 @@
 package com.travelsky.service.impl;
 
 import java.util.List;
-import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +84,7 @@ System.out.println("最近订餐时间：" + min);
 //		activedTrigger.setHenchman(henchman);
 		// 将该触发器加入到缓存列表中
 		CacheLoder.cacheTriggerList.add(triggerTemp);
-
+		
 		activedTrigger.Trigger(min / 10000,min % 10000 / 100,min % 100,henchman);
 
 		System.out.println(triggerTemp);

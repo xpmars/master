@@ -7,7 +7,6 @@
 package com.travelsky.util;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Address;
@@ -17,7 +16,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.travelsky.domain.User;
 
 /**
  * @Description: TODO
@@ -77,4 +75,30 @@ public class EmailUtil {
             throw e;
         }
     }
+	//email格式校验
+	public static boolean validateEmail(String email){
+		//Pattern pattern = Pattern.compile("[0-9a-zA-Z]*.[0-9a-zA-Z]*@[a-zA-Z]*.[a-zA-Z]*", Pattern.LITERAL);
+		if(email == null){
+			return false;
+		}
+		//验证开始
+		//不能有连续的.
+		if(email.indexOf("..") != -1){
+			return false;
+		}
+		//必须带有@
+		int atCharacter = email.indexOf("@");
+		if (atCharacter == -1) {
+			return false;
+		}
+		//最后一个.必须在@之后,且不能连续出现
+		if(atCharacter > email.lastIndexOf('.') || atCharacter+1 == email.lastIndexOf('.')){
+			return false;
+		}
+		//不能以.,@结束和开始
+		if (email.endsWith(".") || email.endsWith("@") || email.startsWith(".") || email.startsWith("@")) {
+			return false;
+		}
+		return true;
+	}
 }

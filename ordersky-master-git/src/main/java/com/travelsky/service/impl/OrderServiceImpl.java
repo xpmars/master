@@ -16,7 +16,6 @@ import com.travelsky.dao.OrderDao;
 import com.travelsky.dao.UserDao;
 import com.travelsky.domain.Order;
 import com.travelsky.domain.User;
-import com.travelsky.exception.TriggerException;
 import com.travelsky.service.EmailService;
 import com.travelsky.service.OrderService;
 

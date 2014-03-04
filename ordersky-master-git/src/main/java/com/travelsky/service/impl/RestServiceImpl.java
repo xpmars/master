@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.travelsky.dao.UserDao;
-import com.travelsky.domain.User;
-import com.travelsky.service.UserService;
 
 import com.travelsky.dao.RestDao;
 import com.travelsky.domain.Restaurant;

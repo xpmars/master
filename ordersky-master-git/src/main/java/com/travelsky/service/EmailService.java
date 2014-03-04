@@ -16,9 +16,9 @@ import com.travelsky.exception.EmailException;
  * @author chengjun(chengjun@travelsky.com) @2014-2-20
  */
 public interface EmailService {
-	public abstract void sentToOne(String orderUser,String henchMan,Order order);
+	public abstract void sentToOne(String orderUser,String henchMan,Order order) throws EmailException;
 
-	public abstract void sentToAll(List<String> userList, String text);
+	public abstract void sentToAll(List<String> userList, String text) throws EmailException;
 	
 	public abstract void sentToHenchman(String henchman) throws EmailException;
 }

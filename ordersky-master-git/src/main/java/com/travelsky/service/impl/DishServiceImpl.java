@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.travelsky.dao.DishDao;
-import com.travelsky.dao.UserDao;
 import com.travelsky.domain.Dish;
 import com.travelsky.service.DishService;
 /**

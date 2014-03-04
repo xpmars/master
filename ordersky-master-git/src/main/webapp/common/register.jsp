@@ -124,7 +124,11 @@
 			$("#erroralert").find("p").first().html("密码输入有误");
 			$("#erroralert").show();
 			$("#erroralert").alert();
-		} else if (msg == "error") {
+		} else if (msg == "ldapError") {
+			$("#erroralert").find("p").first().html("对应travelsky的主机名，请勿重复注册");
+			$("#erroralert").show();
+			$("#erroralert").alert();
+		} else if ((msg == "error")) {
 			$("#erroralert").show();
 			$("#erroralert").alert();
 		}

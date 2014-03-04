@@ -133,9 +133,9 @@
 			
 			
 				<h2>自助点餐</h2>		
-				<img class="img-rounded" src="<%=request.getContextPath()%>/images/self.jpg" height="220"
-					width="220" alt="Generic placeholder image">
-				<div class="bs-callout bs-callout-info">
+				<img class="img-rounded" src="<%=request.getContextPath()%>/images/self.jpg" height="200"
+					width="200" alt="Generic placeholder image">
+				<div class="bs-callout bs-callout-info ">
 					<p>自助点餐，浏览菜单，或者给菜品和餐厅打分<br>
 						commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
 						sem malesuada magna mollis euismod. Donec sed odio dui.</p>
@@ -165,7 +165,7 @@
 			</div>
 			<div class="col-md-4">
 				<h2>优惠活动</h2>
-				<img class="img-rounded" src="<%=request.getContextPath()%>/images/youhui.png" height="220" width="220" alt="Generic placeholder image" >
+				<img class="img-rounded" src="<%=request.getContextPath()%>/images/youhui.png" height="200" width="200" alt="Generic placeholder image" >
 				<div class="bs-callout bs-callout-warning">
 					<p>
 					      特惠内容: 精选周边餐厅超多最受欢迎餐品<br>

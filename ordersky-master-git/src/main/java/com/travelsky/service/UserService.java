@@ -3,6 +3,7 @@ package com.travelsky.service;
 import java.util.List;
 
 import com.travelsky.domain.User;
+import com.travelsky.exception.UserException;
 
 /**
  * 类说明：
@@ -13,7 +14,7 @@ import com.travelsky.domain.User;
 public interface UserService {
 
 	// 添加用户
-	public abstract void addUser(User user);
+	public abstract void addUser(User user) throws UserException;
 
 	public abstract void updateUser(User user);
 
@@ -24,6 +25,8 @@ public interface UserService {
 	public abstract List<User> findAllUser();
 
 	public abstract User login(User user);
+	
+	public abstract User validateLdap(User user);
 	
 	public abstract User findRepeat(User user);
 	
