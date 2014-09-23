@@ -6,6 +6,10 @@
 .metadata
 bin/
 tmp/
+/target/
+.*
+
+.settings/*
 *.tmp
 *.bak
 *.swp
@@ -14,8 +18,9 @@ local.properties
 .classpath
 .settings/
 .loadpath
+*.project
 /.svn
-/target
+/target/
 /classes
 /test-classes
 

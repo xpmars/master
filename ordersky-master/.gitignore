@@ -3,3 +3,6 @@
 /test-classes
 /.svn
 /.settings
+/target/
+.*
+.settings/*
