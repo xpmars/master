@@ -249,38 +249,9 @@
 	</build>
 	<pluginRepositories>
 		<pluginRepository>
-			<id>travelsky</id>
-			<url>http://10.123.78.58/nexus/content/groups/travelsky/</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>travelsky-public</id>
-			<url>http://10.123.78.58/nexus/content/groups/public/</url>
-		</pluginRepository>
-		<pluginRepository>
 			<id>nexus-central-plugin</id>
 			<url>http://oss.sonatype.org/content/groups/public/</url>
 		</pluginRepository>
 	</pluginRepositories>
-	<repositories>
-		<repository>
-			<id>travelsky</id>
-			<url>http://10.123.78.58/nexus/content/groups/travelsky/</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>travelsky-public</id>
-			<url>http://10.123.78.58/nexus/content/groups/public/</url>
-		</repository>
-		<repository>
-			<id>nexus-public</id>
-			<url>http://oss.sonatype.org/content/groups/public/</url>
-		</repository>
-	</repositories>
+
 </project>
