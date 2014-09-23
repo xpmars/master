@@ -16,13 +16,12 @@ tmp/
 *~.nib
 local.properties
 .classpath
-.settings/
-.loadpath
-*.project
-/.svn
+/classes/
+/test-classes/
+/.svn/
 /target/
-/classes
-/test-classes
+.settings/*
+*.iml
 
 # External tool builders
 .externalToolBuilders/

@@ -1,8 +1,6 @@
-/target
-/classes
-/test-classes
-/.svn
-/.settings
+/classes/
+/test-classes/
+/.svn/
 /target/
-.*
 .settings/*
+*.iml
