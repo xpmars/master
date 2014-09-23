@@ -30,7 +30,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `user` VALUES ('2', 'admin', '1234');
+INSERT INTO `user`(username,password) VALUES ('admin', '1234');
 
 -- ----------------------------
 -- Table structure for menu
@@ -66,7 +66,7 @@ CREATE TABLE `dish` (
 CREATE TABLE `orders` (
   `id` bigint(22) NOT NULL,
   `orderUser` varchar(64) NOT NULL,
-  `totalPrice` NOT NULL collate utf8_bin default NULL,
+  `totalPrice` INT(4) collate utf8_bin default NULL,
   `remark` varchar(64) collate utf8_bin default NULL,
   `orderDate` varchar(64) collate utf8_bin default NULL,
   PRIMARY KEY  (`id`)
